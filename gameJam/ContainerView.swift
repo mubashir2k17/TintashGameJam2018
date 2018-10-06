@@ -38,6 +38,17 @@ class ContainerView: UIView {
     let screenWidth = UIScreen.main.bounds.width
     
     var indexsArray = [0,1,2,3,4,5,6,7,8]
+
+    // asset names to Load
+    let caracterImages = [(assetName: "knightIdle", startIndex: 0, endIndex: 6),
+                          (assetName: "robotIdle", startIndex: 0, endIndex: 8),
+                          (assetName: "robotGoldenIdle", startIndex: 0, endIndex: 8),
+                          (assetName: "trolIdle", startIndex: 0, endIndex: 6),
+                          (assetName: "trollGreenIdle", startIndex: 0, endIndex: 9),
+                          (assetName: "womanWarrior", startIndex: 0, endIndex: 4),
+                          (assetName: "zombieIdle", startIndex: 1, endIndex: 15),
+                          (assetName: "zombieFiemaleIdle", startIndex: 1, endIndex: 15),
+                          (assetName: "zombieHurt", startIndex: 1, endIndex: 5)]
     
     func populateTimeFrames() {
         
@@ -103,20 +114,25 @@ class ContainerView: UIView {
             
             if(cardType == .Character) {
                 card = Character(frame: rect, cardDidPress: cardDidPress)
+                card.setupCard(params: caracterImages[0])
             }
             else {
                 card = CardView(frame: rect, cardDidPress: cardDidPress)
                 if(cardType == .Enemy) {
                     card.health = -1 * max(2,min(Int(arc4random_uniform(UInt32(5))), 4)) // should not be higher than 2, at least 1
+                    card.setupCard(params: caracterImages[2])
                 }
                 else if(cardType == .Potion) {
                     card.health = max(1,min(Int(arc4random_uniform(UInt32(3))), 2))
+                    card.setupCard(params: caracterImages[3])
                 }
                 else if(cardType == .Gold) {
                     card.health = max(5,min(Int(arc4random_uniform(UInt32(20))), 2))
+                    card.setupCard(params: caracterImages[4])
                 }
                 else if(cardType == .Armor) {
                     card.armor = max(1,min(Int(arc4random_uniform(UInt32(3))), 2)) // should not be higher than 2, at least 1
+                    card.setupCard(params: caracterImages[5])
                 }
             }
             

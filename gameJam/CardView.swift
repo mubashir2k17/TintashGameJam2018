@@ -104,4 +104,9 @@ class CardView: UIView {
     @IBAction func cardTapAction(_ sender: Any) {
         cardDidPress?(self)
     }
+
+    func setupCard(params: (assetName: String, startIndex: Int, endIndex: Int)) {
+        // change cardBackgroundImageView to image and set background image seperately
+        cardBackgroundImageView.image = animatedImage(asset: params.assetName, startIndex: params.startIndex, endIndex: params.endIndex)
+    }
 }
