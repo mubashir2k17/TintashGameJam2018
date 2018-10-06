@@ -7,6 +7,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="Unknown constraint types" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -45,9 +46,8 @@
                                 </cells>
                             </collectionView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S11-7n-3Cu">
-                                <rect key="frame" x="157.5" y="562" width="60" height="60"/>
+                                <rect key="frame" x="164.5" y="562" width="46" height="60"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="60" id="MVH-rw-eCe"/>
                                     <constraint firstAttribute="height" constant="60" id="kXJ-gu-q0Z"/>
                                 </constraints>
                                 <state key="normal" title="Button"/>
@@ -58,22 +58,18 @@
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="s1V-JQ-Nq7" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="6aZ-FZ-0tT"/>
+                            <constraint firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="6aZ-FZ-0tT"/>
                             <constraint firstItem="ffS-7q-k4b" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="45" id="8WC-zT-9eH"/>
-                            <constraint firstItem="G8q-wU-ScO" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="8" id="9vb-bw-qRD"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="7q7-7t-FdM" secondAttribute="trailing" id="CFT-X8-Uqa"/>
-                            <constraint firstItem="G8q-wU-ScO" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="8" id="S5J-hI-kU2"/>
-                            <constraint firstItem="G8q-wU-ScO" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="SyV-vY-e8J"/>
+                            <constraint firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="SyV-vY-e8J"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="7q7-7t-FdM" secondAttribute="bottom" id="Umu-7q-aYE"/>
                             <constraint firstItem="ffS-7q-k4b" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="45" id="Yle-QK-56n"/>
                             <constraint firstItem="7q7-7t-FdM" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="au3-Gr-f9F"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="S11-7n-3Cu" secondAttribute="bottom" constant="45" id="cBw-Xa-49G"/>
                             <constraint firstItem="S11-7n-3Cu" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="d3N-n1-b1Y"/>
                             <constraint firstItem="7q7-7t-FdM" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="fbl-g6-sH9"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="FGd-kn-miy" secondAttribute="trailing" constant="8" id="jLg-bB-FU7"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ffS-7q-k4b" secondAttribute="trailing" constant="45" id="ngp-8H-0om"/>
-                            <constraint firstItem="FGd-kn-miy" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="ofW-Yt-A77"/>
-                            <constraint firstItem="s1V-JQ-Nq7" firstAttribute="top" secondItem="ffS-7q-k4b" secondAttribute="bottom" constant="48" id="qUv-wb-itx"/>
+                            <constraint firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="ofW-Yt-A77"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -87,9 +83,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="button_left" width="151" height="152"/>
-        <image name="button_play" width="151" height="152"/>
-        <image name="button_right" width="151" height="152"/>
         <image name="charater cell" width="300" height="240"/>
     </resources>
 </document>
