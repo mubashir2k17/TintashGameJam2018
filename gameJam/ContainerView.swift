@@ -16,15 +16,31 @@ enum RelativePositionToCharacter { // Used to give position of a card relative t
     case None
 }
 
+enum CardType {
+    case Character
+    case Enemy
+    case Potion
+    case Boss
+    case Armor
+    case Gold
+}
+
 class ContainerView: UIView {
 
     var characterPosition : (rowNum : Int, columnNum : Int) = (0,0)
+    
     var cardsBtnArray = [Int : CardView]()
     var cardsFramesArray = [Int : CGPoint]()
+    var cardTypeArray : [CardType] = [CardType](repeating: .Character, count: 9)// TODO: Update this as well with rest of the crap
+    
     var characterCard : CardView = CardView()
+    
     let screenWidth = UIScreen.main.bounds.width
     
+    var indexsArray = [0,1,2,3,4,5,6,7,8]
+    
     func populateTimeFrames() {
+        
         let cardWidth = 103
         let cardHeight = 136
         
@@ -37,48 +53,80 @@ class ContainerView: UIView {
         }
     }
     
-    func canPerformAction(onCardPosition cardPos : (rowNum : Int, columnNum : Int)) -> Bool {
+    func populateInitialCardTypeArray () {
         
-        var canPerform = false
-        let anchorRow = characterPosition.rowNum
-        let anchorCol = characterPosition.columnNum
-        let tappedCardRow = cardPos.rowNum
-        let tappedCardCol = cardPos.columnNum
-        if(tappedCardRow - 1 == anchorRow || tappedCardRow + 1 == anchorRow) {
-            canPerform = true
+        let potionCount = max(1,min(Int(arc4random_uniform(UInt32(3))), 2)) // should not be higher than 2, at least 1
+        let armorCount = potionCount == 2 ? 1 : 2
+        let enemiesCount = 4
+        let maxSize = 9
+        
+        for i in 0..<maxSize {
+            
+            let randIndex = max(0,min(Int(arc4random_uniform(UInt32(maxSize - i))), maxSize - i))
+            let index = indexsArray[randIndex]
+            indexsArray.remove(at: randIndex)
+            
+            if (i == 0) {
+                cardTypeArray[index] = .Character
+            }
+            else if(i < enemiesCount + 1) {
+                cardTypeArray[index] = .Enemy
+            }
+            else if(i < enemiesCount + 1 + potionCount) {
+                cardTypeArray[index] = .Potion
+            }
+            else if(i < enemiesCount + 1 + potionCount + armorCount) {
+                cardTypeArray[index] = .Armor
+            }
+            else {
+                cardTypeArray[index] = .Gold
+            }
         }
-        else if(tappedCardCol - 1 == anchorCol || tappedCardCol + 1 == anchorCol) {
-            canPerform = true
-        }
-        return canPerform
     }
     
-    func getIndex(fromPosition pos : (rowNum : Int, columnNum : Int)) -> Int {
-        return pos.rowNum * 3 + pos.columnNum
-    }
-
+    
     func initializeGrid() {
         
         let cardDidPress: ((CardView) -> Void) = { [weak self](card) in
             self?.cardTapped(card: card)
         }
         populateTimeFrames()
-        
-        cardsBtnArray[0] = CardView(frame: CGRect(x: 0, y: 0, width: 103, height: 136), cardDidPress: cardDidPress)
-        cardsBtnArray[0] = Character(frame: CGRect(x: 0, y: 0, width: 103, height: 136), cardDidPress: cardDidPress)
-        cardsBtnArray[1] = CardView(frame: CGRect(x: 103, y: 0, width: 103, height: 136), cardDidPress: cardDidPress)
-        cardsBtnArray[2] = CardView(frame: CGRect(x: 206, y: 0, width: 103, height: 136), cardDidPress: cardDidPress)
-        cardsBtnArray[3] = CardView(frame: CGRect(x: 0, y: 136, width: 103, height: 136), cardDidPress: cardDidPress)
-        cardsBtnArray[4] = CardView(frame: CGRect(x: 103, y: 136, width: 103, height: 136), cardDidPress: cardDidPress)
-        cardsBtnArray[5] = CardView(frame: CGRect(x: 206, y: 136, width: 103, height: 136), cardDidPress: cardDidPress)
-        cardsBtnArray[6] = CardView(frame: CGRect(x: 0, y: 272, width: 103, height: 136), cardDidPress: cardDidPress)
-        cardsBtnArray[7] = CardView(frame: CGRect(x: 103, y: 272, width: 103, height: 136), cardDidPress: cardDidPress)
-        cardsBtnArray[8] = CardView(frame: CGRect(x: 206, y: 272, width: 103, height: 136), cardDidPress: cardDidPress)
+        populateInitialCardTypeArray()
         
         for num in 0..<9 {
-            cardsBtnArray[num]?.center.x -= screenWidth
-            cardsBtnArray[num]?.position = getPosition(fromIndex: num)
-            self.addSubview(cardsBtnArray[num]!)
+            
+            var card : CardView!
+            let cardType = cardTypeArray[num]
+            let origin = cardsFramesArray[num]
+            let size = CGSize(width: 103, height: 136)
+            let rect = CGRect(origin: origin!, size: size)
+            
+            if(cardType == .Character) {
+                card = Character(frame: rect, cardDidPress: cardDidPress)
+            }
+            else {
+                card = CardView(frame: rect, cardDidPress: cardDidPress)
+                if(cardType == .Enemy) {
+                    card.health = -1 * max(2,min(Int(arc4random_uniform(UInt32(5))), 4)) // should not be higher than 2, at least 1
+                }
+                else if(cardType == .Potion) {
+                    card.health = max(1,min(Int(arc4random_uniform(UInt32(3))), 2))
+                }
+                else if(cardType == .Gold) {
+                    card.health = max(5,min(Int(arc4random_uniform(UInt32(20))), 2))
+                }
+                else if(cardType == .Armor) {
+                    card.armor = max(1,min(Int(arc4random_uniform(UInt32(3))), 2)) // should not be higher than 2, at least 1
+                }
+            }
+            
+            card.position = getPosition(fromIndex: num)
+            card.cardType = cardType
+            cardsBtnArray[num] = card
+            
+            card.center.x -= screenWidth
+            card.position = getPosition(fromIndex: num)
+            self.addSubview(card)
         }
     }
     
@@ -119,12 +167,6 @@ class ContainerView: UIView {
                        completion: { (true) in
                         self.loadGridWithAnimation(index: index + 1)
                         })
-    }
-    
-    func getPosition(fromIndex index : Int) -> (rowNum : Int, columnNum : Int) {
-        let row : Int = index / 3
-        let col : Int = index % 3
-        return (row, col)
     }
     
     func cardTapped(card : CardView) {
@@ -238,6 +280,22 @@ class ContainerView: UIView {
         }
     }
     
+    func canPerformAction(onCardPosition cardPos : (rowNum : Int, columnNum : Int)) -> Bool {
+        
+        var canPerform = false
+        let anchorRow = characterPosition.rowNum
+        let anchorCol = characterPosition.columnNum
+        let tappedCardRow = cardPos.rowNum
+        let tappedCardCol = cardPos.columnNum
+        if(tappedCardRow - 1 == anchorRow || tappedCardRow + 1 == anchorRow) {
+            canPerform = true
+        }
+        else if(tappedCardCol - 1 == anchorCol || tappedCardCol + 1 == anchorCol) {
+            canPerform = true
+        }
+        return canPerform
+    }
+    
     func getCardPositionRelativeToCharacter(cardPos : (rowNum : Int, columnNum : Int)) -> RelativePositionToCharacter {
         
         var posEnum = RelativePositionToCharacter.None
@@ -257,5 +315,16 @@ class ContainerView: UIView {
             posEnum = .Left
         }
         return posEnum
+    }
+    
+    
+    func getIndex(fromPosition pos : (rowNum : Int, columnNum : Int)) -> Int {
+        return pos.rowNum * 3 + pos.columnNum
+    }
+    
+    func getPosition(fromIndex index : Int) -> (rowNum : Int, columnNum : Int) {
+        let row : Int = index / 3
+        let col : Int = index % 3
+        return (row, col)
     }
 }

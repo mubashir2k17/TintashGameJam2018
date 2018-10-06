@@ -15,7 +15,9 @@ class CardView: UIView {
     @IBOutlet weak var armorLabel: UILabel!
     
     var position : (rowNum : Int, columnNum : Int) = (0,0)
-
+    var health = 0
+    var armor = 0
+    var cardType : CardType = .Enemy
     var cardDidPress: ((CardView)->Void)? = nil
 
     convenience init(frame: CGRect, cardDidPress: ((CardView)->Void)?) {
