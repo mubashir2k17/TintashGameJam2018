@@ -18,6 +18,11 @@ class ViewController: UIViewController {
         characterCollectionView.dataSource = self
         characterCollectionView.delegate = self
     }
+    @IBAction func playButton(_ sender: Any) {
+        let combatViewController = CombatViewController(nibName: "CombatViewController", bundle: nil)
+        combatViewController.player = "player"
+        self.present(combatViewController, animated: true, completion: nil)
+    }
 }
 
 extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {

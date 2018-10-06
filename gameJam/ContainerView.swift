@@ -32,4 +32,16 @@ class ContainerView: UIView {
     func getIndex(fromPosition pos :(rowNum : Int, columnNum : Int)) -> Int {
         return pos.rowNum * 3 + pos.columnNum
     }
+    
+    func initializeGrid() {
+        cardsBtnArray[0] = CardView(frame: CGRect(x: 0, y: 0, width: 103, height: 136))
+        cardsBtnArray[1] = CardView(frame: CGRect(x: 103, y: 0, width: 103, height: 136))
+        cardsBtnArray[2] = CardView(frame: CGRect(x: 206, y: 0, width: 103, height: 136))
+        cardsBtnArray[3] = CardView(frame: CGRect(x: 0, y: 136, width: 103, height: 136))
+        cardsBtnArray[4] = CardView(frame: CGRect(x: 103, y: 136, width: 103, height: 136))
+        cardsBtnArray[5] = CardView(frame: CGRect(x: 206, y: 136, width: 103, height: 136))
+        cardsBtnArray[6] = CardView(frame: CGRect(x: 0, y: 272, width: 103, height: 136))
+        cardsBtnArray[7] = CardView(frame: CGRect(x: 103, y: 272, width: 103, height: 136))
+        cardsBtnArray[8] = CardView(frame: CGRect(x: 206, y: 272, width: 103, height: 136))
+    }
 }

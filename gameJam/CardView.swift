@@ -10,7 +10,29 @@ import UIKit
 
 class CardView: UIView {
 
+    @IBOutlet weak var cardBackgroundImageView: UIImageView!
+    @IBOutlet weak var healthLabel: UILabel!
+    @IBOutlet weak var armorLabel: UILabel!
+    
     var position : (rowNum : Int, columnNum : Int) = (0,0)
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        commonInit()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        commonInit()
+    }
+    
+    func commonInit() {
+        if let viewsToAdd = Bundle.main.loadNibNamed("CardView", owner: self, options: nil), let viewToUse = viewsToAdd.first as? UIView {
+            addSubview(viewToUse)
+            viewToUse.frame = self.bounds
+            viewToUse.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+        }
+    }
     
     func die() {
         UIView.animate(withDuration: 0.1,
@@ -54,8 +76,7 @@ class CardView: UIView {
         
     }
     
-    //MARK:- IBActions
-    @IBAction func cardAction() {
-        
+    @IBAction func cardTapAction(_ sender: Any) {
+    
     }
 }

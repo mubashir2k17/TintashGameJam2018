@@ -15,12 +15,7 @@ class CharaterCollectionViewCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-
-        //imgView.image = animatedImage(asset: "zombieIdle", startIndex: 1, endIndex: 15)
-        //imgView.image = animatedImage(asset: "robotIdle", startIndex: 0, endIndex: 8)
         imgView.image = animatedImage(asset: "robotGoldenIdle", startIndex: 0, endIndex: 8)
-        
     }
-
 }
 
