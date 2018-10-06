@@ -128,6 +128,10 @@
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <connections>
                 <outlet property="imgView" destination="sjq-a4-wYB" id="SUF-ah-5dU"/>
+                <outlet property="playerDiscriptionLbl" destination="qwx-Sk-QHa" id="lee-IF-ghL"/>
+                <outlet property="playerNameLbl" destination="l7S-gb-0wi" id="7Dw-cR-fXP"/>
+                <outlet property="powerDiscription2lbl" destination="exX-Lr-QDn" id="e7B-us-ERc"/>
+                <outlet property="powerDiscriptionLbl" destination="8ym-7G-DgE" id="2wA-GT-3tp"/>
             </connections>
             <point key="canvasLocation" x="8.5" y="-13.5"/>
         </collectionViewCell>
