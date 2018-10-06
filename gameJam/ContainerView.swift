@@ -154,7 +154,11 @@ class ContainerView: UIView {
         let size = CGSize(width: 103, height: 136)
         let rect = CGRect(origin: origin!, size: size)
         
-        let card = CardView(frame: rect)
+        let cardDidPress: ((CardView) -> Void) = { [weak self](card) in
+            self?.cardTapped(card: card)
+        }
+        
+        let card = CardView(frame: rect, cardDidPress: cardDidPress)
         cardsBtnArray[index] = card
         
         var isXModifier = true
