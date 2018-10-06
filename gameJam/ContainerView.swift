@@ -11,7 +11,7 @@ import UIKit
 class ContainerView: UIView {
 
     var anchorPosition : (rowNum : Int, columnNum : Int) = (0,0)
-    var cardsBtnArray = [CardView]()
+    var cardsBtnArray = [Int : CardView]()
     
     func canPerformAction(onCardPosition cardPos : (rowNum : Int, columnNum : Int)) -> Bool {
         
@@ -27,5 +27,9 @@ class ContainerView: UIView {
             canPerform = true
         }
         return canPerform
+    }
+    
+    func getIndex(fromPosition pos :(rowNum : Int, columnNum : Int)) -> Int {
+        return pos.rowNum * 3 + pos.columnNum
     }
 }
