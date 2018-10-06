@@ -22,6 +22,7 @@ class ContainerView: UIView {
     var cardsBtnArray = [Int : CardView]()
     var tileFramesArray = [Int : CGPoint]()
     var characterCard : CardView = CardView()
+    let screenWidth = UIScreen.main.bounds.width
     
     func populateTimeFrames() {
         let cardWidth = 103
@@ -66,7 +67,97 @@ class ContainerView: UIView {
         cardsBtnArray[6] = CardView(frame: CGRect(x: 0, y: 272, width: 103, height: 136))
         cardsBtnArray[7] = CardView(frame: CGRect(x: 103, y: 272, width: 103, height: 136))
         cardsBtnArray[8] = CardView(frame: CGRect(x: 206, y: 272, width: 103, height: 136))
+        
+        for num in 0..<9 {
+            cardsBtnArray[num]?.center.x -= screenWidth
+            self.addSubview(cardsBtnArray[num]!)
+        }
     }
+    func loadGridWithAnimation() {
+        UIView.animate(withDuration: 0.1,
+                       delay: 0.0,
+                       options: [],
+                       animations: {
+                        self.cardsBtnArray[0]?.center.x += self.screenWidth
+                        },
+                       completion: { (true) in
+                        UIView.animate(withDuration: 0.1,
+                        delay: 0.0,
+                        options: [],
+                        animations: {
+                        self.cardsBtnArray[1]?.center.x += self.screenWidth
+                        },
+                        completion: { (true) in
+                            UIView.animate(withDuration: 0.1,
+                                           delay: 0.0,
+                                           options: [],
+                                           animations: {
+                                            self.cardsBtnArray[2]?.center.x += self.screenWidth
+                            },
+                                           completion: { (true) in
+                                            UIView.animate(withDuration: 0.1,
+                                                           delay: 0.0,
+                                                           options: [],
+                                                           animations: {
+                                                            self.cardsBtnArray[3]?.center.x += self.screenWidth
+                                            },
+                                                           completion: { (true) in
+                                                            UIView.animate(withDuration: 0.1,
+                                                                           delay: 0.0,
+                                                                           options: [],
+                                                                           animations: {
+                                                                            self.cardsBtnArray[4]?.center.x += self.screenWidth
+                                                            },
+                                                                           completion: { (true) in
+                                                                            UIView.animate(withDuration: 0.1,
+                                                                                           delay: 0.0,
+                                                                                           options: [],
+                                                                                           animations: {
+                                                                                            self.cardsBtnArray[5]?.center.x += self.screenWidth
+                                                                            },
+                                                                                           completion: { (true) in
+                                                                                            UIView.animate(withDuration: 0.1,
+                                                                                                           delay: 0.0,
+                                                                                                           options: [],
+                                                                                                           animations: {
+                                                                                                            self.cardsBtnArray[6]?.center.x += self.screenWidth
+                                                                                            },
+                                                                                                           completion: { (true) in
+                                                                                                            UIView.animate(withDuration: 0.1,
+                                                                                                                           delay: 0.0,
+                                                                                                                           options: [],
+                                                                                                                           animations: {
+                                                                                                                                                self.cardsBtnArray[7]?.center.x += self.screenWidth
+                                                                                                            },
+                                                                                                                           completion:  { (true) in
+                                                                                                                            UIView.animate(withDuration: 0.1,
+                                                                                                                                           delay: 0.0,
+                                                                                                                                           options: [],
+                                                                                                                                           animations: {
+                                                                                                                                            self.cardsBtnArray[8]?.center.x += self.screenWidth
+                                                                                                                            },
+                                                                                                                                           completion: { (true) in
+                                                                                                                                            
+                                                                                                                                            
+                                                                                                                            })
+                                                                                                                            
+                                                                                                            })
+                                                                                                            
+                                                                                            })
+                                                                                            
+                                                                            })
+                                                                            
+                                                            })
+                                                            
+                                            })
+                                            
+                            })
+                        
+                        })
+        })
+        
+    }
+
     
     func getPosition(fromIndex index : Int) -> (rowNum : Int, columnNum : Int) {
         let row : Int = index / 3

@@ -28,26 +28,29 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="01y-69-umT">
-                    <rect key="frame" x="0.0" y="0.0" width="103" height="136"/>
+                    <rect key="frame" x="5" y="5" width="93" height="126"/>
+                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oya-5W-4uD">
-                    <rect key="frame" x="85" y="0.0" width="18" height="18"/>
+                    <rect key="frame" x="80" y="5" width="18" height="18"/>
+                    <color key="backgroundColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="18" id="JjW-g0-4bK"/>
                         <constraint firstAttribute="width" constant="18" id="TVO-Vm-gpA"/>
                     </constraints>
                     <fontDescription key="fontDescription" name="ActionMan-Bold" family="Action Man" pointSize="14"/>
-                    <nil key="textColor"/>
+                    <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V3w-kA-1IL">
-                    <rect key="frame" x="0.0" y="0.0" width="18" height="18"/>
+                    <rect key="frame" x="5" y="5" width="18" height="18"/>
+                    <color key="backgroundColor" red="0.0" green="0.97680455450000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="18" id="HmP-et-I1v"/>
                         <constraint firstAttribute="width" constant="18" id="Vi0-Zb-l1A"/>
                     </constraints>
                     <fontDescription key="fontDescription" name="ActionMan-Bold" family="Action Man" pointSize="14"/>
-                    <nil key="textColor"/>
+                    <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fgf-Oj-pfU">
@@ -59,18 +62,18 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="01y-69-umT" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="0B5-ku-IeE"/>
-                <constraint firstItem="01y-69-umT" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="9Pk-Oy-Dti"/>
-                <constraint firstItem="01y-69-umT" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="DRG-Xb-KFP"/>
-                <constraint firstItem="01y-69-umT" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="I8Q-m0-eOs"/>
+                <constraint firstItem="01y-69-umT" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" constant="-5" id="0B5-ku-IeE"/>
+                <constraint firstItem="01y-69-umT" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="5" id="9Pk-Oy-Dti"/>
+                <constraint firstItem="01y-69-umT" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="5" id="DRG-Xb-KFP"/>
+                <constraint firstItem="01y-69-umT" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" constant="-5" id="I8Q-m0-eOs"/>
                 <constraint firstItem="Fgf-Oj-pfU" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="RqP-5R-gi2"/>
                 <constraint firstItem="Fgf-Oj-pfU" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="XC9-3f-Ytf"/>
-                <constraint firstItem="oya-5W-4uD" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="YaD-iL-IAw"/>
+                <constraint firstItem="oya-5W-4uD" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="5" id="YaD-iL-IAw"/>
                 <constraint firstItem="Fgf-Oj-pfU" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="dX1-Yo-Ui8"/>
-                <constraint firstItem="V3w-kA-1IL" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="fvK-2e-bm3"/>
-                <constraint firstItem="V3w-kA-1IL" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="nhB-5q-SUn"/>
+                <constraint firstItem="V3w-kA-1IL" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="5" id="fvK-2e-bm3"/>
+                <constraint firstItem="V3w-kA-1IL" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="5" id="nhB-5q-SUn"/>
                 <constraint firstItem="Fgf-Oj-pfU" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="s3v-4l-xxZ"/>
-                <constraint firstItem="oya-5W-4uD" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="xb3-IE-eys"/>
+                <constraint firstItem="oya-5W-4uD" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" constant="-5" id="xb3-IE-eys"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
