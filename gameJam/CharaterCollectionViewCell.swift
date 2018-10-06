@@ -32,6 +32,5 @@ class CharaterCollectionViewCell: UICollectionViewCell {
         imgView.image = animatedImage(asset: "trolIdle", startIndex: 0, endIndex: 6, duration: 0.7)
 
     }
-
 }
 

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Action_Man_Bold.ttf">
+            <string>ActionMan-Bold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CardView" customModule="gameJam" customModuleProvider="target">
+            <connections>
+                <outlet property="armorLabel" destination="V3w-kA-1IL" id="VzB-0T-ehN"/>
+                <outlet property="cardBackgroundImageView" destination="01y-69-umT" id="0Jh-bJ-hSC"/>
+                <outlet property="healthLabel" destination="oya-5W-4uD" id="4Xf-i2-w0g"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="103" height="136"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="01y-69-umT">
+                    <rect key="frame" x="0.0" y="0.0" width="103" height="136"/>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oya-5W-4uD">
+                    <rect key="frame" x="85" y="0.0" width="18" height="18"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="18" id="JjW-g0-4bK"/>
+                        <constraint firstAttribute="width" constant="18" id="TVO-Vm-gpA"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="ActionMan-Bold" family="Action Man" pointSize="14"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V3w-kA-1IL">
+                    <rect key="frame" x="0.0" y="0.0" width="18" height="18"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="18" id="HmP-et-I1v"/>
+                        <constraint firstAttribute="width" constant="18" id="Vi0-Zb-l1A"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="ActionMan-Bold" family="Action Man" pointSize="14"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fgf-Oj-pfU">
+                    <rect key="frame" x="0.0" y="0.0" width="103" height="136"/>
+                    <connections>
+                        <action selector="cardTapAction:" destination="-1" eventType="touchUpInside" id="yO1-EN-M60"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="01y-69-umT" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="0B5-ku-IeE"/>
+                <constraint firstItem="01y-69-umT" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="9Pk-Oy-Dti"/>
+                <constraint firstItem="01y-69-umT" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="DRG-Xb-KFP"/>
+                <constraint firstItem="01y-69-umT" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="I8Q-m0-eOs"/>
+                <constraint firstItem="Fgf-Oj-pfU" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="RqP-5R-gi2"/>
+                <constraint firstItem="Fgf-Oj-pfU" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="XC9-3f-Ytf"/>
+                <constraint firstItem="oya-5W-4uD" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="YaD-iL-IAw"/>
+                <constraint firstItem="Fgf-Oj-pfU" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="dX1-Yo-Ui8"/>
+                <constraint firstItem="V3w-kA-1IL" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="fvK-2e-bm3"/>
+                <constraint firstItem="V3w-kA-1IL" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="nhB-5q-SUn"/>
+                <constraint firstItem="Fgf-Oj-pfU" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="s3v-4l-xxZ"/>
+                <constraint firstItem="oya-5W-4uD" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="xb3-IE-eys"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <point key="canvasLocation" x="42.5" y="242"/>
+        </view>
+    </objects>
+</document>

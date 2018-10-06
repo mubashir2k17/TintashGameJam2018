@@ -28,6 +28,11 @@ class ViewController: UIViewController {
     @IBAction func leftButtonPress(_ sender: Any) {
         characterCollectionView.scrollToItem(at: IndexPath(item: currentIndex.row - 1, section: 0), at: UICollectionViewScrollPosition.centeredHorizontally, animated: true)
     }
+    @IBAction func playButton(_ sender: Any) {
+        let combatViewController = CombatViewController(nibName: "CombatViewController", bundle: nil)
+        combatViewController.player = "player"
+        self.present(combatViewController, animated: true, completion: nil)
+    }
 }
 
 extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {

@@ -9,10 +9,12 @@
 import UIKit
 
 class CombatViewController: UIViewController {
-
+    var player: String?
+    @IBOutlet weak var gridContainerView: ContainerView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        gridContainerView.initializeGrid()
         // Do any additional setup after loading the view.
     }
 
