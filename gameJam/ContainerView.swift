@@ -32,4 +32,12 @@ class ContainerView: UIView {
     func getIndex(fromPosition pos :(rowNum : Int, columnNum : Int)) -> Int {
         return pos.rowNum * 3 + pos.columnNum
     }
+    
+    func cardTapped(card : CardView) {
+        
+        let canPerform = canPerformAction(onCardPosition: card.position)
+        if(canPerform) {
+            card.die()
+        }
+    }
 }
