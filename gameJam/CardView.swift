@@ -30,4 +30,7 @@ class CardView: UIView {
         
     }
     
+    @IBAction func cardAction() {
+        
+    }
 }
