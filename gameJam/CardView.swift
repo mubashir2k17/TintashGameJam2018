@@ -10,6 +10,8 @@ import UIKit
 
 class CardView: UIView {
 
+    var position : (rowNum : Int, columnNum : Int) = (0,0)
+    
     func die() {
         
     }
@@ -30,6 +32,7 @@ class CardView: UIView {
         
     }
     
+    //MARK:- IBActions
     @IBAction func cardAction() {
         
     }
