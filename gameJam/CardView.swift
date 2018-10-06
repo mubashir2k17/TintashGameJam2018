@@ -65,13 +65,22 @@ class CardView: UIView {
                                         self.alpha = 0.0
                         },
                                        completion: { (true) in
+                                        self.removeFromSuperview()
                                         completion()
                         })
         })
     }
 
-    func moveToFrame() {
-        
+    func move(toOrigin origin : CGPoint, completion: (()->())? = nil) {
+        UIView.animate(withDuration: 0.2,
+                       delay: 0.0,
+                       options: [.curveEaseInOut],
+                       animations: {
+                        self.frame.origin = origin
+        },
+                       completion: { (true) in
+                        
+        })
     }
     
     func moveLeft() {

@@ -20,7 +20,7 @@ class ContainerView: UIView {
 
     var characterPosition : (rowNum : Int, columnNum : Int) = (0,0)
     var cardsBtnArray = [Int : CardView]()
-    var tileFramesArray = [Int : CGPoint]()
+    var cardsFramesArray = [Int : CGPoint]()
     var characterCard : CardView = CardView()
     let screenWidth = UIScreen.main.bounds.width
     
@@ -33,7 +33,7 @@ class ContainerView: UIView {
             let x = pos.columnNum * cardWidth
             let y = pos.rowNum * cardHeight
             let pont = CGPoint(x: x, y: y)
-            tileFramesArray[i] = pont
+            cardsFramesArray[i] = pont
         }
     }
     
@@ -61,6 +61,7 @@ class ContainerView: UIView {
         let cardDidPress: ((CardView) -> Void) = { [weak self](card) in
             self?.cardTapped(card: card)
         }
+        populateTimeFrames()
         cardsBtnArray[0] = CardView(frame: CGRect(x: 0, y: 0, width: 103, height: 136), cardDidPress: cardDidPress)
         cardsBtnArray[1] = CardView(frame: CGRect(x: 103, y: 0, width: 103, height: 136), cardDidPress: cardDidPress)
         cardsBtnArray[2] = CardView(frame: CGRect(x: 206, y: 0, width: 103, height: 136), cardDidPress: cardDidPress)
@@ -70,12 +71,34 @@ class ContainerView: UIView {
         cardsBtnArray[6] = CardView(frame: CGRect(x: 0, y: 272, width: 103, height: 136), cardDidPress: cardDidPress)
         cardsBtnArray[7] = CardView(frame: CGRect(x: 103, y: 272, width: 103, height: 136), cardDidPress: cardDidPress)
         cardsBtnArray[8] = CardView(frame: CGRect(x: 206, y: 272, width: 103, height: 136), cardDidPress: cardDidPress)
-        
         for num in 0..<9 {
             cardsBtnArray[num]?.center.x -= screenWidth
             self.addSubview(cardsBtnArray[num]!)
         }
     }
+    
+    func createCard(atPosition cardPos : (rowNum : Int, columnNum : Int)) {
+        
+        let index = getIndex(fromPosition: cardPos)
+        let origin = cardsFramesArray[index]
+        let size = CGSize(width: 103, height: 136)
+        let rect = CGRect(origin: origin!, size: size)
+        cardsBtnArray[index] = CardView(frame: rect)
+        cardsBtnArray[index]?.center.x -= screenWidth
+        self.addSubview(cardsBtnArray[index]!)
+        
+        UIView.animate(withDuration: 0.1,
+                       delay: 0.0,
+                       options: [.curveEaseOut],
+                       animations: {
+                        self.cardsBtnArray[index]?.center.x += self.screenWidth
+        },
+                       completion: { (true) in
+                        
+        })
+        
+    }
+    
     func loadGridWithAnimation(index : Int) {
         
         if(index > 8) {
@@ -83,7 +106,7 @@ class ContainerView: UIView {
         }
         UIView.animate(withDuration: 0.1,
                        delay: 0.0,
-                       options: [],
+                       options: [.curveEaseOut],
                        animations: {
                         self.cardsBtnArray[index]?.center.x += self.screenWidth
                         },
@@ -130,21 +153,27 @@ class ContainerView: UIView {
                             let fromIndex = self.getIndex(fromPosition: (rowNum: i+1, columnNum: columnNum))
                             
                             let fromCard = self.cardsBtnArray[fromIndex]
-                            let toFrame = self.tileFramesArray[toIndex]
-                            UIView.animate(withDuration: 1.0, animations: {
-                                fromCard?.frame.origin = toFrame! // TODO: Animate to this frame in all if checks below as well
-                            })
-                            
+                            let toFrame = self.cardsFramesArray[toIndex]
+                            fromCard?.move(toOrigin: toFrame!)
+//                            fromCard?.frame.origin = toFrame! // TODO: Animate to this frame in all if checks below as well
                             self.cardsBtnArray[toIndex] = self.cardsBtnArray[fromIndex]
                             openIndex = (rowNum: i+1, columnNum: columnNum) // TODO: Set open index below as well and insert card at this frame and then in the cards array as well
                         }
+                        self.createCard(atPosition: openIndex)
                     }
                     else if(rowNum == 1) {
                         let diceRoll = Int(arc4random_uniform(1))
                         let change = diceRoll == 0 ? 1 : -1
                         let toIndex = self.getIndex(fromPosition: (rowNum: rowNum, columnNum: columnNum))
                         let fromIndex = self.getIndex(fromPosition: (rowNum: rowNum+change, columnNum: columnNum))
+                        
+                        let fromCard = self.cardsBtnArray[fromIndex]
+                        let toFrame = self.cardsFramesArray[toIndex]
+                        fromCard?.move(toOrigin: toFrame!)
+                        
                         self.cardsBtnArray[toIndex] = self.cardsBtnArray[fromIndex]
+                        
+                        
                     }
                     else if(rowNum == 2) {
                         var i = rowNum
@@ -152,6 +181,11 @@ class ContainerView: UIView {
                             let toIndex = self.getIndex(fromPosition: (rowNum: i, columnNum: columnNum))
                             i -= 1
                             let fromIndex = self.getIndex(fromPosition: (rowNum: i, columnNum: columnNum))
+                            
+                            let fromCard = self.cardsBtnArray[fromIndex]
+                            let toFrame = self.cardsFramesArray[toIndex]
+                            fromCard?.move(toOrigin: toFrame!)
+                            
                             self.cardsBtnArray[toIndex] = self.cardsBtnArray[fromIndex]
                         }
                     }
@@ -161,6 +195,11 @@ class ContainerView: UIView {
                         for i in columnNum..<1 {
                             let toIndex = self.getIndex(fromPosition: (rowNum: rowNum, columnNum: i))
                             let fromIndex = self.getIndex(fromPosition: (rowNum: rowNum, columnNum: i+1))
+                            
+                            let fromCard = self.cardsBtnArray[fromIndex]
+                            let toFrame = self.cardsFramesArray[toIndex]
+                            fromCard?.move(toOrigin: toFrame!)
+                            
                             self.cardsBtnArray[toIndex] = self.cardsBtnArray[fromIndex]
                         }
                     }
@@ -169,6 +208,11 @@ class ContainerView: UIView {
                         let change = diceRoll == 0 ? 1 : -1
                         let toIndex = self.getIndex(fromPosition: (rowNum: rowNum, columnNum: columnNum))
                         let fromIndex = self.getIndex(fromPosition: (rowNum: rowNum, columnNum: columnNum+change))
+                        
+                        let fromCard = self.cardsBtnArray[fromIndex]
+                        let toFrame = self.cardsFramesArray[toIndex]
+                        fromCard?.move(toOrigin: toFrame!)
+                        
                         self.cardsBtnArray[toIndex] = self.cardsBtnArray[fromIndex]
                     }
                     if(columnNum == 2) {
@@ -177,6 +221,11 @@ class ContainerView: UIView {
                             let toIndex = self.getIndex(fromPosition: (rowNum: rowNum, columnNum: i))
                             i -= 1
                             let fromIndex = self.getIndex(fromPosition: (rowNum: rowNum, columnNum: i))
+                            
+                            let fromCard = self.cardsBtnArray[fromIndex]
+                            let toFrame = self.cardsFramesArray[toIndex]
+                            fromCard?.move(toOrigin: toFrame!)
+                            
                             self.cardsBtnArray[toIndex] = self.cardsBtnArray[fromIndex]
                         }
                     }
