@@ -19,4 +19,5 @@ func animatedImage(asset: String, startIndex: Int, endIndex: Int) -> UIImage? {
     
     let image = UIImage.animatedImage(with: arr, duration: 1)
     return image
+    
 }
