@@ -51,7 +51,7 @@ class CardView: UIView {
                        animations: {
                         UIView.setAnimationRepeatCount(2)
                         let transform = self.transform
-                        self.transform = self.transform.rotated(by: 0.07)
+                        self.transform = self.transform.rotated(by: 0.05)
                         self.transform = transform
         },
                        completion: { (true) in
@@ -74,14 +74,16 @@ class CardView: UIView {
     }
 
     func move(toOrigin origin : CGPoint, completion: (()->())? = nil) {
-        UIView.animate(withDuration: 0.2,
+        UIView.animate(withDuration: 0.4,
                        delay: 0.0,
                        options: [.curveEaseInOut],
                        animations: {
                         self.frame.origin = origin
         },
                        completion: { (true) in
-                        
+                        if let comp = completion {
+                            comp()
+                        }
         })
     }
     

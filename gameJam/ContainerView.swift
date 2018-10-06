@@ -27,8 +27,6 @@ enum CardType {
 
 class ContainerView: UIView {
 
-    var characterPosition : (rowNum : Int, columnNum : Int) = (0,0)
-    
     var cardsBtnArray = [Int : CardView]()
     var cardsFramesArray = [Int : CGPoint]()
     var cardTypeArray : [CardType] = [CardType](repeating: .Character, count: 9)// TODO: Update this as well with rest of the crap
@@ -73,24 +71,35 @@ class ContainerView: UIView {
         
         for i in 0..<maxSize {
             
-            let randIndex = max(0,min(Int(arc4random_uniform(UInt32(maxSize - i))), maxSize - i))
-            let index = indexsArray[randIndex]
-            indexsArray.remove(at: randIndex)
+//            let randIndex = max(0,min(Int(arc4random_uniform(UInt32(maxSize - i))), maxSize - i))
+//            let index = indexsArray[randIndex]
+//            indexsArray.remove(at: randIndex)
             
             if (i == 0) {
+                
+                let randIndex = 3//max(0,min(Int(arc4random_uniform(UInt32(maxSize - i))), maxSize - i))
+                let index = indexsArray[randIndex]
+                indexsArray.remove(at: randIndex)
+                
                 cardTypeArray[index] = .Character
             }
-            else if(i < enemiesCount + 1) {
-                cardTypeArray[index] = .Enemy
-            }
-            else if(i < enemiesCount + 1 + potionCount) {
-                cardTypeArray[index] = .Potion
-            }
-            else if(i < enemiesCount + 1 + potionCount + armorCount) {
-                cardTypeArray[index] = .Armor
-            }
             else {
-                cardTypeArray[index] = .Gold
+                let randIndex = max(0,min(Int(arc4random_uniform(UInt32(maxSize - i))), maxSize - i))
+                let index = indexsArray[randIndex]
+                indexsArray.remove(at: randIndex)
+                
+                if(i < enemiesCount + 1) {
+                    cardTypeArray[index] = .Enemy
+                }
+                else if(i < enemiesCount + 1 + potionCount) {
+                    cardTypeArray[index] = .Potion
+                }
+                else if(i < enemiesCount + 1 + potionCount + armorCount) {
+                    cardTypeArray[index] = .Armor
+                }
+                else {
+                    cardTypeArray[index] = .Gold
+                }
             }
         }
     }
@@ -158,7 +167,7 @@ class ContainerView: UIView {
         cardsBtnArray[index]?.position = cardPos
         self.addSubview(cardsBtnArray[index]!)
         
-        UIView.animate(withDuration: 0.1,
+        UIView.animate(withDuration: 0.3,
                        delay: 0.0,
                        options: [.curveEaseOut],
                        animations: {
@@ -191,6 +200,9 @@ class ContainerView: UIView {
         let canPerform = canPerformAction(onCardPosition: card.position)
         if(canPerform) {
             let cardFrame = card.frame.origin
+            let tappedCardPosition = card.position
+            let tappedCardIndex = getIndex(fromPosition: tappedCardPosition)
+            
             card.die(withCompletion: { () in
                 let character = self.characterCard
                 let characterNeedsToMoveTo = self.getCardPositionRelativeToCharacter(cardPos: card.position)
@@ -203,17 +215,15 @@ class ContainerView: UIView {
                     var toPos : (rowNum : Int, columnNum : Int) = (0,0)
                     var fromPos : (rowNum : Int, columnNum : Int) = (0,0)
                     
-                    var toIndex = 0
-                    var fromIndex = 0
-                    
                     if(characterNeedsToMoveTo == .Right || characterNeedsToMoveTo == .Left) { // moved to a different column
                         if(rowNum == 0) {
-                            for i in rowNum..<1 {
+                            for i in rowNum..<2 {
                                 
                                 toPos = (rowNum: i, columnNum: columnNum)
                                 fromPos = (rowNum: i+1, columnNum: columnNum)
                                 
                                 openIndex = (rowNum: i+1, columnNum: columnNum)
+                                self.doStuff(toPos: toPos, fromPos: fromPos)
                             }
                         }
                         else if(rowNum == 1) {
@@ -225,28 +235,30 @@ class ContainerView: UIView {
                             fromPos = (rowNum: rowNum+change, columnNum: columnNum)
                             
                             openIndex = (rowNum: rowNum+change, columnNum: columnNum)
+                            self.doStuff(toPos: toPos, fromPos: fromPos)
                         }
                         else if(rowNum == 2) {
                             var i = rowNum
-                            while i-1 > 0 {
+                            while i-1 >= 0 {
                                 
                                 toPos = (rowNum: i, columnNum: columnNum)
                                 i -= 1
                                 fromPos = (rowNum: i, columnNum: columnNum)
                                 
                                 openIndex = (rowNum: i, columnNum: columnNum)
+                                self.doStuff(toPos: toPos, fromPos: fromPos)
                             }
                         }
-                        self.createCard(atPosition: openIndex)
                     }
                     else if(characterNeedsToMoveTo == .Above || characterNeedsToMoveTo == .Below) { // moved to a different row
                         if(columnNum == 0) {
-                            for i in columnNum..<1 {
+                            for i in columnNum..<2 {
                                 
                                 toPos = (rowNum: rowNum, columnNum: i)
                                 fromPos = (rowNum: rowNum, columnNum: i+1)
                                 
                                 openIndex = (rowNum: rowNum, columnNum: i+1)
+                                self.doStuff(toPos: toPos, fromPos: fromPos)
                             }
                         }
                         if(columnNum == 1) {
@@ -257,41 +269,47 @@ class ContainerView: UIView {
                             fromPos = (rowNum: rowNum, columnNum: columnNum+change)
                             
                             openIndex = (rowNum: rowNum, columnNum: columnNum+change)
+                            self.doStuff(toPos: toPos, fromPos: fromPos)
                         }
                         if(columnNum == 2) {
                             var i = columnNum
-                            while i-1 > 0 {
+                            while i-1 >= 0 {
                                 
                                 toPos = (rowNum: rowNum, columnNum: i)
                                 i -= 1
                                 fromPos = (rowNum: rowNum, columnNum: i)
                                 
                                 openIndex = (rowNum: rowNum, columnNum: i)
+                                self.doStuff(toPos: toPos, fromPos: fromPos)
                             }
                         }
-                        
-                        toIndex = self.getIndex(fromPosition: toPos)
-                        fromIndex = self.getIndex(fromPosition: fromPos)
-                        
-                        let fromCard = self.cardsBtnArray[fromIndex]
-                        let toFrame = self.cardsFramesArray[toIndex]
-                        fromCard?.move(toOrigin: toFrame!)
-                        fromCard?.position = toPos
-                        
-                        self.cardsBtnArray[toIndex] = self.cardsBtnArray[fromIndex]
-                        
-                        self.createCard(atPosition: openIndex)
                     }
+                    self.createCard(atPosition: openIndex)
+                    self.cardsBtnArray[tappedCardIndex] = self.characterCard
+                    self.characterCard.position = tappedCardPosition
                 })
             })
         }
     }
     
+    func doStuff(toPos : (rowNum : Int, columnNum : Int), fromPos : (rowNum : Int, columnNum : Int)) { // Moves cards around the screen, in the grid array, updates the frames as well
+        
+        let toIndex = self.getIndex(fromPosition: toPos)
+        let fromIndex = self.getIndex(fromPosition: fromPos)
+        
+        let fromCard = self.cardsBtnArray[fromIndex]
+        let toFrame = self.cardsFramesArray[toIndex]
+        fromCard?.move(toOrigin: toFrame!)
+        fromCard?.position = toPos
+        
+        self.cardsBtnArray[toIndex] = self.cardsBtnArray[fromIndex]
+    }
+    
     func canPerformAction(onCardPosition cardPos : (rowNum : Int, columnNum : Int)) -> Bool {
         
         var canPerform = false
-        let anchorRow = characterPosition.rowNum
-        let anchorCol = characterPosition.columnNum
+        let anchorRow = characterCard.position.rowNum
+        let anchorCol = characterCard.position.columnNum
         let tappedCardRow = cardPos.rowNum
         let tappedCardCol = cardPos.columnNum
         if(tappedCardRow - 1 == anchorRow || tappedCardRow + 1 == anchorRow) {
@@ -306,8 +324,8 @@ class ContainerView: UIView {
     func getCardPositionRelativeToCharacter(cardPos : (rowNum : Int, columnNum : Int)) -> RelativePositionToCharacter {
         
         var posEnum = RelativePositionToCharacter.None
-        let anchorRow = characterPosition.rowNum
-        let anchorCol = characterPosition.columnNum
+        let anchorRow = characterCard.position.rowNum
+        let anchorCol = characterCard.position.columnNum
         
         if(cardPos.rowNum - 1 == anchorRow) {
             posEnum = .Below
