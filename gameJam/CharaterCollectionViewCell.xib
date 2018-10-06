@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Action_Man.ttf">
+            <string>ActionMan</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CharaterCollectionViewCell" id="gTV-IL-0wX" customClass="CharaterCollectionViewCell" customModule="gameJam" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="285" height="459"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="285" height="459"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="charater cell" translatesAutoresizingMaskIntoConstraints="NO" id="GVB-Se-bzO">
+                        <rect key="frame" x="0.0" y="0.0" width="285" height="459"/>
+                    </imageView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JFc-gX-T7m">
+                        <rect key="frame" x="29.5" y="10" width="226" height="85"/>
+                        <subviews>
+                            <view alpha="0.29999999999999999" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="etA-73-iNn">
+                                <rect key="frame" x="0.0" y="0.0" width="226" height="85"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="YOYO PLAYER" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l7S-gb-0wi">
+                                <rect key="frame" x="51.5" y="16" width="123.5" height="19"/>
+                                <fontDescription key="fontDescription" name="ActionMan" family="Action Man" pointSize="23"/>
+                                <color key="textColor" red="0.19215686274509805" green="0.68235294117647061" blue="0.95686274509803926" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="yaha kamal kisam ke chawale marne hai haam ne. Some suske wale backstory." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qwx-Sk-QHa">
+                                <rect key="frame" x="0.0" y="43" width="226" height="42"/>
+                                <fontDescription key="fontDescription" name="ActionMan" family="Action Man" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="85" id="0Kn-4t-vUF"/>
+                            <constraint firstAttribute="bottom" secondItem="etA-73-iNn" secondAttribute="bottom" id="LtU-4o-D5e"/>
+                            <constraint firstAttribute="width" constant="226" id="Ub3-qc-TKa"/>
+                            <constraint firstItem="qwx-Sk-QHa" firstAttribute="leading" secondItem="JFc-gX-T7m" secondAttribute="leading" id="cY7-Jv-GJn"/>
+                            <constraint firstItem="etA-73-iNn" firstAttribute="leading" secondItem="JFc-gX-T7m" secondAttribute="leading" id="dEK-Gw-CS9"/>
+                            <constraint firstItem="qwx-Sk-QHa" firstAttribute="centerX" secondItem="JFc-gX-T7m" secondAttribute="centerX" id="hW1-ar-CwK"/>
+                            <constraint firstAttribute="trailing" secondItem="etA-73-iNn" secondAttribute="trailing" id="mBj-eI-d95"/>
+                            <constraint firstItem="l7S-gb-0wi" firstAttribute="centerX" secondItem="JFc-gX-T7m" secondAttribute="centerX" id="vEj-eY-HLx"/>
+                            <constraint firstAttribute="bottom" secondItem="qwx-Sk-QHa" secondAttribute="bottom" id="vh8-ua-01n"/>
+                            <constraint firstItem="etA-73-iNn" firstAttribute="top" secondItem="JFc-gX-T7m" secondAttribute="top" id="wfP-7l-GOd"/>
+                            <constraint firstAttribute="trailing" secondItem="qwx-Sk-QHa" secondAttribute="trailing" id="yM7-Zw-XQk"/>
+                            <constraint firstItem="l7S-gb-0wi" firstAttribute="top" secondItem="JFc-gX-T7m" secondAttribute="top" constant="16" id="zKf-r7-4Nt"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="1"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="🛢 Some Randum powers here" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8ym-7G-DgE">
+                        <rect key="frame" x="20" y="103" width="245" height="12.5"/>
+                        <fontDescription key="fontDescription" name="ActionMan" family="Action Man" pointSize="15"/>
+                        <color key="textColor" red="1" green="0.83234566450000003" blue="0.47320586440000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="⏳More Some Randum powers here" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="exX-Lr-QDn">
+                        <rect key="frame" x="20" y="130" width="245" height="12.5"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <fontDescription key="fontDescription" name="ActionMan" family="Action Man" pointSize="15"/>
+                        <color key="textColor" red="1" green="0.83234566450000003" blue="0.47320586440000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Ds-pa-XaR">
+                        <rect key="frame" x="101" y="170" width="46" height="30"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <state key="normal" title="Button"/>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uT5-JN-xFO">
+                        <rect key="frame" x="166" y="170" width="46" height="30"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <state key="normal" title="Button"/>
+                    </button>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="sjq-a4-wYB">
+                        <rect key="frame" x="31.5" y="214" width="222" height="193"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="193" id="ThZ-Al-2Cv"/>
+                            <constraint firstAttribute="width" constant="222" id="udo-32-P0k"/>
+                        </constraints>
+                    </imageView>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="JFc-gX-T7m" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="10" id="D6e-pt-ndI"/>
+                <constraint firstItem="JFc-gX-T7m" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="FI2-yl-Tdo"/>
+                <constraint firstItem="GVB-Se-bzO" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="ISJ-dF-Ov8"/>
+                <constraint firstItem="8ym-7G-DgE" firstAttribute="top" secondItem="JFc-gX-T7m" secondAttribute="bottom" constant="8" id="RVB-KA-Wyk"/>
+                <constraint firstItem="8ym-7G-DgE" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="20" id="TmM-Ke-Mhh"/>
+                <constraint firstItem="sjq-a4-wYB" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="cve-5W-Hcd"/>
+                <constraint firstAttribute="bottom" secondItem="sjq-a4-wYB" secondAttribute="bottom" constant="52" id="dXX-AO-Nfa"/>
+                <constraint firstAttribute="bottom" secondItem="GVB-Se-bzO" secondAttribute="bottom" id="e3I-pr-TZH"/>
+                <constraint firstAttribute="trailing" secondItem="8ym-7G-DgE" secondAttribute="trailing" constant="20" id="lRy-VO-USD"/>
+                <constraint firstItem="GVB-Se-bzO" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="rQj-w8-RN7"/>
+                <constraint firstAttribute="trailing" secondItem="GVB-Se-bzO" secondAttribute="trailing" id="zLW-rh-d0h"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <point key="canvasLocation" x="8.5" y="-13.5"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="charater cell" width="162" height="303"/>
+    </resources>
+</document>
