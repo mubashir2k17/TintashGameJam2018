@@ -103,6 +103,7 @@ class ContainerView: UIView {
             
             if(cardType == .Character) {
                 card = Character(frame: rect, cardDidPress: cardDidPress)
+                self.characterCard = card
             }
             else {
                 card = CardView(frame: rect, cardDidPress: cardDidPress)
@@ -182,46 +183,39 @@ class ContainerView: UIView {
                     let rowNum = character.position.rowNum
                     var openIndex : (rowNum : Int, columnNum : Int) = (0,0)
                     
+                    var toPos : (rowNum : Int, columnNum : Int) = (0,0)
+                    var fromPos : (rowNum : Int, columnNum : Int) = (0,0)
+                    
+                    var toIndex = 0
+                    var fromIndex = 0
+                    
                     if(characterNeedsToMoveTo == .Right || characterNeedsToMoveTo == .Left) { // moved to a different column
                         if(rowNum == 0) {
                             for i in rowNum..<1 {
-                                let toIndex = self.getIndex(fromPosition: (rowNum: i, columnNum: columnNum))
-                                let fromIndex = self.getIndex(fromPosition: (rowNum: i+1, columnNum: columnNum))
                                 
-                                let fromCard = self.cardsBtnArray[fromIndex]
-                                let toFrame = self.cardsFramesArray[toIndex]
-                                fromCard?.move(toOrigin: toFrame!)
-                                //                            fromCard?.frame.origin = toFrame! // TODO: Animate to this frame in all if checks below as well
-                                self.cardsBtnArray[toIndex] = self.cardsBtnArray[fromIndex]
-                                openIndex = (rowNum: i+1, columnNum: columnNum) // TODO: Set open index below as well and insert card at this frame and then in the cards array as well
+                                toPos = (rowNum: i, columnNum: columnNum)
+                                fromPos = (rowNum: i+1, columnNum: columnNum)
+                                
+                                openIndex = (rowNum: i+1, columnNum: columnNum)
                             }
                         }
                         else if(rowNum == 1) {
+                            
                             let diceRoll = Int(arc4random_uniform(1))
                             let change = diceRoll == 0 ? 1 : -1
-                            let toIndex = self.getIndex(fromPosition: (rowNum: rowNum, columnNum: columnNum))
-                            let fromIndex = self.getIndex(fromPosition: (rowNum: rowNum+change, columnNum: columnNum))
                             
-                            let fromCard = self.cardsBtnArray[fromIndex]
-                            let toFrame = self.cardsFramesArray[toIndex]
-                            fromCard?.move(toOrigin: toFrame!)
-                            
-                            self.cardsBtnArray[toIndex] = self.cardsBtnArray[fromIndex]
+                            toPos = (rowNum: rowNum, columnNum: columnNum)
+                            fromPos = (rowNum: rowNum+change, columnNum: columnNum)
                             
                             openIndex = (rowNum: rowNum+change, columnNum: columnNum)
                         }
                         else if(rowNum == 2) {
                             var i = rowNum
                             while i-1 > 0 {
-                                let toIndex = self.getIndex(fromPosition: (rowNum: i, columnNum: columnNum))
+                                
+                                toPos = (rowNum: i, columnNum: columnNum)
                                 i -= 1
-                                let fromIndex = self.getIndex(fromPosition: (rowNum: i, columnNum: columnNum))
-                                
-                                let fromCard = self.cardsBtnArray[fromIndex]
-                                let toFrame = self.cardsFramesArray[toIndex]
-                                fromCard?.move(toOrigin: toFrame!)
-                                
-                                self.cardsBtnArray[toIndex] = self.cardsBtnArray[fromIndex]
+                                fromPos = (rowNum: i, columnNum: columnNum)
                                 
                                 openIndex = (rowNum: i, columnNum: columnNum)
                             }
@@ -231,14 +225,9 @@ class ContainerView: UIView {
                     else if(characterNeedsToMoveTo == .Above || characterNeedsToMoveTo == .Below) { // moved to a different row
                         if(columnNum == 0) {
                             for i in columnNum..<1 {
-                                let toIndex = self.getIndex(fromPosition: (rowNum: rowNum, columnNum: i))
-                                let fromIndex = self.getIndex(fromPosition: (rowNum: rowNum, columnNum: i+1))
                                 
-                                let fromCard = self.cardsBtnArray[fromIndex]
-                                let toFrame = self.cardsFramesArray[toIndex]
-                                fromCard?.move(toOrigin: toFrame!)
-                                
-                                self.cardsBtnArray[toIndex] = self.cardsBtnArray[fromIndex]
+                                toPos = (rowNum: rowNum, columnNum: i)
+                                fromPos = (rowNum: rowNum, columnNum: i+1)
                                 
                                 openIndex = (rowNum: rowNum, columnNum: i+1)
                             }
@@ -246,33 +235,36 @@ class ContainerView: UIView {
                         if(columnNum == 1) {
                             let diceRoll = Int(arc4random_uniform(1))
                             let change = diceRoll == 0 ? 1 : -1
-                            let toIndex = self.getIndex(fromPosition: (rowNum: rowNum, columnNum: columnNum))
-                            let fromIndex = self.getIndex(fromPosition: (rowNum: rowNum, columnNum: columnNum+change))
                             
-                            let fromCard = self.cardsBtnArray[fromIndex]
-                            let toFrame = self.cardsFramesArray[toIndex]
-                            fromCard?.move(toOrigin: toFrame!)
-                            
-                            self.cardsBtnArray[toIndex] = self.cardsBtnArray[fromIndex]
+                            toPos = (rowNum: rowNum, columnNum: columnNum)
+                            fromPos = (rowNum: rowNum, columnNum: columnNum+change)
                             
                             openIndex = (rowNum: rowNum, columnNum: columnNum+change)
                         }
                         if(columnNum == 2) {
                             var i = columnNum
                             while i-1 > 0 {
-                                let toIndex = self.getIndex(fromPosition: (rowNum: rowNum, columnNum: i))
+                                
+                                toPos = (rowNum: rowNum, columnNum: i)
                                 i -= 1
-                                let fromIndex = self.getIndex(fromPosition: (rowNum: rowNum, columnNum: i))
+                                fromPos = (rowNum: rowNum, columnNum: i)
                                 
-                                let fromCard = self.cardsBtnArray[fromIndex]
-                                let toFrame = self.cardsFramesArray[toIndex]
-                                fromCard?.move(toOrigin: toFrame!)
                                 
-                                self.cardsBtnArray[toIndex] = self.cardsBtnArray[fromIndex]
                                 
                                 openIndex = (rowNum: rowNum, columnNum: i)
                             }
                         }
+                        
+                        toIndex = self.getIndex(fromPosition: toPos)
+                        fromIndex = self.getIndex(fromPosition: fromPos)
+                        
+                        let fromCard = self.cardsBtnArray[fromIndex]
+                        let toFrame = self.cardsFramesArray[toIndex]
+                        fromCard?.move(toOrigin: toFrame!)
+                        fromCard?.position = toPos
+                        
+                        self.cardsBtnArray[toIndex] = self.cardsBtnArray[fromIndex]
+                        
                         self.createCard(atPosition: openIndex)
                     }
                 })
