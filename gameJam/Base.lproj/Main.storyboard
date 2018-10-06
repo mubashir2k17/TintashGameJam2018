@@ -45,12 +45,13 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S11-7n-3Cu">
-                                <rect key="frame" x="164.5" y="562" width="46" height="60"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S11-7n-3Cu">
+                                <rect key="frame" x="158" y="562" width="60" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="kXJ-gu-q0Z"/>
+                                    <constraint firstAttribute="width" constant="60" id="xnI-XP-Bko"/>
                                 </constraints>
-                                <state key="normal" title="Button"/>
+                                <state key="normal" image="button_play"/>
                                 <connections>
                                     <action selector="playButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xUz-UE-yyH"/>
                                 </connections>
@@ -65,8 +66,8 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="7q7-7t-FdM" secondAttribute="bottom" id="Umu-7q-aYE"/>
                             <constraint firstItem="ffS-7q-k4b" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="45" id="Yle-QK-56n"/>
                             <constraint firstItem="7q7-7t-FdM" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="au3-Gr-f9F"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="S11-7n-3Cu" secondAttribute="bottom" constant="45" id="cBw-Xa-49G"/>
                             <constraint firstItem="S11-7n-3Cu" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="d3N-n1-b1Y"/>
+                            <constraint firstItem="S11-7n-3Cu" firstAttribute="top" secondItem="ffS-7q-k4b" secondAttribute="bottom" constant="38" id="dSN-ty-QGu"/>
                             <constraint firstItem="7q7-7t-FdM" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="fbl-g6-sH9"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ffS-7q-k4b" secondAttribute="trailing" constant="45" id="ngp-8H-0om"/>
                             <constraint firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="ofW-Yt-A77"/>
@@ -83,6 +84,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="button_play" width="151" height="152"/>
         <image name="charater cell" width="300" height="240"/>
     </resources>
 </document>
