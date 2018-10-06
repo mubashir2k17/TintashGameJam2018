@@ -12,6 +12,19 @@
 		4A8335992167A2B10053BBE8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4A8335972167A2B10053BBE8 /* Main.storyboard */; };
 		4A83359B2167A2B30053BBE8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4A83359A2167A2B30053BBE8 /* Assets.xcassets */; };
 		4A83359E2167A2B30053BBE8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4A83359C2167A2B30053BBE8 /* LaunchScreen.storyboard */; };
+		4A8335A7216892470053BBE8 /* CharaterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8335A5216892470053BBE8 /* CharaterCollectionViewCell.swift */; };
+		4A8335A8216892470053BBE8 /* CharaterCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A8335A6216892470053BBE8 /* CharaterCollectionViewCell.xib */; };
+		4A8335B621689FFA0053BBE8 /* Action_Man_Extended_Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4A8335AC21689FF90053BBE8 /* Action_Man_Extended_Italic.ttf */; };
+		4A8335B721689FFA0053BBE8 /* Action_Man_Extended_Bold_Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4A8335AD21689FF90053BBE8 /* Action_Man_Extended_Bold_Italic.ttf */; };
+		4A8335B821689FFA0053BBE8 /* Action_Man_Extended_Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4A8335AE21689FF90053BBE8 /* Action_Man_Extended_Bold.ttf */; };
+		4A8335B921689FFA0053BBE8 /* Action_Man_Extended.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4A8335AF21689FF90053BBE8 /* Action_Man_Extended.ttf */; };
+		4A8335BA21689FFA0053BBE8 /* Action_Man.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4A8335B021689FF90053BBE8 /* Action_Man.ttf */; };
+		4A8335BB21689FFA0053BBE8 /* Action_Man_Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4A8335B121689FF90053BBE8 /* Action_Man_Bold.ttf */; };
+		4A8335BC21689FFA0053BBE8 /* Action_Man_Shaded.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4A8335B221689FF90053BBE8 /* Action_Man_Shaded.ttf */; };
+		4A8335BD21689FFA0053BBE8 /* Action_Man_Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4A8335B321689FF90053BBE8 /* Action_Man_Italic.ttf */; };
+		4A8335BE21689FFA0053BBE8 /* Action_Man_Bold_Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4A8335B421689FF90053BBE8 /* Action_Man_Bold_Italic.ttf */; };
+		4A8335BF21689FFA0053BBE8 /* Action_Man_Shaded_Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4A8335B521689FFA0053BBE8 /* Action_Man_Shaded_Italic.ttf */; };
+		4A8C0F0D2168A1B800EA5581 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8C0F0C2168A1B800EA5581 /* Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +35,19 @@
 		4A83359A2167A2B30053BBE8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4A83359D2167A2B30053BBE8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4A83359F2167A2B30053BBE8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4A8335A5216892470053BBE8 /* CharaterCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharaterCollectionViewCell.swift; sourceTree = "<group>"; };
+		4A8335A6216892470053BBE8 /* CharaterCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CharaterCollectionViewCell.xib; sourceTree = "<group>"; };
+		4A8335AC21689FF90053BBE8 /* Action_Man_Extended_Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Action_Man_Extended_Italic.ttf; sourceTree = "<group>"; };
+		4A8335AD21689FF90053BBE8 /* Action_Man_Extended_Bold_Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Action_Man_Extended_Bold_Italic.ttf; sourceTree = "<group>"; };
+		4A8335AE21689FF90053BBE8 /* Action_Man_Extended_Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Action_Man_Extended_Bold.ttf; sourceTree = "<group>"; };
+		4A8335AF21689FF90053BBE8 /* Action_Man_Extended.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Action_Man_Extended.ttf; sourceTree = "<group>"; };
+		4A8335B021689FF90053BBE8 /* Action_Man.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Action_Man.ttf; sourceTree = "<group>"; };
+		4A8335B121689FF90053BBE8 /* Action_Man_Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Action_Man_Bold.ttf; sourceTree = "<group>"; };
+		4A8335B221689FF90053BBE8 /* Action_Man_Shaded.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Action_Man_Shaded.ttf; sourceTree = "<group>"; };
+		4A8335B321689FF90053BBE8 /* Action_Man_Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Action_Man_Italic.ttf; sourceTree = "<group>"; };
+		4A8335B421689FF90053BBE8 /* Action_Man_Bold_Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Action_Man_Bold_Italic.ttf; sourceTree = "<group>"; };
+		4A8335B521689FFA0053BBE8 /* Action_Man_Shaded_Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Action_Man_Shaded_Italic.ttf; sourceTree = "<group>"; };
+		4A8C0F0C2168A1B800EA5581 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,14 +80,35 @@
 		4A8335922167A2B10053BBE8 /* gameJam */ = {
 			isa = PBXGroup;
 			children = (
+				4A8335AB21689FE40053BBE8 /* fonts */,
 				4A8335932167A2B10053BBE8 /* AppDelegate.swift */,
 				4A8335952167A2B10053BBE8 /* ViewController.swift */,
 				4A8335972167A2B10053BBE8 /* Main.storyboard */,
+				4A8335A5216892470053BBE8 /* CharaterCollectionViewCell.swift */,
+				4A8335A6216892470053BBE8 /* CharaterCollectionViewCell.xib */,
 				4A83359A2167A2B30053BBE8 /* Assets.xcassets */,
 				4A83359C2167A2B30053BBE8 /* LaunchScreen.storyboard */,
 				4A83359F2167A2B30053BBE8 /* Info.plist */,
+				4A8C0F0C2168A1B800EA5581 /* Extensions.swift */,
 			);
 			path = gameJam;
+			sourceTree = "<group>";
+		};
+		4A8335AB21689FE40053BBE8 /* fonts */ = {
+			isa = PBXGroup;
+			children = (
+				4A8335B421689FF90053BBE8 /* Action_Man_Bold_Italic.ttf */,
+				4A8335B121689FF90053BBE8 /* Action_Man_Bold.ttf */,
+				4A8335AD21689FF90053BBE8 /* Action_Man_Extended_Bold_Italic.ttf */,
+				4A8335AE21689FF90053BBE8 /* Action_Man_Extended_Bold.ttf */,
+				4A8335AC21689FF90053BBE8 /* Action_Man_Extended_Italic.ttf */,
+				4A8335AF21689FF90053BBE8 /* Action_Man_Extended.ttf */,
+				4A8335B321689FF90053BBE8 /* Action_Man_Italic.ttf */,
+				4A8335B521689FFA0053BBE8 /* Action_Man_Shaded_Italic.ttf */,
+				4A8335B221689FF90053BBE8 /* Action_Man_Shaded.ttf */,
+				4A8335B021689FF90053BBE8 /* Action_Man.ttf */,
+			);
+			path = fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -122,9 +169,20 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4A8335BB21689FFA0053BBE8 /* Action_Man_Bold.ttf in Resources */,
+				4A8335A8216892470053BBE8 /* CharaterCollectionViewCell.xib in Resources */,
+				4A8335B621689FFA0053BBE8 /* Action_Man_Extended_Italic.ttf in Resources */,
 				4A83359E2167A2B30053BBE8 /* LaunchScreen.storyboard in Resources */,
 				4A83359B2167A2B30053BBE8 /* Assets.xcassets in Resources */,
+				4A8335B921689FFA0053BBE8 /* Action_Man_Extended.ttf in Resources */,
+				4A8335B821689FFA0053BBE8 /* Action_Man_Extended_Bold.ttf in Resources */,
 				4A8335992167A2B10053BBE8 /* Main.storyboard in Resources */,
+				4A8335BA21689FFA0053BBE8 /* Action_Man.ttf in Resources */,
+				4A8335BE21689FFA0053BBE8 /* Action_Man_Bold_Italic.ttf in Resources */,
+				4A8335BF21689FFA0053BBE8 /* Action_Man_Shaded_Italic.ttf in Resources */,
+				4A8335B721689FFA0053BBE8 /* Action_Man_Extended_Bold_Italic.ttf in Resources */,
+				4A8335BC21689FFA0053BBE8 /* Action_Man_Shaded.ttf in Resources */,
+				4A8335BD21689FFA0053BBE8 /* Action_Man_Italic.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -137,6 +195,8 @@
 			files = (
 				4A8335962167A2B10053BBE8 /* ViewController.swift in Sources */,
 				4A8335942167A2B10053BBE8 /* AppDelegate.swift in Sources */,
+				4A8335A7216892470053BBE8 /* CharaterCollectionViewCell.swift in Sources */,
+				4A8C0F0D2168A1B800EA5581 /* Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
