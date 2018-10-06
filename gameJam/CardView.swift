@@ -34,7 +34,8 @@ class CardView: UIView {
         }
     }
     
-    func die() {
+   
+    func die(withCompletion completion:@escaping() -> Void) {
         UIView.animate(withDuration: 0.1,
                        delay: 0.2,
                        options: [.repeat, .autoreverse],
@@ -56,7 +57,9 @@ class CardView: UIView {
                                         self.frame = CGRect(x: x+10, y: y+10, width: width-20, height: heigth-20)
                                         self.alpha = 0.0
                         },
-                                       completion: nil)
+                                       completion: { (true) in
+                                        completion()
+                        })
         })
     }
 

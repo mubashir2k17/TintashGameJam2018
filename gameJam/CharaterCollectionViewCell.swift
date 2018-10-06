@@ -10,9 +10,17 @@ import UIKit
 
 class CharaterCollectionViewCell: UICollectionViewCell {
 
+    @IBOutlet weak var playerNameLbl: UILabel!
+    @IBOutlet weak var playerDiscriptionLbl: UILabel!
+    @IBOutlet weak var powerDiscriptionLbl: UILabel!
+    @IBOutlet weak var powerDiscription2lbl: UILabel!
     @IBOutlet weak var imgView: UIImageView!
+
+
     var zoombieIdleImages = [UIImage]()
-    
+    var indexPath = IndexPath(item: -1, section: -1)
+
+
     override func awakeFromNib() {
         super.awakeFromNib()
         imgView.image = animatedImage(asset: "robotGoldenIdle", startIndex: 0, endIndex: 8)
