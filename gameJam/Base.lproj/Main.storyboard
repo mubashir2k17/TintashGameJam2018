@@ -7,6 +7,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="Unknown constraint types" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -44,53 +45,31 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FGd-kn-miy">
-                                <rect key="frame" x="337" y="318.5" width="30" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S11-7n-3Cu">
+                                <rect key="frame" x="164.5" y="562" width="46" height="60"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="irV-U0-BS3"/>
-                                    <constraint firstAttribute="width" constant="30" id="kfi-uZ-PUN"/>
+                                    <constraint firstAttribute="height" constant="60" id="kXJ-gu-q0Z"/>
                                 </constraints>
-                                <state key="normal" image="button_right"/>
+                                <state key="normal" title="Button"/>
                                 <connections>
-                                    <action selector="rightButtonPress:" destination="BYZ-38-t0r" eventType="touchUpInside" id="1jE-oO-nTF"/>
+                                    <action selector="playButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xUz-UE-yyH"/>
                                 </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G8q-wU-ScO">
-                                <rect key="frame" x="8" y="318.5" width="30" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="Imb-0d-nHe"/>
-                                    <constraint firstAttribute="width" constant="30" id="ZdN-zz-2Gs"/>
-                                </constraints>
-                                <state key="normal" image="button_left"/>
-                                <connections>
-                                    <action selector="leftButtonPress:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Htd-Rt-Dcl"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s1V-JQ-Nq7" userLabel="Playbutton">
-                                <rect key="frame" x="162" y="572" width="50" height="50"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="MV2-Mf-ejQ"/>
-                                    <constraint firstAttribute="width" constant="50" id="bIL-xp-H4y"/>
-                                </constraints>
-                                <state key="normal" image="button_play"/>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="s1V-JQ-Nq7" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="6aZ-FZ-0tT"/>
+                            <constraint firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="6aZ-FZ-0tT"/>
                             <constraint firstItem="ffS-7q-k4b" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="45" id="8WC-zT-9eH"/>
-                            <constraint firstItem="G8q-wU-ScO" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="8" id="9vb-bw-qRD"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="7q7-7t-FdM" secondAttribute="trailing" id="CFT-X8-Uqa"/>
-                            <constraint firstItem="G8q-wU-ScO" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="8" id="S5J-hI-kU2"/>
-                            <constraint firstItem="G8q-wU-ScO" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="SyV-vY-e8J"/>
+                            <constraint firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="SyV-vY-e8J"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="7q7-7t-FdM" secondAttribute="bottom" id="Umu-7q-aYE"/>
                             <constraint firstItem="ffS-7q-k4b" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="45" id="Yle-QK-56n"/>
                             <constraint firstItem="7q7-7t-FdM" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="au3-Gr-f9F"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="S11-7n-3Cu" secondAttribute="bottom" constant="45" id="cBw-Xa-49G"/>
+                            <constraint firstItem="S11-7n-3Cu" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="d3N-n1-b1Y"/>
                             <constraint firstItem="7q7-7t-FdM" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="fbl-g6-sH9"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="FGd-kn-miy" secondAttribute="trailing" constant="8" id="jLg-bB-FU7"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ffS-7q-k4b" secondAttribute="trailing" constant="45" id="ngp-8H-0om"/>
-                            <constraint firstItem="FGd-kn-miy" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="ofW-Yt-A77"/>
-                            <constraint firstItem="s1V-JQ-Nq7" firstAttribute="top" secondItem="ffS-7q-k4b" secondAttribute="bottom" constant="48" id="qUv-wb-itx"/>
+                            <constraint firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="ofW-Yt-A77"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -104,9 +83,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="button_left" width="151" height="152"/>
-        <image name="button_play" width="151" height="152"/>
-        <image name="button_right" width="151" height="152"/>
         <image name="charater cell" width="300" height="240"/>
     </resources>
 </document>

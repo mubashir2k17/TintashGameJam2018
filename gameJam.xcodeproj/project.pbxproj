@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		26A911D92168C894002B1C1A /* CardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26A911D82168C894002B1C1A /* CardView.xib */; };
 		3E1043D92168A6B30081B426 /* CombatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E1043D72168A6B30081B426 /* CombatViewController.swift */; };
 		3E1043DA2168A6B30081B426 /* CombatViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E1043D82168A6B30081B426 /* CombatViewController.xib */; };
 		3E677FF12168AD40000C676E /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E677FF02168AD40000C676E /* CardView.swift */; };
@@ -34,6 +35,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		26A911D82168C894002B1C1A /* CardView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardView.xib; sourceTree = "<group>"; };
 		3E1043D72168A6B30081B426 /* CombatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombatViewController.swift; sourceTree = "<group>"; };
 		3E1043D82168A6B30081B426 /* CombatViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CombatViewController.xib; sourceTree = "<group>"; };
 		3E677FF02168AD40000C676E /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
@@ -98,6 +100,7 @@
 				4A8335972167A2B10053BBE8 /* Main.storyboard */,
 				3E1043D72168A6B30081B426 /* CombatViewController.swift */,
 				3E1043D82168A6B30081B426 /* CombatViewController.xib */,
+				26A911D82168C894002B1C1A /* CardView.xib */,
 				4A8335A5216892470053BBE8 /* CharaterCollectionViewCell.swift */,
 				4A8335A6216892470053BBE8 /* CharaterCollectionViewCell.xib */,
 				3E677FF22168AED3000C676E /* ContainerView.swift */,
@@ -189,6 +192,7 @@
 			files = (
 				4A8335BB21689FFA0053BBE8 /* Action_Man_Bold.ttf in Resources */,
 				4A8335A8216892470053BBE8 /* CharaterCollectionViewCell.xib in Resources */,
+				26A911D92168C894002B1C1A /* CardView.xib in Resources */,
 				4A8335B621689FFA0053BBE8 /* Action_Man_Extended_Italic.ttf in Resources */,
 				4A83359E2167A2B30053BBE8 /* LaunchScreen.storyboard in Resources */,
 				4A83359B2167A2B30053BBE8 /* Assets.xcassets in Resources */,
