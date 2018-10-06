@@ -10,9 +10,14 @@ import UIKit
 
 class CharaterCollectionViewCell: UICollectionViewCell {
 
+    @IBOutlet weak var imgView: UIImageView!
+    var zoombieIdleImages = [UIImage]()
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+
+        imgView.image = animatedImage(asset: "zombieIdle", startIndex: 1, endIndex: 15)
     }
 
 }
+
