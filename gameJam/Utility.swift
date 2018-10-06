@@ -8,7 +8,7 @@
 
 import UIKit
 
-func animatedImage(asset: String, startIndex: Int, endIndex: Int) -> UIImage? {
+func animatedImage(asset: String, startIndex: Int, endIndex: Int, duration: Double = 1) -> UIImage? {
     
     var arr = [UIImage]()
     
@@ -17,7 +17,7 @@ func animatedImage(asset: String, startIndex: Int, endIndex: Int) -> UIImage? {
         arr.append(UIImage(named: filename)!)
     }
     
-    let image = UIImage.animatedImage(with: arr, duration: 1)
+    let image = UIImage.animatedImage(with: arr, duration: duration)
     return image
     
 }
