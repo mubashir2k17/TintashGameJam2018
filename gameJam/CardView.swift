@@ -63,6 +63,10 @@ class CardView: UIView {
         })
     }
 
+    func moveToFrame() {
+        
+    }
+    
     func moveLeft() {
         
     }
@@ -80,6 +84,6 @@ class CardView: UIView {
     }
     
     @IBAction func cardTapAction(_ sender: Any) {
-    
+
     }
 }

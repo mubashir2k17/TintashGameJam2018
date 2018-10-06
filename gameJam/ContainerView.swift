@@ -22,6 +22,7 @@ class ContainerView: UIView {
     var cardsBtnArray = [Int : CardView]()
     var tileFramesArray = [Int : CGPoint]()
     var characterCard : CardView = CardView()
+    let screenWidth = UIScreen.main.bounds.width
     
     func populateTimeFrames() {
         let cardWidth = 103
@@ -66,7 +67,28 @@ class ContainerView: UIView {
         cardsBtnArray[6] = CardView(frame: CGRect(x: 0, y: 272, width: 103, height: 136))
         cardsBtnArray[7] = CardView(frame: CGRect(x: 103, y: 272, width: 103, height: 136))
         cardsBtnArray[8] = CardView(frame: CGRect(x: 206, y: 272, width: 103, height: 136))
+        
+        for num in 0..<9 {
+            cardsBtnArray[num]?.center.x -= screenWidth
+            self.addSubview(cardsBtnArray[num]!)
+        }
     }
+    func loadGridWithAnimation(index : Int) {
+        
+        if(index > 8) {
+            return
+        }
+        UIView.animate(withDuration: 0.1,
+                       delay: 0.0,
+                       options: [],
+                       animations: {
+                        self.cardsBtnArray[index]?.center.x += self.screenWidth
+                        },
+                       completion: { (true) in
+                        self.loadGridWithAnimation(index: index + 1)
+                        })
+    }
+
     
     func getPosition(fromIndex index : Int) -> (rowNum : Int, columnNum : Int) {
         let row : Int = index / 3
@@ -94,21 +116,66 @@ class ContainerView: UIView {
                     character.moveDown()
                 }
                 
-                if(characterNeedsToMoveTo == .Right || characterNeedsToMoveTo == .Left) { // moved a different column
-                    if(character.position.columnNum == 2) {
-                        
-                    }
-                    else if(character.position.columnNum == 1) {
-                        
-                    }
-                    else if(character.position.columnNum == 0) {
-                        
-                    }
-                }
-                else if(characterNeedsToMoveTo == .Above || characterNeedsToMoveTo == .Below) { // moved a different row
-                    
-                }
+                let columnNum = character.position.columnNum
+                let rowNum = character.position.rowNum
+                var openIndex : (rowNum : Int, columnNum : Int) = (0,0)
                 
+                if(characterNeedsToMoveTo == .Right || characterNeedsToMoveTo == .Left) { // moved to a different column
+                    if(rowNum == 0) {
+                        for i in rowNum..<1 {
+                            let toIndex = self.getIndex(fromPosition: (rowNum: i, columnNum: columnNum))
+                            let fromIndex = self.getIndex(fromPosition: (rowNum: i+1, columnNum: columnNum))
+                            
+                            let fromCard = self.cardsBtnArray[fromIndex]
+                            let toFrame = self.tileFramesArray[toIndex]
+                            fromCard?.frame.origin = toFrame! // TODO: Animate to this frame in all if checks below as well
+                            
+                            self.cardsBtnArray[toIndex] = self.cardsBtnArray[fromIndex]
+                            openIndex = (rowNum: i+1, columnNum: columnNum) // TODO: Set open index below as well and insert card at this frame and then in the cards array as well
+                        }
+                    }
+                    else if(rowNum == 1) {
+                        let diceRoll = Int(arc4random_uniform(1))
+                        let change = diceRoll == 0 ? 1 : -1
+                        let toIndex = self.getIndex(fromPosition: (rowNum: rowNum, columnNum: columnNum))
+                        let fromIndex = self.getIndex(fromPosition: (rowNum: rowNum+change, columnNum: columnNum))
+                        self.cardsBtnArray[toIndex] = self.cardsBtnArray[fromIndex]
+                    }
+                    else if(rowNum == 2) {
+                        var i = rowNum
+                        while i-1 > 0 {
+                            let toIndex = self.getIndex(fromPosition: (rowNum: i, columnNum: columnNum))
+                            i -= 1
+                            let fromIndex = self.getIndex(fromPosition: (rowNum: i, columnNum: columnNum))
+                            self.cardsBtnArray[toIndex] = self.cardsBtnArray[fromIndex]
+                        }
+                    }
+                }
+                else if(characterNeedsToMoveTo == .Above || characterNeedsToMoveTo == .Below) { // moved to a different row
+                    if(columnNum == 0) {
+                        for i in columnNum..<1 {
+                            let toIndex = self.getIndex(fromPosition: (rowNum: rowNum, columnNum: i))
+                            let fromIndex = self.getIndex(fromPosition: (rowNum: rowNum, columnNum: i+1))
+                            self.cardsBtnArray[toIndex] = self.cardsBtnArray[fromIndex]
+                        }
+                    }
+                    if(columnNum == 1) {
+                        let diceRoll = Int(arc4random_uniform(1))
+                        let change = diceRoll == 0 ? 1 : -1
+                        let toIndex = self.getIndex(fromPosition: (rowNum: rowNum, columnNum: columnNum))
+                        let fromIndex = self.getIndex(fromPosition: (rowNum: rowNum, columnNum: columnNum+change))
+                        self.cardsBtnArray[toIndex] = self.cardsBtnArray[fromIndex]
+                    }
+                    if(columnNum == 2) {
+                        var i = columnNum
+                        while i-1 > 0 {
+                            let toIndex = self.getIndex(fromPosition: (rowNum: rowNum, columnNum: i))
+                            i -= 1
+                            let fromIndex = self.getIndex(fromPosition: (rowNum: rowNum, columnNum: i))
+                            self.cardsBtnArray[toIndex] = self.cardsBtnArray[fromIndex]
+                        }
+                    }
+                }
             })
         }
     }
@@ -133,4 +200,6 @@ class ContainerView: UIView {
         }
         return posEnum
     }
+    
+    
 }
