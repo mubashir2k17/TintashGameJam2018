@@ -87,22 +87,6 @@ class CardView: UIView {
         })
     }
     
-    func moveLeft() {
-        
-    }
-    
-    func moveRight() {
-        
-    }
-    
-    func moveUp() {
-        
-    }
-    
-    func moveDown() {
-        
-    }
-    
     @IBAction func cardTapAction(_ sender: Any) {
         cardDidPress?(self)
     }
@@ -110,5 +94,23 @@ class CardView: UIView {
     func setupCard(params: (assetName: String, startIndex: Int, endIndex: Int)) {
         // change cardBackgroundImageView to image and set background image seperately
         cardBackgroundImageView.image = animatedImage(asset: params.assetName, startIndex: params.startIndex, endIndex: params.endIndex)
+        if(health == 0) {
+            healthLabel.isHidden = true
+        }
+        else {
+            self.healthLabel.text = String(abs(health))
+        }
+        
+        if(armor == 0) {
+            armorLabel.isHidden = true
+        }
+        else {
+            self.armorLabel.text = String(armor)
+        }
+        
+        if(cardType == .Gold) {
+            self.healthLabel.backgroundColor = UIColor(red: 255/255.0, green: 215/255.0, blue: 0, alpha: 1)
+        }
+        
     }
 }

@@ -27,6 +27,7 @@ enum CardType {
 
 class ContainerView: UIView {
 
+    //TODO: Add better backgrounds to the numbers on card top left and right, need to increase their size as well as they are quiet hard to read
     var cardsBtnArray = [Int : CardView]()
     var cardsFramesArray = [Int : CGPoint]()
     var cardTypeArray : [CardType] = [CardType](repeating: .Character, count: 9)// TODO: Update this as well with rest of the crap
@@ -36,9 +37,17 @@ class ContainerView: UIView {
     let screenWidth = UIScreen.main.bounds.width
     
     var indexsArray = [0,1,2,3,4,5,6,7,8]
-
+    
+    let startingEnemiesCount = 4
+    var currentEnemiesCount = 4
+    var minEnemyCount = 3
+    
+    var goldValue = 0
+    var mutationValue = 0
+    var maxMutationValue = 100 // TODO: Fill a progress bar above basied on mutationValue and maxMutationValue
+    
     // asset names to Load
-    let caracterImages = [(assetName: "knightIdle", startIndex: 0, endIndex: 6),
+    let character = [(assetName: "knightIdle", startIndex: 0, endIndex: 6),
                           (assetName: "robotIdle", startIndex: 0, endIndex: 8),
                           (assetName: "robotGoldenIdle", startIndex: 0, endIndex: 8),
                           (assetName: "trolIdle", startIndex: 0, endIndex: 6),
@@ -66,18 +75,15 @@ class ContainerView: UIView {
         
         let potionCount = max(1,min(Int(arc4random_uniform(UInt32(3))), 2)) // should not be higher than 2, at least 1
         let armorCount = potionCount == 2 ? 1 : 2
-        let enemiesCount = 4
+        
         let maxSize = 9
         
         for i in 0..<maxSize {
             
-//            let randIndex = max(0,min(Int(arc4random_uniform(UInt32(maxSize - i))), maxSize - i))
-//            let index = indexsArray[randIndex]
-//            indexsArray.remove(at: randIndex)
-            
             if (i == 0) {
                 
-                let randIndex = 3//max(0,min(Int(arc4random_uniform(UInt32(maxSize - i))), maxSize - i))
+//                let randIndex = max(0,min(Int(arc4random_uniform(UInt32(maxSize - i))), maxSize - i))
+                let randIndex = 3
                 let index = indexsArray[randIndex]
                 indexsArray.remove(at: randIndex)
                 
@@ -88,13 +94,13 @@ class ContainerView: UIView {
                 let index = indexsArray[randIndex]
                 indexsArray.remove(at: randIndex)
                 
-                if(i < enemiesCount + 1) {
+                if(i < startingEnemiesCount + 1) {
                     cardTypeArray[index] = .Enemy
                 }
-                else if(i < enemiesCount + 1 + potionCount) {
+                else if(i < startingEnemiesCount + 1 + potionCount) {
                     cardTypeArray[index] = .Potion
                 }
-                else if(i < enemiesCount + 1 + potionCount + armorCount) {
+                else if(i < startingEnemiesCount + 1 + potionCount + armorCount) {
                     cardTypeArray[index] = .Armor
                 }
                 else {
@@ -103,7 +109,6 @@ class ContainerView: UIView {
             }
         }
     }
-    
     
     func initializeGrid() {
         
@@ -124,26 +129,11 @@ class ContainerView: UIView {
             if(cardType == .Character) {
                 card = Character(frame: rect, cardDidPress: cardDidPress)
                 self.characterCard = card
-                card.setupCard(params: caracterImages[0])
+                card.setupCard(params: character[0])
             }
             else {
                 card = CardView(frame: rect, cardDidPress: cardDidPress)
-                if(cardType == .Enemy) {
-                    card.health = -1 * max(2,min(Int(arc4random_uniform(UInt32(5))), 4)) // should not be higher than 2, at least 1
-                    card.setupCard(params: caracterImages[2])
-                }
-                else if(cardType == .Potion) {
-                    card.health = max(1,min(Int(arc4random_uniform(UInt32(3))), 2))
-                    card.setupCard(params: caracterImages[3])
-                }
-                else if(cardType == .Gold) {
-                    card.health = max(5,min(Int(arc4random_uniform(UInt32(20))), 2))
-                    card.setupCard(params: caracterImages[4])
-                }
-                else if(cardType == .Armor) {
-                    card.armor = max(1,min(Int(arc4random_uniform(UInt32(3))), 2)) // should not be higher than 2, at least 1
-                    card.setupCard(params: caracterImages[5])
-                }
+                setupCard(card: card, cardType: cardType)
             }
             
             card.position = getPosition(fromIndex: num)
@@ -160,23 +150,69 @@ class ContainerView: UIView {
         
         let index = getIndex(fromPosition: cardPos)
         let origin = cardsFramesArray[index]
+        
         let size = CGSize(width: 103, height: 136)
         let rect = CGRect(origin: origin!, size: size)
-        cardsBtnArray[index] = CardView(frame: rect)
-        cardsBtnArray[index]?.center.x -= screenWidth
-        cardsBtnArray[index]?.position = cardPos
-        self.addSubview(cardsBtnArray[index]!)
+        
+        let card = CardView(frame: rect)
+        cardsBtnArray[index] = card
+        
+        var isXModifier = true
+        var modifier : CGFloat = 0
+        if (cardPos.columnNum == 0) {
+            modifier = -1 * screenWidth
+        }
+        else if(cardPos.columnNum == 2) {
+            modifier = screenWidth
+        }
+        else if(cardPos.rowNum == 0 && cardPos.columnNum == 1) {
+            modifier = -1 * screenWidth
+            isXModifier = false
+        }
+        else if(cardPos.rowNum == 2 && cardPos.columnNum == 1) {
+            modifier = screenWidth
+            isXModifier = false
+        }
+        if(isXModifier) {
+            card.center.x += modifier
+        }
+        else {
+            card.center.y += modifier
+        }
+        card.position = cardPos
+        
+        var cardType : CardType!
+        if(currentEnemiesCount < minEnemyCount) {
+            cardType = .Enemy
+        }
+        else {
+            let randomNumberType = min(Int(arc4random_uniform(UInt32(3))), 2)
+            if(randomNumberType == 0) {
+                cardType = .Potion
+            }
+            else if(randomNumberType == 1) {
+                cardType = .Gold
+            }
+            else if(randomNumberType == 2) {
+                cardType = .Armor
+            }
+        }
+        setupCard(card: card, cardType: cardType)
+        
+        card.cardType = cardType
+        self.addSubview(card)
         
         UIView.animate(withDuration: 0.3,
                        delay: 0.0,
                        options: [.curveEaseOut],
                        animations: {
-                        self.cardsBtnArray[index]?.center.x += self.screenWidth
-        },
-                       completion: { (true) in
-                        
-        })
-        
+                        if(isXModifier) {
+                            card.center.x += -1 * modifier
+                        }
+                        else {
+                            card.center.y += -1 * modifier
+                        }
+        },completion: nil)
     }
     
     func loadGridWithAnimation(index : Int) {
@@ -204,6 +240,9 @@ class ContainerView: UIView {
             let tappedCardIndex = getIndex(fromPosition: tappedCardPosition)
             
             card.die(withCompletion: { () in
+                
+                self.updateCounts(expiredCard: card)
+                
                 let character = self.characterCard
                 let characterNeedsToMoveTo = self.getCardPositionRelativeToCharacter(cardPos: card.position)
                 character.move(toOrigin: cardFrame, completion: { () in
@@ -342,6 +381,51 @@ class ContainerView: UIView {
         return posEnum
     }
     
+    func updateCounts(expiredCard: CardView) {
+        
+        if(expiredCard.cardType == .Enemy || expiredCard.cardType == .Gold) {
+            goldValue += expiredCard.health
+            if(expiredCard.cardType == .Enemy) {
+                currentEnemiesCount -= 1
+                if let character = characterCard as? Character {
+                    character.addHealth(healthValue: expiredCard.health)
+                }
+            }
+        }
+        else if(expiredCard.cardType == .Potion) {
+            if let character = characterCard as? Character {
+                character.addHealth(healthValue: expiredCard.health)
+            }
+        }
+        else if(expiredCard.cardType == .Armor) {
+            if let character = characterCard as? Character {
+                character.addArmor(armorValue: expiredCard.armor)
+            }
+        }
+        if(self.characterCard.health == 0) {
+            //TODO: Game over stuff
+        }
+    }
+    
+    func setupCard(card : CardView, cardType : CardType) {
+        
+        if(cardType == .Enemy) {
+            card.health = -1 * max(2,min(Int(arc4random_uniform(UInt32(5))), 4)) // should not be higher than 2, at least 1
+            card.setupCard(params: character[2])
+        }
+        else if(cardType == .Potion) {
+            card.health = max(1,min(Int(arc4random_uniform(UInt32(3))), 2))
+            card.setupCard(params: character[3]) // TODO: Change images for potion
+        }
+        else if(cardType == .Gold) {
+            card.health = max(5,min(Int(arc4random_uniform(UInt32(20))), 2))
+            card.setupCard(params: character[4]) // TODO: Change images for Gold
+        }
+        else if(cardType == .Armor) {
+            card.armor = max(1,min(Int(arc4random_uniform(UInt32(3))), 2)) // should not be higher than 2, at least 1
+            card.setupCard(params: character[5]) // TODO: Change images for Armor
+        }
+    }
     
     func getIndex(fromPosition pos : (rowNum : Int, columnNum : Int)) -> Int {
         return pos.rowNum * 3 + pos.columnNum

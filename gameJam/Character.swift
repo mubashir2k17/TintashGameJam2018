@@ -17,22 +17,26 @@ class Character: CardView {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setupCard()
     }
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
-    func setupCard() {
-        super.cardBackgroundImageView.image = animatedImage(asset: "knightIdle", startIndex: 0, endIndex: 6)
+    override func setupCard(params: (assetName: String, startIndex: Int, endIndex: Int)) {
+        
+        cardBackgroundImageView.image = animatedImage(asset: params.assetName, startIndex: params.startIndex, endIndex: params.endIndex)
+        healthLabel.text = String(currentHealth)
+        armorLabel.text = String(currentArmor)
     }
 
     func addHealth(healthValue : Int) {
-        currentHealth = min(currentHealth + healthValue, maxHealth)
+        currentHealth = max(min(currentHealth + healthValue, maxHealth),0)
+        self.healthLabel.text = String(currentHealth)
     }
     
     func addArmor(armorValue : Int) {
-        currentArmor = min(currentArmor + armorValue, maxARmor)
+        currentArmor = max(min(currentArmor + armorValue, maxARmor),0)
+        self.armorLabel.text = String(currentArmor)
     }
 }
