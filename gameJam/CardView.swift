@@ -40,6 +40,10 @@ class CardView: UIView {
         })
     }
 
+    func moveToFrame() {
+        
+    }
+    
     func moveLeft() {
         
     }
