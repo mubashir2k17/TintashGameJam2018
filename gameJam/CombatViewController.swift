@@ -20,6 +20,6 @@ class CombatViewController: UIViewController {
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        gridContainerView.loadGridWithAnimation()
+        gridContainerView.loadGridWithAnimation(index: 0)
     }
 }

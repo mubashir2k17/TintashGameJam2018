@@ -84,7 +84,6 @@ class CardView: UIView {
     }
     
     @IBAction func cardTapAction(_ sender: Any) {
-        die {
-        }
+
     }
 }

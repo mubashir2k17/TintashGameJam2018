@@ -73,89 +73,20 @@ class ContainerView: UIView {
             self.addSubview(cardsBtnArray[num]!)
         }
     }
-    func loadGridWithAnimation() {
+    func loadGridWithAnimation(index : Int) {
+        
+        if(index > 8) {
+            return
+        }
         UIView.animate(withDuration: 0.1,
                        delay: 0.0,
                        options: [],
                        animations: {
-                        self.cardsBtnArray[0]?.center.x += self.screenWidth
+                        self.cardsBtnArray[index]?.center.x += self.screenWidth
                         },
                        completion: { (true) in
-                        UIView.animate(withDuration: 0.1,
-                        delay: 0.0,
-                        options: [],
-                        animations: {
-                        self.cardsBtnArray[1]?.center.x += self.screenWidth
-                        },
-                        completion: { (true) in
-                            UIView.animate(withDuration: 0.1,
-                                           delay: 0.0,
-                                           options: [],
-                                           animations: {
-                                            self.cardsBtnArray[2]?.center.x += self.screenWidth
-                            },
-                                           completion: { (true) in
-                                            UIView.animate(withDuration: 0.1,
-                                                           delay: 0.0,
-                                                           options: [],
-                                                           animations: {
-                                                            self.cardsBtnArray[3]?.center.x += self.screenWidth
-                                            },
-                                                           completion: { (true) in
-                                                            UIView.animate(withDuration: 0.1,
-                                                                           delay: 0.0,
-                                                                           options: [],
-                                                                           animations: {
-                                                                            self.cardsBtnArray[4]?.center.x += self.screenWidth
-                                                            },
-                                                                           completion: { (true) in
-                                                                            UIView.animate(withDuration: 0.1,
-                                                                                           delay: 0.0,
-                                                                                           options: [],
-                                                                                           animations: {
-                                                                                            self.cardsBtnArray[5]?.center.x += self.screenWidth
-                                                                            },
-                                                                                           completion: { (true) in
-                                                                                            UIView.animate(withDuration: 0.1,
-                                                                                                           delay: 0.0,
-                                                                                                           options: [],
-                                                                                                           animations: {
-                                                                                                            self.cardsBtnArray[6]?.center.x += self.screenWidth
-                                                                                            },
-                                                                                                           completion: { (true) in
-                                                                                                            UIView.animate(withDuration: 0.1,
-                                                                                                                           delay: 0.0,
-                                                                                                                           options: [],
-                                                                                                                           animations: {
-                                                                                                                                                self.cardsBtnArray[7]?.center.x += self.screenWidth
-                                                                                                            },
-                                                                                                                           completion:  { (true) in
-                                                                                                                            UIView.animate(withDuration: 0.1,
-                                                                                                                                           delay: 0.0,
-                                                                                                                                           options: [],
-                                                                                                                                           animations: {
-                                                                                                                                            self.cardsBtnArray[8]?.center.x += self.screenWidth
-                                                                                                                            },
-                                                                                                                                           completion: { (true) in
-                                                                                                                                            
-                                                                                                                                            
-                                                                                                                            })
-                                                                                                                            
-                                                                                                            })
-                                                                                                            
-                                                                                            })
-                                                                                            
-                                                                            })
-                                                                            
-                                                            })
-                                                            
-                                            })
-                                            
-                            })
-                        
+                        self.loadGridWithAnimation(index: index + 1)
                         })
-        })
-        
     }
 
     
@@ -187,6 +118,7 @@ class ContainerView: UIView {
                 
                 let columnNum = character.position.columnNum
                 let rowNum = character.position.rowNum
+                var openIndex : (rowNum : Int, columnNum : Int) = (0,0)
                 
                 if(characterNeedsToMoveTo == .Right || characterNeedsToMoveTo == .Left) { // moved to a different column
                     if(rowNum == 0) {
@@ -196,9 +128,10 @@ class ContainerView: UIView {
                             
                             let fromCard = self.cardsBtnArray[fromIndex]
                             let toFrame = self.tileFramesArray[toIndex]
-                            fromCard?.frame.origin = toFrame!
+                            fromCard?.frame.origin = toFrame! // TODO: Animate to this frame in all if checks below as well
                             
                             self.cardsBtnArray[toIndex] = self.cardsBtnArray[fromIndex]
+                            openIndex = (rowNum: i+1, columnNum: columnNum) // TODO: Set open index below as well and insert card at this frame and then in the cards array as well
                         }
                     }
                     else if(rowNum == 1) {
