@@ -47,7 +47,7 @@ class ContainerView: UIView {
         if(tappedCardRow - 1 == anchorRow || tappedCardRow + 1 == anchorRow) {
             canPerform = true
         }
-        if(tappedCardCol - 1 == anchorCol || tappedCardCol + 1 == anchorCol) {
+        else if(tappedCardCol - 1 == anchorCol || tappedCardCol + 1 == anchorCol) {
             canPerform = true
         }
         return canPerform
@@ -65,6 +65,7 @@ class ContainerView: UIView {
         populateTimeFrames()
         
         cardsBtnArray[0] = CardView(frame: CGRect(x: 0, y: 0, width: 103, height: 136), cardDidPress: cardDidPress)
+        cardsBtnArray[0] = Character(frame: CGRect(x: 0, y: 0, width: 103, height: 136), cardDidPress: cardDidPress)
         cardsBtnArray[1] = CardView(frame: CGRect(x: 103, y: 0, width: 103, height: 136), cardDidPress: cardDidPress)
         cardsBtnArray[2] = CardView(frame: CGRect(x: 206, y: 0, width: 103, height: 136), cardDidPress: cardDidPress)
         cardsBtnArray[3] = CardView(frame: CGRect(x: 0, y: 136, width: 103, height: 136), cardDidPress: cardDidPress)
@@ -76,6 +77,7 @@ class ContainerView: UIView {
         
         for num in 0..<9 {
             cardsBtnArray[num]?.center.x -= screenWidth
+            cardsBtnArray[num]?.position = getPosition(fromIndex: num)
             self.addSubview(cardsBtnArray[num]!)
         }
     }
@@ -88,6 +90,7 @@ class ContainerView: UIView {
         let rect = CGRect(origin: origin!, size: size)
         cardsBtnArray[index] = CardView(frame: rect)
         cardsBtnArray[index]?.center.x -= screenWidth
+        cardsBtnArray[index]?.position = cardPos
         self.addSubview(cardsBtnArray[index]!)
         
         UIView.animate(withDuration: 0.1,
@@ -255,6 +258,4 @@ class ContainerView: UIView {
         }
         return posEnum
     }
-    
-    
 }

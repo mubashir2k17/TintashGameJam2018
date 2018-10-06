@@ -56,7 +56,7 @@
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fgf-Oj-pfU">
                     <rect key="frame" x="0.0" y="0.0" width="103" height="136"/>
                     <connections>
-                        <action selector="cardTapAction:" destination="-1" eventType="touchUpInside" id="yO1-EN-M60"/>
+                        <action selector="cardTapAction:" destination="-1" eventType="touchUpInside" id="dL2-4V-NPI"/>
                     </connections>
                 </button>
             </subviews>
