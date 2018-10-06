@@ -174,10 +174,11 @@ class ContainerView: UIView {
         
         let canPerform = canPerformAction(onCardPosition: card.position)
         if(canPerform) {
+            let cardFrame = card.frame.origin
             card.die(withCompletion: { () in
                 let character = self.characterCard
                 let characterNeedsToMoveTo = self.getCardPositionRelativeToCharacter(cardPos: card.position)
-                character.move(toOrigin: card.frame.origin, completion: { () in
+                character.move(toOrigin: cardFrame, completion: { () in
                     
                     let columnNum = character.position.columnNum
                     let rowNum = character.position.rowNum
@@ -201,7 +202,7 @@ class ContainerView: UIView {
                         }
                         else if(rowNum == 1) {
                             
-                            let diceRoll = Int(arc4random_uniform(1))
+                            let diceRoll = Int(arc4random_uniform(2))
                             let change = diceRoll == 0 ? 1 : -1
                             
                             toPos = (rowNum: rowNum, columnNum: columnNum)
@@ -233,7 +234,7 @@ class ContainerView: UIView {
                             }
                         }
                         if(columnNum == 1) {
-                            let diceRoll = Int(arc4random_uniform(1))
+                            let diceRoll = Int(arc4random_uniform(2))
                             let change = diceRoll == 0 ? 1 : -1
                             
                             toPos = (rowNum: rowNum, columnNum: columnNum)
@@ -248,8 +249,6 @@ class ContainerView: UIView {
                                 toPos = (rowNum: rowNum, columnNum: i)
                                 i -= 1
                                 fromPos = (rowNum: rowNum, columnNum: i)
-                                
-                                
                                 
                                 openIndex = (rowNum: rowNum, columnNum: i)
                             }
