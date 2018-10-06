@@ -90,7 +90,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <state key="normal" title="Button"/>
                     </button>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="sjq-a4-wYB">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="sjq-a4-wYB">
                         <rect key="frame" x="31.5" y="214" width="222" height="193"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="193" id="ThZ-Al-2Cv"/>
@@ -113,6 +113,9 @@
                 <constraint firstAttribute="trailing" secondItem="GVB-Se-bzO" secondAttribute="trailing" id="zLW-rh-d0h"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <connections>
+                <outlet property="imgView" destination="sjq-a4-wYB" id="SUF-ah-5dU"/>
+            </connections>
             <point key="canvasLocation" x="8.5" y="-13.5"/>
         </collectionViewCell>
     </objects>
