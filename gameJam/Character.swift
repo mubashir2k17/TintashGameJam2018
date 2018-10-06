@@ -17,11 +17,15 @@ class Character: CardView {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        super.cardBackgroundImageView.image = animatedImage(asset: "knightIdle", startIndex: 0, endIndex: 6)
+        setupCard()
     }
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+
+    func setupCard() {
+        super.cardBackgroundImageView.image = animatedImage(asset: "knightIdle", startIndex: 0, endIndex: 6)
     }
 
     func addHealth(healthValue : Int) {
