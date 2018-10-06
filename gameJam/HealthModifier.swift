@@ -10,7 +10,7 @@ import UIKit
 
 class HealthModifier: CardView { // Will be used as monster or
 
-    var value : Int = 0
+    
     
     
 }
