@@ -58,15 +58,18 @@ class ContainerView: UIView {
     }
 
     func initializeGrid() {
-        cardsBtnArray[0] = CardView(frame: CGRect(x: 0, y: 0, width: 103, height: 136))
-        cardsBtnArray[1] = CardView(frame: CGRect(x: 103, y: 0, width: 103, height: 136))
-        cardsBtnArray[2] = CardView(frame: CGRect(x: 206, y: 0, width: 103, height: 136))
-        cardsBtnArray[3] = CardView(frame: CGRect(x: 0, y: 136, width: 103, height: 136))
-        cardsBtnArray[4] = CardView(frame: CGRect(x: 103, y: 136, width: 103, height: 136))
-        cardsBtnArray[5] = CardView(frame: CGRect(x: 206, y: 136, width: 103, height: 136))
-        cardsBtnArray[6] = CardView(frame: CGRect(x: 0, y: 272, width: 103, height: 136))
-        cardsBtnArray[7] = CardView(frame: CGRect(x: 103, y: 272, width: 103, height: 136))
-        cardsBtnArray[8] = CardView(frame: CGRect(x: 206, y: 272, width: 103, height: 136))
+        let cardDidPress: ((CardView) -> Void) = { [weak self](card) in
+            self?.cardTapped(card: card)
+        }
+        cardsBtnArray[0] = CardView(frame: CGRect(x: 0, y: 0, width: 103, height: 136), cardDidPress: cardDidPress)
+        cardsBtnArray[1] = CardView(frame: CGRect(x: 103, y: 0, width: 103, height: 136), cardDidPress: cardDidPress)
+        cardsBtnArray[2] = CardView(frame: CGRect(x: 206, y: 0, width: 103, height: 136), cardDidPress: cardDidPress)
+        cardsBtnArray[3] = CardView(frame: CGRect(x: 0, y: 136, width: 103, height: 136), cardDidPress: cardDidPress)
+        cardsBtnArray[4] = CardView(frame: CGRect(x: 103, y: 136, width: 103, height: 136), cardDidPress: cardDidPress)
+        cardsBtnArray[5] = CardView(frame: CGRect(x: 206, y: 136, width: 103, height: 136), cardDidPress: cardDidPress)
+        cardsBtnArray[6] = CardView(frame: CGRect(x: 0, y: 272, width: 103, height: 136), cardDidPress: cardDidPress)
+        cardsBtnArray[7] = CardView(frame: CGRect(x: 103, y: 272, width: 103, height: 136), cardDidPress: cardDidPress)
+        cardsBtnArray[8] = CardView(frame: CGRect(x: 206, y: 272, width: 103, height: 136), cardDidPress: cardDidPress)
         
         for num in 0..<9 {
             cardsBtnArray[num]?.center.x -= screenWidth
@@ -128,7 +131,9 @@ class ContainerView: UIView {
                             
                             let fromCard = self.cardsBtnArray[fromIndex]
                             let toFrame = self.tileFramesArray[toIndex]
-                            fromCard?.frame.origin = toFrame! // TODO: Animate to this frame in all if checks below as well
+                            UIView.animate(withDuration: 1.0, animations: {
+                                fromCard?.frame.origin = toFrame! // TODO: Animate to this frame in all if checks below as well
+                            })
                             
                             self.cardsBtnArray[toIndex] = self.cardsBtnArray[fromIndex]
                             openIndex = (rowNum: i+1, columnNum: columnNum) // TODO: Set open index below as well and insert card at this frame and then in the cards array as well

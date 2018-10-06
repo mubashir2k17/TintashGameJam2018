@@ -15,7 +15,14 @@ class CardView: UIView {
     @IBOutlet weak var armorLabel: UILabel!
     
     var position : (rowNum : Int, columnNum : Int) = (0,0)
-    
+
+    var cardDidPress: ((CardView)->Void)? = nil
+
+    convenience init(frame: CGRect, cardDidPress: ((CardView)->Void)?) {
+        self.init(frame: frame)
+        self.cardDidPress = cardDidPress
+    }
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         commonInit()
@@ -84,6 +91,6 @@ class CardView: UIView {
     }
     
     @IBAction func cardTapAction(_ sender: Any) {
-
+        cardDidPress?(self)
     }
 }
