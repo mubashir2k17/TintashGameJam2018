@@ -124,7 +124,7 @@ class ContainerView: UIView {
         }
     }
     
-    func initializeGrid() {
+    func initializeGrid(player: String) {
         
         let cardDidPress: ((CardView) -> Void) = { [weak self](card) in
             self?.cardTapped(card: card)
@@ -145,7 +145,11 @@ class ContainerView: UIView {
                 card.backgroundImageView.layer.cornerRadius = 4
                 card.backgroundImageView.layer.addGradienBorder(colors: characterCard_borderGradients, width: 6.0)
                 self.characterCard = card
-                card.setupCard(params: character[0])
+                if player == "Knight" {
+                    card.setupCard(params: character[0])
+                } else if player == "WomenWarrior" {
+                    card.setupCard(params: character[5])
+                }
             }
             else {
                 card = CardView(frame: rect, cardDidPress: cardDidPress)

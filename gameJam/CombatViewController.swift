@@ -16,7 +16,7 @@ class CombatViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        gridContainerView.initializeGrid()
+        gridContainerView.initializeGrid(player: player!)
         // Do any additional setup after loading the view.
         mutationProgressBar.animateTo(progress: 0.05, completion: nil)
     }
