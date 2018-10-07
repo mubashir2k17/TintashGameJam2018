@@ -510,6 +510,7 @@ class ContainerView: UIView {
             else if(expiredCard.cardType == .SpikeMutation) {
                 reduceEnemiesHealth(byValue: 1)
                 mutationValue += 5
+                
             }
             
             if(isHidingCards) {
@@ -535,7 +536,21 @@ class ContainerView: UIView {
                 showAlert?(alert)
             }
         }
+        
+        
     }
+    
+    func shake() {
+//        UIView.animate(withDuration: 0.1,
+//                       delay: 0.2,
+//                       options: [.repeat, .autoreverse],
+//                       animations: {
+//                        UIView.setAnimationRepeatCount(2)
+//                        let transform = self.transform
+//                        self.transform = self.transform.rotated(by: 0.05)
+//                        self.transform = transform },completion:nil)
+    }
+    
     
     let otherCards_borderGradients = [
         UIColor(red: 100.0/255.0, green: 45.0/255.0, blue: 31.0/255.0, alpha: 0.4),
@@ -602,8 +617,10 @@ class ContainerView: UIView {
         for i in 0..<9 {
             let card = cardsBtnArray[i]
             if(card?.cardType == .Enemy) {
-                card?.health += value // enemy health is a negative value
-                card?.setHealth()
+                card?.die(withCompletion: {
+                    card?.health += value // enemy health is a negative value
+                    card?.setHealth()                    
+                }, remove: false)
             }
         }
     }
