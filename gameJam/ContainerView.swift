@@ -87,6 +87,7 @@ class ContainerView: UIView {
                       (assetName: "virus", startIndex: 0, endIndex: 0),
                       (assetName: "nuclear", startIndex: 0, endIndex: 0),
                       (assetName: "eyeball", startIndex: 0, endIndex: 0)
+                      (assetName: "spike", startIndex: 0, endIndex: 0)
     ]
     
     func populateTimeFrames() {
