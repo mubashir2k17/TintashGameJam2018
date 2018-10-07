@@ -49,7 +49,7 @@ class ContainerView: UIView {
     var movesDoneForBlind = 0
     
     var goldValue = 0
-    var mutationValue = 10 {
+    var mutationValue = 5 {
         didSet {
             mutationDidChange?(CGFloat(mutationValue/maxMutationValue))
         }

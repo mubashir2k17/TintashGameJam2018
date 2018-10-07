@@ -18,14 +18,14 @@ class CombatViewController: UIViewController {
         super.viewDidLoad()
         gridContainerView.initializeGrid()
         // Do any additional setup after loading the view.
-        mutationProgressBar.animateTo(progress: 0.10, completion: nil)
+        mutationProgressBar.animateTo(progress: 0.05, completion: nil)
     }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         gridContainerView.loadGridWithAnimation(index: 0)
         gridContainerView.mutationDidChange = { [weak self] percentage in
-            self?.mutationProgressBar.animateTo(progress: 0.5)
+            self?.mutationProgressBar.animateTo(progress: percentage)
         }
     }
 
