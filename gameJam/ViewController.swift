@@ -79,7 +79,7 @@ class ViewController: UIViewController {
             player = "Knight"
         }
         combatViewController.player = player
-        Sound.play(file: "soundplaybutton.mp3")
+        Sound.play(file: "006141718_prev.m4a")
         self.present(combatViewController, animated: true, completion: nil)
     }
 }
