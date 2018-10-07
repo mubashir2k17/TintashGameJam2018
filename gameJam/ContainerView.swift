@@ -503,9 +503,13 @@ class ContainerView: UIView {
             card.setupCard(params: character[5]) // TODO: Change images for Blind Mutation
             mutationValue += 5
         }
+        
         card.backgroundImageView.image = #imageLiteral(resourceName: "tile2")
         card.backgroundImageView.layer.cornerRadius = 4
         card.backgroundImageView.layer.addGradienBorder(colors: otherCards_borderGradients, width: 3.0)
+        
+        let flip = arc4random_uniform(UInt32(50))%2 == 0 ? true : false
+        card.flipCardItemImageView(flip: flip)
     }
     
 
