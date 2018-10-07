@@ -9,6 +9,11 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Action_Man_Bold_Italic.ttf">
+            <string>ActionMan-BoldItalic</string>
+        </array>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CombatViewController" customModule="gameJam" customModuleProvider="target">
             <connections>
@@ -21,9 +26,12 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gamePlayBackground" translatesAutoresizingMaskIntoConstraints="NO" id="Lr1-cB-RFj">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                </imageView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ha7-WQ-mG1" userLabel="Hud View">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="50" id="dnu-cf-WCS"/>
                     </constraints>
@@ -35,23 +43,23 @@
                             <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         </imageView>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W88-wc-5fd">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="10" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W88-wc-5fd">
                             <rect key="frame" x="38" y="5" width="72" height="21"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <nil key="textColor"/>
+                            <fontDescription key="fontDescription" name="ActionMan-BoldItalic" family="Action Man" pointSize="28"/>
+                            <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="110" id="N4J-EW-Gwc"/>
                         <constraint firstAttribute="height" constant="30" id="zJU-aj-PaJ"/>
                     </constraints>
                 </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VVs-yb-z1m" userLabel="Grid Container view" customClass="ContainerView" customModule="gameJam" customModuleProvider="target">
+                <view clipsSubviews="YES" contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="VVs-yb-z1m" userLabel="Grid Container view" customClass="ContainerView" customModule="gameJam" customModuleProvider="target">
                     <rect key="frame" x="33" y="129.5" width="309" height="408"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="408" id="EfQ-dy-jKQ"/>
                         <constraint firstAttribute="width" constant="309" id="en3-p0-5pw"/>
@@ -62,14 +70,21 @@
             <constraints>
                 <constraint firstItem="ha7-WQ-mG1" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="6Zc-gp-dly"/>
                 <constraint firstItem="VVs-yb-z1m" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="6so-ve-3Br"/>
+                <constraint firstItem="Lr1-cB-RFj" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="8St-5T-uav"/>
                 <constraint firstItem="ha7-WQ-mG1" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="F0c-SA-5ii"/>
                 <constraint firstItem="VVs-yb-z1m" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Z5Y-pO-9Oa"/>
                 <constraint firstItem="VVs-yb-z1m" firstAttribute="top" secondItem="p3f-sk-yFn" secondAttribute="bottom" constant="18.5" id="bKG-pN-e20"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="Lr1-cB-RFj" secondAttribute="bottom" id="lO8-Qt-BmZ"/>
                 <constraint firstItem="p3f-sk-yFn" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="lwt-Yz-Ncn"/>
+                <constraint firstItem="Lr1-cB-RFj" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="nZf-7l-Z0d"/>
+                <constraint firstItem="Lr1-cB-RFj" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="qDx-Uz-nlm"/>
                 <constraint firstItem="ha7-WQ-mG1" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="y0Y-mB-Zc1"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="24.5" y="51.5"/>
         </view>
     </objects>
+    <resources>
+        <image name="gamePlayBackground" width="640" height="480"/>
+    </resources>
 </document>
