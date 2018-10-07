@@ -355,10 +355,10 @@ class ContainerView: UIView {
         let anchorCol = characterCard.position.columnNum
         let tappedCardRow = cardPos.rowNum
         let tappedCardCol = cardPos.columnNum
-        if(tappedCardRow - 1 == anchorRow || tappedCardRow + 1 == anchorRow) {
+        if((tappedCardRow - 1 == anchorRow || tappedCardRow + 1 == anchorRow) && tappedCardCol == anchorCol) {
             canPerform = true
         }
-        else if(tappedCardCol - 1 == anchorCol || tappedCardCol + 1 == anchorCol) {
+        else if((tappedCardCol - 1 == anchorCol || tappedCardCol + 1 == anchorCol) && tappedCardRow == anchorRow) {
             canPerform = true
         }
         return canPerform
