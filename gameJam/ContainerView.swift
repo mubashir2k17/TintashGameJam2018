@@ -45,7 +45,7 @@ class ContainerView: UIView {
     
     var blindMutationCount = 0
     var maxBlindMutationCount = 1
-    var movesRequiredToUndoBlind = 3
+    var movesRequiredToUndoBlind = 4 // essentially will be 3 since the first step is counted when we get the blindness
     var movesDoneForBlind = 0
     
     var goldValue = 0
@@ -53,6 +53,8 @@ class ContainerView: UIView {
     var maxMutationValue = 100 // TODO: Fill a progress bar above basied on mutationValue and maxMutationValue
     
     var isHidingCards = false
+    
+    var cardCreationCounter = 0
     
     // asset names to Load
     let character = [(assetName: "knightIdle", startIndex: 0, endIndex: 6),
@@ -192,6 +194,25 @@ class ContainerView: UIView {
         card.position = cardPos
         
         var cardType : CardType!
+        if(cardCreationCounter == 0) {
+            cardType = .Enemy
+        }
+        else if(cardCreationCounter == 1) {
+            cardType = .BlindMutation
+        }
+        else if(cardCreationCounter == 2) {
+            cardType = .Potion
+        }
+        else if(cardCreationCounter == 3) {
+            cardType = .Armor
+        }
+        else if(cardCreationCounter == 4) {
+            cardType = .Gold
+        }
+        
+        cardCreationCounter = (cardCreationCounter + 1) % 5
+        
+        /*
         if(currentEnemiesCount < minEnemyCount) {
             cardType = .Enemy
         }
@@ -207,6 +228,7 @@ class ContainerView: UIView {
                 cardType = .Armor
             }
         }
+ */
         setupCard(card: card, cardType: cardType)
         
         card.cardType = cardType
@@ -413,7 +435,16 @@ class ContainerView: UIView {
             }
         }
         else if(expiredCard.cardType == .BlindMutation) {
-            
+            if(!isHidingCards) {
+                hideAllCards()
+            }
+        }
+        
+        if(isHidingCards) {
+            movesDoneForBlind += 1
+            if(movesDoneForBlind == movesRequiredToUndoBlind) {
+                showAllCards()
+            }
         }
         
         if(self.characterCard.health == 0) {
@@ -439,6 +470,9 @@ class ContainerView: UIView {
             card.armor = max(1,min(Int(arc4random_uniform(UInt32(3))), 2)) // should not be higher than 2, at least 1
             card.setupCard(params: character[5]) // TODO: Change images for Armor
         }
+        else if(cardType == .BlindMutation) {
+            card.setupCard(params: character[5]) // TODO: Change images for Blind Mutation
+        }
     }
     
     func getIndex(fromPosition pos : (rowNum : Int, columnNum : Int)) -> Int {
@@ -453,6 +487,7 @@ class ContainerView: UIView {
     
     func hideAllCards() {
         isHidingCards = true
+        movesDoneForBlind = 0
         for i in 0..<9 {
             let card = cardsBtnArray[i]
             if(card != characterCard) {

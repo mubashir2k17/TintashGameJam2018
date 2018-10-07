@@ -116,6 +116,7 @@ class CardView: UIView {
     }
     
     func hideCard() {
+        backgroundImageView.alpha = 1.0
         self.bringSubview(toFront: backgroundImageView)
     }
     
