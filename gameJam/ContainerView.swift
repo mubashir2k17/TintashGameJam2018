@@ -510,6 +510,7 @@ class ContainerView: UIView {
             else if(expiredCard.cardType == .SpikeMutation) {
                 reduceEnemiesHealth(byValue: 1)
                 mutationValue += 5
+                
             }
             
             if(isHidingCards) {
@@ -535,7 +536,21 @@ class ContainerView: UIView {
                 showAlert?(alert)
             }
         }
+        
+        
     }
+    
+    func shake() {
+//        UIView.animate(withDuration: 0.1,
+//                       delay: 0.2,
+//                       options: [.repeat, .autoreverse],
+//                       animations: {
+//                        UIView.setAnimationRepeatCount(2)
+//                        let transform = self.transform
+//                        self.transform = self.transform.rotated(by: 0.05)
+//                        self.transform = transform },completion:nil)
+    }
+    
     
     let otherCards_borderGradients = [
         UIColor(red: 100.0/255.0, green: 45.0/255.0, blue: 31.0/255.0, alpha: 0.4),
@@ -552,6 +567,8 @@ class ContainerView: UIView {
     ]
     
     func setupCard(card : CardView, cardType : CardType) {
+        
+        card.cardType = cardType
         
         if(cardType == .Enemy) {
             card.health = -1 * max(2,min(Int(arc4random_uniform(UInt32(5))), 4)) // should not be higher than 2, at least 1
@@ -571,9 +588,11 @@ class ContainerView: UIView {
             card.armor = max(1,min(Int(arc4random_uniform(UInt32(3))), 2)) // should not be higher than 2, at least 1
             card.setupCard(params: mutations[1], hover: true, insets: UIEdgeInsets(top: -14, left: -14, bottom: -14, right: -14))
         }
-        else if(cardType == .BlindMutation) {
+        else if(cardType == .BlindMutation) { //Eyeball
             card.setupCard(params: mutations[3], hover: true, insets: UIEdgeInsets(top: -8, left: -8, bottom: -8, right: -8))
-            mutationValue += 5
+        }
+        else if(cardType == .SpikeMutation) { //Spike
+            card.setupCard(params: mutations[4], hover: true)
         }
         
         card.backgroundImageView.image = #imageLiteral(resourceName: "tile2")
@@ -598,8 +617,10 @@ class ContainerView: UIView {
         for i in 0..<9 {
             let card = cardsBtnArray[i]
             if(card?.cardType == .Enemy) {
-                card?.health += value // enemy health is a negative value
-                card?.setHealth()
+                card?.die(withCompletion: {
+                    card?.health += value // enemy health is a negative value
+                    card?.setHealth()                    
+                }, remove: false)
             }
         }
     }

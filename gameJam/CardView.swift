@@ -50,31 +50,28 @@ class CardView: UIView {
         }
     }
     
-    func die(withCompletion completion:@escaping() -> Void) {
+    func die(withCompletion completion:@escaping() -> Void, remove: Bool = true) {
         UIView.animate(withDuration: 0.1,
                        delay: 0.2,
                        options: [.repeat, .autoreverse],
                        animations: {
                         UIView.setAnimationRepeatCount(2)
                         let transform = self.transform
-                        self.transform = self.transform.rotated(by: 0.05)
-                        self.transform = transform
-        },
+                        self.transform = self.transform.rotated(by: 0.08)
+                        self.transform = transform },
                        completion: { (true) in
                         UIView.animate(withDuration: 0.3,
                                        delay: 0.0,
                                        options: [.curveEaseInOut],
                                        animations: {
-//                                        let width = self.frame.size.width
-//                                        let heigth = self.frame.size.height
-//                                        let x = self.frame.origin.x
-//                                        let y = self.frame.origin.y
-//                                        self.frame = CGRect(x: x+10, y: y+10, width: width-20, height: heigth-20)
-                                        self.alpha = 0.0
+                                        if (remove) {
+                                            self.alpha = 0.0}
                         },
                                        completion: { (true) in
-                                        self.removeFromSuperview()
-                                        completion()
+                                        if remove {
+                                            self.removeFromSuperview()
+                                        }
+                                            completion()
                         })
         })
     }
@@ -115,7 +112,10 @@ class CardView: UIView {
         }
         
         if(cardType == .Gold) {
-            self.healthLabel.backgroundColor = UIColor(red: 255/255.0, green: 215/255.0, blue: 0, alpha: 1)
+            self.healthLabel.backgroundColor = UIColor(red: 255.0/255.0, green: 212.0/255.0, blue: 121.0/255.0, alpha: 0.75)
+        }
+        if(cardType == .Potion) {
+            self.healthLabel.backgroundColor = UIColor(red: 12.0/255.0, green: 242.0/255.0, blue: 12.0/255.0, alpha: 0.75)
         }
         hoverItemImageView(animate: hover)
     }
