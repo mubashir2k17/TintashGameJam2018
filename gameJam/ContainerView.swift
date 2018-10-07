@@ -64,14 +64,18 @@ class ContainerView: UIView {
     
     // asset names to Load
     let character = [(assetName: "knightIdle", startIndex: 0, endIndex: 6),
-                          (assetName: "robotIdle", startIndex: 0, endIndex: 8),
+                          (assetName: "robotIdle", startIndex: 0, endIndex: 8), //1
                           (assetName: "robotGoldenIdle", startIndex: 0, endIndex: 8),
-                          (assetName: "trolIdle", startIndex: 0, endIndex: 6),
+                          (assetName: "trolIdle", startIndex: 0, endIndex: 6), //3
                           (assetName: "trollGreenIdle", startIndex: 0, endIndex: 9),
-                          (assetName: "womanWarrior", startIndex: 0, endIndex: 4),
+                          (assetName: "womanWarrior", startIndex: 0, endIndex: 4), //5
                           (assetName: "zombieIdle", startIndex: 1, endIndex: 15),
-                          (assetName: "zombieFiemaleIdle", startIndex: 1, endIndex: 15),
-                          (assetName: "zombieHurt", startIndex: 1, endIndex: 5)]
+                          (assetName: "zombieFiemaleIdle", startIndex: 1, endIndex: 15), //7
+                          (assetName: "zombieHurt", startIndex: 1, endIndex: 5),
+                          (assetName: "dna", startIndex: 0, endIndex: 0), //9
+                          (assetName: "virus", startIndex: 0, endIndex: 0),
+                          (assetName: "nuclear", startIndex: 0, endIndex: 0) //11
+    ]
     
     func populateTimeFrames() {
         
@@ -496,17 +500,17 @@ class ContainerView: UIView {
             card.health = -1 * max(2,min(Int(arc4random_uniform(UInt32(5))), 4)) // should not be higher than 2, at least 1
             card.setupCard(params: character[2])
         }
-        else if(cardType == .Potion) {
+        else if(cardType == .Potion) { //nuclear
             card.health = max(1,min(Int(arc4random_uniform(UInt32(3))), 2))
-            card.setupCard(params: character[3]) // TODO: Change images for potion
+            card.setupCard(params: character[11], hover: true, insets: UIEdgeInsets(top: -4, left: -4, bottom: -4, right: -4))
         }
-        else if(cardType == .Gold) {
+        else if(cardType == .Gold) { //dna
             card.health = max(5,min(Int(arc4random_uniform(UInt32(20))), 2))
-            card.setupCard(params: character[4]) // TODO: Change images for Gold
+            card.setupCard(params: character[9], hover: true)
         }
-        else if(cardType == .Armor) {
+        else if(cardType == .Armor) { //virus
             card.armor = max(1,min(Int(arc4random_uniform(UInt32(3))), 2)) // should not be higher than 2, at least 1
-            card.setupCard(params: character[5]) // TODO: Change images for Armor
+            card.setupCard(params: character[10], hover: true, insets: UIEdgeInsets(top: -14, left: -14, bottom: -14, right: -14))
         }
         else if(cardType == .BlindMutation) {
             card.setupCard(params: character[5]) // TODO: Change images for Blind Mutation
