@@ -47,9 +47,13 @@ class ContainerView: UIView {
     var maxBlindMutationCount = 1
     var movesRequiredToUndoBlind = 4 // essentially will be 3 since the first step is counted when we get the blindness
     var movesDoneForBlind = 0
+
     var isBlindnessSpawned = false
-    
-    var goldValue = 0
+    var goldValue = 0 {
+        didSet {
+            goldValueUpdated?()
+        }
+    }
     var mutationValue = 5 {
         didSet {
             mutationDidChange?(CGFloat(mutationValue/maxMutationValue))
@@ -59,6 +63,11 @@ class ContainerView: UIView {
     
     var isHidingCards = false
     var mutationDidChange: ((CGFloat)->())? = nil
+    
+    var dismissVC: (()->())? = nil
+    var showAlert: ((UIAlertController)->())? = nil
+    var goldValueUpdated: (()->())? = nil
+    
     var cardCreationCounter = 0
     
     // asset names to Load
@@ -469,14 +478,16 @@ class ContainerView: UIView {
                 }
             }
             
-            if(character.currentHealth == 0) {
-
-                let alert = UIAlertController(title: "Game Over :(", message: "you are a looser. you suck at playing! 👎🏻. you managed to get \(goldValue) mutations that you can take home.", preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "back to home", style: .cancel, handler: { (_) in
+            if(character.currentHealth <= 0) {
+                let alert = UIAlertController(title: "Game Over :(", message: "👎🏻 you managed to get \(goldValue) mutations that you can take home.", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "back to home", style: .cancel, handler: { [weak self] (_) in
                     let defaults = UserDefaults.standard
                     let gold = defaults.integer(forKey: "gold")
-                    defaults.set(gold + self.goldValue, forKey: "gold")
+                    defaults.set(gold + (self?.goldValue ?? 0), forKey: "gold")
+                    alert.dismiss(animated: true, completion: nil)
+                    self?.dismissVC?()
                 }))
+                showAlert?(alert)
             }
         }
     }
