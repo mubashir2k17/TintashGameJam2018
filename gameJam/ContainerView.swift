@@ -550,8 +550,6 @@ class ContainerView: UIView {
         card.flipCardItemImageView(flip: flip)
     }
     
-
-    
     func getIndex(fromPosition pos : (rowNum : Int, columnNum : Int)) -> Int {
         return pos.rowNum * 3 + pos.columnNum
     }
@@ -560,6 +558,16 @@ class ContainerView: UIView {
         let row : Int = index / 3
         let col : Int = index % 3
         return (row, col)
+    }
+    
+    func reduceEnemiesHealth(byValue value : Int) {
+        for i in 0..<9 {
+            let card = cardsBtnArray[i]
+            if(card?.cardType == .Enemy) {
+                card?.health += value // enemy health is a negative value
+                card?.setHealth()
+            }
+        }
     }
     
     func hideAllCards() {

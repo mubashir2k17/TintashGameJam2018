@@ -118,7 +118,10 @@ class CardView: UIView {
         if(cardType == .Gold) {
             self.healthLabel.backgroundColor = UIColor(red: 255/255.0, green: 215/255.0, blue: 0, alpha: 1)
         }
-        
+    }
+    
+    func setHealth() {
+        self.healthLabel.text = String(abs(health))
     }
     
     func hideCard() {
