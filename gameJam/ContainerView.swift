@@ -483,6 +483,7 @@ class ContainerView: UIView {
             mutationValue += 5
         }
         card.backgroundImageView.image = #imageLiteral(resourceName: "tile2")
+        card.backgroundImageView.layer.addGradienBorder(colors: [UIColor.red, UIColor.yellow, UIColor.green], width: 1.0)
     }
     
     func getIndex(fromPosition pos : (rowNum : Int, columnNum : Int)) -> Int {

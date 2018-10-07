@@ -55,3 +55,23 @@ extension UIView {
         }
     }
 }
+
+extension CALayer {
+    func addGradienBorder(colors:[UIColor],width:CGFloat = 1) {
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.frame =  CGRect(origin: CGPointZero, size: self.bounds.size)
+        gradientLayer.startPoint = CGPointMake(0.0, 0.5)
+        gradientLayer.endPoint = CGPointMake(1.0, 0.5)
+        gradientLayer.colors = colors.map({$0.CGColor})
+        
+        let shapeLayer = CAShapeLayer()
+        shapeLayer.lineWidth = width
+        shapeLayer.path = UIBezierPath(rect: self.bounds).CGPath
+        shapeLayer.fillColor = nil
+        shapeLayer.strokeColor = UIColor.blackColor().CGColor
+        gradientLayer.mask = shapeLayer
+        
+        self.addSublayer(gradientLayer)
+    }
+    
+}
