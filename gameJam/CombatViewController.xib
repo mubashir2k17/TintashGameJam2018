@@ -70,12 +70,25 @@
                                 </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
                         </view>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ahE-sE-gUt">
+                            <rect key="frame" x="324" y="16" width="35" height="35"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="35" id="7fj-K5-mOn"/>
+                                <constraint firstAttribute="height" constant="35" id="qCm-il-Umm"/>
+                            </constraints>
+                            <state key="normal" image="Button_home"/>
+                            <connections>
+                                <action selector="homeButtonPressed:" destination="-1" eventType="touchUpInside" id="3MB-1L-Kgx"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="50" id="dnu-cf-WCS"/>
                         <constraint firstItem="CgT-JC-OCL" firstAttribute="centerX" secondItem="ha7-WQ-mG1" secondAttribute="centerX" constant="-18" id="iTg-c7-Yjr"/>
+                        <constraint firstItem="ahE-sE-gUt" firstAttribute="top" secondItem="ha7-WQ-mG1" secondAttribute="top" constant="16" id="reV-2I-oLy"/>
                         <constraint firstItem="CgT-JC-OCL" firstAttribute="centerY" secondItem="ha7-WQ-mG1" secondAttribute="centerY" constant="8" id="xFS-K5-V6H"/>
+                        <constraint firstAttribute="trailing" secondItem="ahE-sE-gUt" secondAttribute="trailing" constant="16" id="yJI-fk-Lhn"/>
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p3f-sk-yFn" userLabel="Boss Counter View">
@@ -127,6 +140,7 @@
         </view>
     </objects>
     <resources>
+        <image name="Button_home" width="151" height="152"/>
         <image name="gamePlayBackground" width="640" height="480"/>
     </resources>
 </document>

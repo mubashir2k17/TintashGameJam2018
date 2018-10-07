@@ -18,7 +18,7 @@ class CombatViewController: UIViewController {
         super.viewDidLoad()
         gridContainerView.initializeGrid()
         // Do any additional setup after loading the view.
-        mutationProgressBar.animateTo(progress: 0.0, completion: nil)
+        mutationProgressBar.animateTo(progress: 0.10, completion: nil)
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -28,4 +28,9 @@ class CombatViewController: UIViewController {
             self?.mutationProgressBar.animateTo(progress: 0.5)
         }
     }
+
+    @IBAction func homeButtonPressed(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+
 }
