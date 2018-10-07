@@ -47,13 +47,13 @@ class ContainerView: UIView {
     var maxBlindMutationCount = 1
     var movesRequiredToUndoBlind = 4 // essentially will be 3 since the first step is counted when we get the blindness
     var movesDoneForBlind = 0
-    
+
     var goldValue = 0 {
         didSet {
             goldValueUpdated?()
         }
     }
-    var mutationValue = 10 {
+    var mutationValue = 5 {
         didSet {
             mutationDidChange?(CGFloat(mutationValue/maxMutationValue))
         }
@@ -436,11 +436,16 @@ class ContainerView: UIView {
     func updateCounts(expiredCard: CardView) {
         
         if(expiredCard.cardType == .Enemy || expiredCard.cardType == .Gold) {
-            goldValue += expiredCard.health
+            
+            goldValue += abs(expiredCard.health)
             if(expiredCard.cardType == .Enemy) {
                 currentEnemiesCount -= 1
                 if let character = characterCard as? Character {
-                    character.addHealth(healthValue: expiredCard.health)
+                    var enemyHp = expiredCard.health
+                    if(character.armor > 0) {
+                        enemyHp = character.addArmor(armorValue: enemyHp)
+                    }
+                    character.addHealth(healthValue: enemyHp)
                 }
             }
             mutationValue += 2 * abs(expiredCard.health)
@@ -521,9 +526,13 @@ class ContainerView: UIView {
             card.setupCard(params: character[5]) // TODO: Change images for Blind Mutation
             mutationValue += 5
         }
+        
         card.backgroundImageView.image = #imageLiteral(resourceName: "tile2")
         card.backgroundImageView.layer.cornerRadius = 4
         card.backgroundImageView.layer.addGradienBorder(colors: otherCards_borderGradients, width: 3.0)
+        
+        let flip = arc4random_uniform(UInt32(50))%2 == 0 ? true : false
+        card.flipCardItemImageView(flip: flip)
     }
     
 

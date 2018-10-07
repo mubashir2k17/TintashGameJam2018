@@ -46,6 +46,7 @@ class CardView: UIView {
             viewToUse.frame = self.bounds
             viewToUse.autoresizingMask = [.flexibleHeight, .flexibleWidth]
             backgroundImageView.clipsToBounds = true
+            cardItemImageView.contentMode = .scaleAspectFit
         }
     }
     
@@ -136,5 +137,9 @@ class CardView: UIView {
         cardItemImageView.isHidden = cardItemImageViewHiddenValue
         armorLabel.isHidden = healthLblHiddenValue
         healthLabel.isHidden = armorLblHiddenValue
+    }
+    
+    func flipCardItemImageView(flip: Bool) {
+        cardItemImageView.transform = flip ? CGAffineTransform(scaleX: -1, y: 1) : .identity
     }
 }

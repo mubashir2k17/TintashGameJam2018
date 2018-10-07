@@ -32,16 +32,16 @@
                     <rect key="frame" x="5" y="5" width="93" height="126"/>
                 </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="01y-69-umT">
-                    <rect key="frame" x="21" y="28" width="60" height="80"/>
+                    <rect key="frame" x="6" y="28" width="90" height="80"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="80" id="EVR-NE-VHt"/>
-                        <constraint firstAttribute="width" constant="60" id="h7x-Zg-k2h"/>
+                        <constraint firstAttribute="width" constant="90" id="h7x-Zg-k2h"/>
                     </constraints>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oya-5W-4uD">
                     <rect key="frame" x="78" y="5" width="20" height="20"/>
-                    <color key="backgroundColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="backgroundColor" red="1" green="0.14913141730000001" blue="0.0" alpha="0.69986087328767121" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="20" id="JjW-g0-4bK"/>
                         <constraint firstAttribute="width" constant="20" id="TVO-Vm-gpA"/>
@@ -52,7 +52,7 @@
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V3w-kA-1IL">
                     <rect key="frame" x="5" y="5" width="20" height="20"/>
-                    <color key="backgroundColor" red="0.0" green="0.97680455450000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="backgroundColor" red="0.0" green="0.97680455450000003" blue="0.0" alpha="0.69852311643835618" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="20" id="HmP-et-I1v"/>
                         <constraint firstAttribute="width" constant="20" id="Vi0-Zb-l1A"/>
