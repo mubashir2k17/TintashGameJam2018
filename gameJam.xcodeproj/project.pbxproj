@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		26A911D92168C894002B1C1A /* CardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26A911D82168C894002B1C1A /* CardView.xib */; };
+		3E05B397216A27AE000B6ABA /* jack_in_the_box-Mike_Koenig.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3E05B396216A27AE000B6ABA /* jack_in_the_box-Mike_Koenig.mp3 */; };
 		3E1043D92168A6B30081B426 /* CombatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E1043D72168A6B30081B426 /* CombatViewController.swift */; };
 		3E1043DA2168A6B30081B426 /* CombatViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E1043D82168A6B30081B426 /* CombatViewController.xib */; };
 		3E677FF12168AD40000C676E /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E677FF02168AD40000C676E /* CardView.swift */; };
@@ -40,6 +41,7 @@
 
 /* Begin PBXFileReference section */
 		26A911D82168C894002B1C1A /* CardView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardView.xib; sourceTree = "<group>"; };
+		3E05B396216A27AE000B6ABA /* jack_in_the_box-Mike_Koenig.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "jack_in_the_box-Mike_Koenig.mp3"; sourceTree = "<group>"; };
 		3E1043D72168A6B30081B426 /* CombatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombatViewController.swift; sourceTree = "<group>"; };
 		3E1043D82168A6B30081B426 /* CombatViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CombatViewController.xib; sourceTree = "<group>"; };
 		3E677FF02168AD40000C676E /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
@@ -97,6 +99,7 @@
 		4A557C65216A0B790034F3FC /* sounds */ = {
 			isa = PBXGroup;
 			children = (
+				3E05B396216A27AE000B6ABA /* jack_in_the_box-Mike_Koenig.mp3 */,
 				4A557C68216A1D2F0034F3FC /* 006141718_prev.m4a */,
 				4A557C66216A0D190034F3FC /* soundplaybutton.mp3 */,
 			);
@@ -243,6 +246,7 @@
 				4A557C69216A1D2F0034F3FC /* 006141718_prev.m4a in Resources */,
 				3E1043DA2168A6B30081B426 /* CombatViewController.xib in Resources */,
 				4A8335B921689FFA0053BBE8 /* Action_Man_Extended.ttf in Resources */,
+				3E05B397216A27AE000B6ABA /* jack_in_the_box-Mike_Koenig.mp3 in Resources */,
 				4A8335B821689FFA0053BBE8 /* Action_Man_Extended_Bold.ttf in Resources */,
 				4A8335992167A2B10053BBE8 /* Main.storyboard in Resources */,
 				4A8335BA21689FFA0053BBE8 /* Action_Man.ttf in Resources */,

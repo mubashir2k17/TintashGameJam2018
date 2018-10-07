@@ -530,6 +530,7 @@ class ContainerView: UIView {
                     alert.dismiss(animated: true, completion: nil)
                     self?.dismissVC?()
                 }))
+                Sound.stopAll()
                 let notification = UINotificationFeedbackGenerator()
                 notification.notificationOccurred(.error)
                 Sound.play(file: "soundplaybutton.mp3")

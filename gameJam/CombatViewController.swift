@@ -8,6 +8,7 @@
 
 import UIKit
 import GTProgressBar
+import SwiftySound
 
 class CombatViewController: UIViewController {
     var player: String?
@@ -24,6 +25,10 @@ class CombatViewController: UIViewController {
         gridContainerView.initializeGrid(player: player!)
         // Do any additional setup after loading the view.
         mutationProgressBar.animateTo(progress: 0.05, completion: nil)
+        
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 3) {
+            Sound.play(file: "jack_in_the_box-Mike_Koenig", fileExtension: "mp3", numberOfLoops: 3000)
+        }
     }
 
     override func viewDidAppear(_ animated: Bool) {
