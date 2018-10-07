@@ -218,24 +218,25 @@ class ContainerView: UIView {
         card.position = cardPos
         
         var cardType : CardType!
-//        if(cardCreationCounter == 0) {
-//            cardType = .Enemy
-//        }
-//        else if(cardCreationCounter == 1) {
-//            cardType = .BlindMutation
-//        }
-//        else if(cardCreationCounter == 2) {
-//            cardType = .Potion
-//        }
-//        else if(cardCreationCounter == 3) {
-//            cardType = .Armor
-//        }
-//        else if(cardCreationCounter == 4) {
-//            cardType = .Gold
-//        }
-//
-//        cardCreationCounter = (cardCreationCounter + 1) % 5
+        if(cardCreationCounter == 0) {
+            cardType = .Enemy
+        }
+        else if(cardCreationCounter == 1) {
+            cardType = .BlindMutation
+        }
+        else if(cardCreationCounter == 2) {
+            cardType = .Potion
+        }
+        else if(cardCreationCounter == 3) {
+            cardType = .Armor
+        }
+        else if(cardCreationCounter == 4) {
+            cardType = .Gold
+        }
+
+        cardCreationCounter = (cardCreationCounter + 1) % 5
         
+        /*
         cardType = .Enemy
         if(currentEnemiesCount < minEnemyCount) {
             cardType = .Enemy
@@ -258,6 +259,7 @@ class ContainerView: UIView {
                 }
             }
         }
+         */
  
         setupCard(card: card, cardType: cardType)
         
