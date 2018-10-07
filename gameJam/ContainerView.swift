@@ -285,6 +285,8 @@ class ContainerView: UIView {
         
         let canPerform = canPerformAction(onCardPosition: card.position)
         if(canPerform) {
+            let notification = UINotificationFeedbackGenerator()
+            notification.notificationOccurred(.success)
             let cardFrame = card.frame.origin
             let tappedCardPosition = card.position
             let tappedCardIndex = getIndex(fromPosition: tappedCardPosition)
@@ -380,6 +382,10 @@ class ContainerView: UIView {
                     self.characterCard.position = tappedCardPosition
                 })
             })
+        }
+        else {
+            let notification = UINotificationFeedbackGenerator()
+            notification.notificationOccurred(.warning)
         }
     }
     
@@ -486,6 +492,8 @@ class ContainerView: UIView {
                 alert.dismiss(animated: true, completion: nil)
                 self?.dismissVC?()
             }))
+            let notification = UINotificationFeedbackGenerator()
+            notification.notificationOccurred(.error)
             showAlert?(alert)
         }
     }
