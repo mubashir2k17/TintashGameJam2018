@@ -423,11 +423,13 @@ class ContainerView: UIView {
                     character.addHealth(healthValue: expiredCard.health)
                 }
             }
+            mutationValue += 2 * abs(expiredCard.health)
         }
         else if(expiredCard.cardType == .Potion) {
             if let character = characterCard as? Character {
                 character.addHealth(healthValue: expiredCard.health)
             }
+            mutationValue += -1 * expiredCard.health
         }
         else if(expiredCard.cardType == .Armor) {
             if let character = characterCard as? Character {
@@ -472,6 +474,7 @@ class ContainerView: UIView {
         }
         else if(cardType == .BlindMutation) {
             card.setupCard(params: character[5]) // TODO: Change images for Blind Mutation
+            mutationValue += 5
         }
     }
     
