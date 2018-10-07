@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftySound
 
 enum RelativePositionToCharacter { // Used to give position of a card relative to the position of our character e.g. if Right, then the position of the card in question is on the right column of the character
     case Right
@@ -317,6 +318,7 @@ class ContainerView: UIView {
         
         let canPerform = canPerformAction(onCardPosition: card.position)
         if(canPerform) {
+            self.window?.isUserInteractionEnabled = false
             let notification = UINotificationFeedbackGenerator()
             notification.notificationOccurred(.success)
             let cardFrame = card.frame.origin
@@ -332,6 +334,8 @@ class ContainerView: UIView {
                 let character = self.characterCard
                 let characterNeedsToMoveTo = self.getCardPositionRelativeToCharacter(cardPos: card.position)
                 character.move(toOrigin: cardFrame, completion: { () in
+                    
+                    self.window?.isUserInteractionEnabled = true
                     
                     let columnNum = character.position.columnNum
                     let rowNum = character.position.rowNum
@@ -501,6 +505,11 @@ class ContainerView: UIView {
                 if(!isHidingCards) {
                     hideAllCards()
                 }
+                mutationValue += 8
+            }
+            else if(expiredCard.cardType == .SpikeMutation) {
+                reduceEnemiesHealth(byValue: 1)
+                mutationValue += 5
             }
             
             if(isHidingCards) {
@@ -522,6 +531,7 @@ class ContainerView: UIView {
                 }))
                 let notification = UINotificationFeedbackGenerator()
                 notification.notificationOccurred(.error)
+                Sound.play(file: "soundplaybutton.mp3")
                 showAlert?(alert)
             }
         }
