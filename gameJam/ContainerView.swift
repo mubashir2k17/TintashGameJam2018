@@ -292,6 +292,8 @@ class ContainerView: UIView {
         
         let canPerform = canPerformAction(onCardPosition: card.position)
         if(canPerform) {
+            let notification = UINotificationFeedbackGenerator()
+            notification.notificationOccurred(.success)
             let cardFrame = card.frame.origin
             let tappedCardPosition = card.position
             let tappedCardIndex = getIndex(fromPosition: tappedCardPosition)
@@ -388,6 +390,10 @@ class ContainerView: UIView {
                 })
             })
         }
+        else {
+            let notification = UINotificationFeedbackGenerator()
+            notification.notificationOccurred(.warning)
+        }
     }
     
     func doStuff(toPos : (rowNum : Int, columnNum : Int), fromPos : (rowNum : Int, columnNum : Int)) { // Moves cards around the screen, in the grid array, updates the frames as well
@@ -479,6 +485,7 @@ class ContainerView: UIView {
             }
             
             if(character.currentHealth <= 0) {
+
                 let alert = UIAlertController(title: "Game Over :(", message: "👎🏻 you managed to get \(goldValue) mutations that you can take home.", preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "back to home", style: .cancel, handler: { [weak self] (_) in
                     let defaults = UserDefaults.standard
@@ -487,6 +494,8 @@ class ContainerView: UIView {
                     alert.dismiss(animated: true, completion: nil)
                     self?.dismissVC?()
                 }))
+                let notification = UINotificationFeedbackGenerator()
+                notification.notificationOccurred(.error)
                 showAlert?(alert)
             }
         }
