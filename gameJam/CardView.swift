@@ -20,6 +20,10 @@ class CardView: UIView {
     var armor = 0
     var cardType : CardType = .Enemy
     var cardDidPress: ((CardView)->Void)? = nil
+    
+    var cardItemImageViewHiddenValue = false
+    var healthLblHiddenValue = false
+    var armorLblHiddenValue = false
 
     convenience init(frame: CGRect, cardDidPress: ((CardView)->Void)?) {
         self.init(frame: frame)
@@ -116,11 +120,20 @@ class CardView: UIView {
     }
     
     func hideCard() {
-        backgroundImageView.alpha = 1.0
-        self.bringSubview(toFront: backgroundImageView)
+        
+        cardItemImageViewHiddenValue = cardItemImageView.isHidden
+        healthLblHiddenValue = armorLabel.isHidden
+        armorLblHiddenValue = healthLabel.isHidden
+        
+        cardItemImageView.isHidden = true
+        armorLabel.isHidden = true
+        healthLabel.isHidden = true
     }
     
     func showCard() {
-        self.sendSubview(toBack: backgroundImageView)
+
+        cardItemImageView.isHidden = cardItemImageViewHiddenValue
+        armorLabel.isHidden = healthLblHiddenValue
+        healthLabel.isHidden = armorLblHiddenValue
     }
 }

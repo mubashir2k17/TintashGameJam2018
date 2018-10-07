@@ -35,7 +35,7 @@ class ViewController: UIViewController {
     }
 }
 
-extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 6
     }
@@ -46,6 +46,10 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
             return cell
         }
         return CharaterCollectionViewCell()
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+            return CGSize(width: UIScreen.main.bounds.width - 90.0, height: 459.0)
     }
 
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {

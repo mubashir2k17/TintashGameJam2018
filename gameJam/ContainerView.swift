@@ -238,6 +238,9 @@ class ContainerView: UIView {
         setupCard(card: card, cardType: cardType)
         
         card.cardType = cardType
+        if(isHidingCards) {
+            card.hideCard()
+        }
         self.addSubview(card)
         
         UIView.animate(withDuration: 0.3,
@@ -276,7 +279,9 @@ class ContainerView: UIView {
             let cardFrame = card.frame.origin
             let tappedCardPosition = card.position
             let tappedCardIndex = getIndex(fromPosition: tappedCardPosition)
-            
+            if(isHidingCards) {
+                card.showCard()
+            }
             card.die(withCompletion: { () in
                 
                 self.updateCounts(expiredCard: card)
@@ -483,6 +488,8 @@ class ContainerView: UIView {
             mutationValue += 5
         }
         card.backgroundImageView.image = #imageLiteral(resourceName: "tile2")
+        card.backgroundImageView.layer.cornerRadius = 12
+        card.backgroundImageView.layer.addGradienBorder(colors: [UIColor.red, UIColor.yellow, UIColor.green], width: 8.0, radius: 12)
     }
     
     func getIndex(fromPosition pos : (rowNum : Int, columnNum : Int)) -> Int {
@@ -508,6 +515,7 @@ class ContainerView: UIView {
     
     func showAllCards() {
         isHidingCards = false
+        movesDoneForBlind = 0
         for i in 0..<9 {
             let card = cardsBtnArray[i]
             if(card != characterCard) {
