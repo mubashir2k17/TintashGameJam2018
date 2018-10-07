@@ -29,8 +29,24 @@ class CharaterCollectionViewCell: UICollectionViewCell {
         //imgView.image = animatedImage(asset: "robotIdle", startIndex: 0, endIndex: 8)
         //imgView.image = animatedImage(asset: "robotGoldenIdle", startIndex: 0, endIndex: 8)
         //mgView.image = animatedImage(asset: "trollGreenIdle", startIndex: 0, endIndex: 9, duration: 1)
-        imgView.image = animatedImage(asset: "trolIdle", startIndex: 0, endIndex: 6, duration: 0.7)
+        //imgView.image = animatedImage(asset: "trolIdle", startIndex: 0, endIndex: 6, duration: 0.7)
 
+    }
+    
+    func setPlayer1() {
+        playerNameLbl.text = "WomanWarrior"
+        playerDiscriptionLbl.text = "Was it your dream?. Yes, your last. This murderous cold blooded beauty leaves no witnesses.".uppercased()
+        powerDiscriptionLbl.text = "🛢 Hits 2 targets".uppercased()
+        powerDiscription2lbl.text = "⏳ Does not die if enemy has the same up".uppercased()
+        imgView.image = animatedImage(asset: "womanWarrior", startIndex: 0, endIndex: 4)
+    }
+    
+    func setPlayer2() {
+        playerNameLbl.text = "Knight"
+        playerDiscriptionLbl.text = "He has got unbreakable faith, but not so breakable shield".uppercased()
+        powerDiscriptionLbl.text = "🛢 15% to block any damage".uppercased()
+        powerDiscription2lbl.text = "⏳ Armor gives you extra 1 +".uppercased()
+        imgView.image = animatedImage(asset: "knightIdle", startIndex: 0, endIndex: 6)
     }
 }
 

@@ -13,10 +13,14 @@
         <array key="Action_Man_Bold_Italic.ttf">
             <string>ActionMan-BoldItalic</string>
         </array>
+        <array key="Action_Man_Extended_Bold.ttf">
+            <string>ActionManExtended-Bold</string>
+        </array>
     </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CombatViewController" customModule="gameJam" customModuleProvider="target">
             <connections>
+                <outlet property="goldLbl" destination="eKa-xV-irW" id="aD6-i2-09w"/>
                 <outlet property="gridContainerView" destination="VVs-yb-z1m" id="WGt-W5-ID7"/>
                 <outlet property="mutationProgressBar" destination="CgT-JC-OCL" id="WDV-mR-ng3"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -91,6 +95,13 @@
                         <constraint firstAttribute="trailing" secondItem="ahE-sE-gUt" secondAttribute="trailing" constant="16" id="yJI-fk-Lhn"/>
                     </constraints>
                 </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="__" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eKa-xV-irW">
+                    <rect key="frame" x="10" y="10" width="72" height="28"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" name="ActionManExtended-Bold" family="Action Man Extended" pointSize="32"/>
+                    <color key="textColor" red="1" green="0.83234566450000003" blue="0.47320586440000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p3f-sk-yFn" userLabel="Boss Counter View">
                     <rect key="frame" x="132" y="81" width="110" height="30"/>
                     <subviews>

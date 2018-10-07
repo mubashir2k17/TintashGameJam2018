@@ -117,6 +117,8 @@
                     <connections>
                         <outlet property="characterCollectionView" destination="ffS-7q-k4b" id="9wp-M8-Xil"/>
                         <outlet property="goldLbl" destination="XaQ-5a-4ve" id="gm5-xq-oZU"/>
+                        <outlet property="leftButton" destination="PH5-jr-EJi" id="Qf7-DK-yS5"/>
+                        <outlet property="rightButton" destination="qPI-RX-SxM" id="J42-9J-hew"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
