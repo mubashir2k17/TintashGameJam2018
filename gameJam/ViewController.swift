@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftySound
 
 class ViewController: UIViewController {
 
@@ -75,7 +76,7 @@ class ViewController: UIViewController {
             player = "Knight"
         }
         combatViewController.player = player
-
+        Sound.play(file: "soundplaybutton.mp3")
         self.present(combatViewController, animated: true, completion: nil)
     }
 }
