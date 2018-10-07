@@ -115,7 +115,7 @@ class CardView: UIView {
         }
         
         if(cardType == .Gold) {
-            self.healthLabel.backgroundColor = UIColor(red: 255/255.0, green: 215/255.0, blue: 0, alpha: 1)
+            self.healthLabel.backgroundColor = UIColor(red: 255.0/255.0, green: 212.0/255.0, blue: 121.0/255.0, alpha: 0.75)
         }
         hoverItemImageView(animate: hover)
     }

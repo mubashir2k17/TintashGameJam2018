@@ -87,7 +87,7 @@ class ContainerView: UIView {
     let mutations = [ (assetName: "dna", startIndex: 0, endIndex: 0),
                       (assetName: "virus", startIndex: 0, endIndex: 0),
                       (assetName: "nuclear", startIndex: 0, endIndex: 0),
-                      (assetName: "eyeball", startIndex: 0, endIndex: 0)
+                      (assetName: "eyeball", startIndex: 0, endIndex: 0),
                       (assetName: "spike", startIndex: 0, endIndex: 0)
     ]
     
@@ -543,6 +543,8 @@ class ContainerView: UIView {
     
     func setupCard(card : CardView, cardType : CardType) {
         
+        card.cardType = cardType
+        
         if(cardType == .Enemy) {
             card.health = -1 * max(2,min(Int(arc4random_uniform(UInt32(5))), 4)) // should not be higher than 2, at least 1
             let total = self.enemies.count - 1
@@ -561,9 +563,11 @@ class ContainerView: UIView {
             card.armor = max(1,min(Int(arc4random_uniform(UInt32(3))), 2)) // should not be higher than 2, at least 1
             card.setupCard(params: mutations[1], hover: true, insets: UIEdgeInsets(top: -14, left: -14, bottom: -14, right: -14))
         }
-        else if(cardType == .BlindMutation) {
+        else if(cardType == .BlindMutation) { //Eyeball
             card.setupCard(params: mutations[3], hover: true, insets: UIEdgeInsets(top: -8, left: -8, bottom: -8, right: -8))
-            mutationValue += 5
+        }
+        else if(cardType == .SpikeMutation) { //Spike
+            card.setupCard(params: mutations[4], hover: true)
         }
         
         card.backgroundImageView.image = #imageLiteral(resourceName: "tile2")
