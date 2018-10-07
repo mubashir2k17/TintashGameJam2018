@@ -482,6 +482,7 @@ class ContainerView: UIView {
             card.setupCard(params: character[5]) // TODO: Change images for Blind Mutation
             mutationValue += 5
         }
+        card.backgroundImageView.image = #imageLiteral(resourceName: "tile2")
     }
     
     func getIndex(fromPosition pos : (rowNum : Int, columnNum : Int)) -> Int {
