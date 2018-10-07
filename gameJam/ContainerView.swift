@@ -71,18 +71,22 @@ class ContainerView: UIView {
     var cardCreationCounter = 0
     
     // asset names to Load
-    let character = [(assetName: "knightIdle", startIndex: 0, endIndex: 6),
-                          (assetName: "robotIdle", startIndex: 0, endIndex: 8), //1
-                          (assetName: "robotGoldenIdle", startIndex: 0, endIndex: 8),
-                          (assetName: "trolIdle", startIndex: 0, endIndex: 6), //3
-                          (assetName: "trollGreenIdle", startIndex: 0, endIndex: 9),
-                          (assetName: "womanWarrior", startIndex: 0, endIndex: 4), //5
-                          (assetName: "zombieIdle", startIndex: 1, endIndex: 15),
-                          (assetName: "zombieFiemaleIdle", startIndex: 1, endIndex: 15), //7
-                          (assetName: "zombieHurt", startIndex: 1, endIndex: 5),
-                          (assetName: "dna", startIndex: 0, endIndex: 0), //9
-                          (assetName: "virus", startIndex: 0, endIndex: 0),
-                          (assetName: "nuclear", startIndex: 0, endIndex: 0) //11
+    let mainCharacters = [(assetName: "womanWarrior", startIndex: 0, endIndex: 4),
+                        (assetName: "knightIdle", startIndex: 0, endIndex: 6)
+    ]
+    
+    let enemies = [ (assetName: "robotIdle", startIndex: 0, endIndex: 8),
+                    (assetName: "robotGoldenIdle", startIndex: 0, endIndex: 8),
+                    (assetName: "trolIdle", startIndex: 0, endIndex: 6),
+                    (assetName: "trollGreenIdle", startIndex: 0, endIndex: 9),
+                    (assetName: "zombieIdle", startIndex: 1, endIndex: 15),
+                    (assetName: "zombieFiemaleIdle", startIndex: 1, endIndex: 15),
+                    (assetName: "zombieHurt", startIndex: 1, endIndex: 5)
+    ]
+    let mutations = [ (assetName: "dna", startIndex: 0, endIndex: 0),
+                      (assetName: "virus", startIndex: 0, endIndex: 0),
+                      (assetName: "nuclear", startIndex: 0, endIndex: 0),
+                      (assetName: "eyeball", startIndex: 0, endIndex: 0)
     ]
     
     func populateTimeFrames() {
@@ -158,9 +162,9 @@ class ContainerView: UIView {
                 card.backgroundImageView.layer.addGradienBorder(colors: characterCard_borderGradients, width: 6.0)
                 self.characterCard = card
                 if player == "Knight" {
-                    card.setupCard(params: character[0])
+                    card.setupCard(params: mainCharacters[1])
                 } else if player == "WomenWarrior" {
-                    card.setupCard(params: character[5])
+                    card.setupCard(params: mainCharacters[0])
                 }
             }
             else {
@@ -527,22 +531,24 @@ class ContainerView: UIView {
         
         if(cardType == .Enemy) {
             card.health = -1 * max(2,min(Int(arc4random_uniform(UInt32(5))), 4)) // should not be higher than 2, at least 1
-            card.setupCard(params: character[2])
+            let total = self.enemies.count - 1
+            let index = Int(arc4random_uniform(UInt32(total)))
+            card.setupCard(params: enemies[index])
         }
         else if(cardType == .Potion) { //nuclear
             card.health = max(1,min(Int(arc4random_uniform(UInt32(3))), 2))
-            card.setupCard(params: character[11], hover: true, insets: UIEdgeInsets(top: -4, left: -4, bottom: -4, right: -4))
+            card.setupCard(params: mutations[2], hover: true, insets: UIEdgeInsets(top: -4, left: -4, bottom: -4, right: -4))
         }
         else if(cardType == .Gold) { //dna
             card.health = max(5,min(Int(arc4random_uniform(UInt32(20))), 2))
-            card.setupCard(params: character[9], hover: true)
+            card.setupCard(params: mutations[0], hover: true)
         }
         else if(cardType == .Armor) { //virus
             card.armor = max(1,min(Int(arc4random_uniform(UInt32(3))), 2)) // should not be higher than 2, at least 1
-            card.setupCard(params: character[10], hover: true, insets: UIEdgeInsets(top: -14, left: -14, bottom: -14, right: -14))
+            card.setupCard(params: mutations[1], hover: true, insets: UIEdgeInsets(top: -14, left: -14, bottom: -14, right: -14))
         }
         else if(cardType == .BlindMutation) {
-            card.setupCard(params: character[5]) // TODO: Change images for Blind Mutation
+            card.setupCard(params: mutations[3], hover: true, insets: UIEdgeInsets(top: -8, left: -8, bottom: -8, right: -8))
             mutationValue += 5
         }
         
