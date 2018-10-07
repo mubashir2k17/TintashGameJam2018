@@ -318,6 +318,7 @@ class ContainerView: UIView {
         
         let canPerform = canPerformAction(onCardPosition: card.position)
         if(canPerform) {
+            self.window?.isUserInteractionEnabled = false
             let notification = UINotificationFeedbackGenerator()
             notification.notificationOccurred(.success)
             let cardFrame = card.frame.origin
@@ -333,6 +334,8 @@ class ContainerView: UIView {
                 let character = self.characterCard
                 let characterNeedsToMoveTo = self.getCardPositionRelativeToCharacter(cardPos: card.position)
                 character.move(toOrigin: cardFrame, completion: { () in
+                    
+                    self.window?.isUserInteractionEnabled = true
                     
                     let columnNum = character.position.columnNum
                     let rowNum = character.position.rowNum
