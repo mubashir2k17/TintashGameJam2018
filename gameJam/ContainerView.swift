@@ -464,6 +464,15 @@ class ContainerView: UIView {
         
         if(self.characterCard.health == 0) {
             //TODO: Game over stuff
+
+            // game over pupup
+            let alert = UIAlertController(title: "Game Over :(", message: "you are a looser. you suck at playing! 👎🏻. you managed to get \(goldValue) mutations that you can take home.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "back to home", style: .cancel, handler: { (_) in
+                let defaults = UserDefaults.standard
+                let gold = defaults.integer(forKey: "gold")
+                defaults.set(gold + self.goldValue, forKey: "gold")
+            }))
+
         }
     }
     

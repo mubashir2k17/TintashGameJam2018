@@ -11,6 +11,8 @@ import UIKit
 class ViewController: UIViewController {
 
     @IBOutlet weak var characterCollectionView: UICollectionView!
+
+    @IBOutlet weak var goldLbl: UILabel!
     var currentIndex: IndexPath = IndexPath(item: 0, section: 0)
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,6 +21,13 @@ class ViewController: UIViewController {
         characterCollectionView.dataSource = self
         characterCollectionView.delegate = self
         characterCollectionView.isScrollEnabled = false
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        let defaults = UserDefaults.standard
+        let gold = defaults.integer(forKey: "gold")
+        goldLbl.text = "\(gold)"
     }
 
     @IBAction func rightButtonPress(_ sender: Any) {

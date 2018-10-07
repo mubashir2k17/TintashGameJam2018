@@ -11,6 +11,11 @@
         <capability name="Unknown constraint types" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Action_Man_Extended_Bold.ttf">
+            <string>ActionManExtended-Bold</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -79,6 +84,12 @@
                                     <action selector="rightButtonPress:" destination="BYZ-38-t0r" eventType="touchUpInside" id="g6e-T7-8bX"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XaQ-5a-4ve">
+                                <rect key="frame" x="16" y="36" width="45" height="27.5"/>
+                                <fontDescription key="fontDescription" name="ActionManExtended-Bold" family="Action Man Extended" pointSize="32"/>
+                                <color key="textColor" red="1" green="0.83234566450000003" blue="0.47320586440000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -96,13 +107,16 @@
                             <constraint firstItem="S11-7n-3Cu" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="d3N-n1-b1Y"/>
                             <constraint firstItem="S11-7n-3Cu" firstAttribute="top" secondItem="ffS-7q-k4b" secondAttribute="bottom" constant="38" id="dSN-ty-QGu"/>
                             <constraint firstItem="7q7-7t-FdM" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="fbl-g6-sH9"/>
+                            <constraint firstItem="XaQ-5a-4ve" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="mHT-cR-iTF"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ffS-7q-k4b" secondAttribute="trailing" constant="45" id="ngp-8H-0om"/>
+                            <constraint firstItem="XaQ-5a-4ve" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="16" id="oHp-q7-pfG"/>
                             <constraint firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="ofW-Yt-A77"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
                         <outlet property="characterCollectionView" destination="ffS-7q-k4b" id="9wp-M8-Xil"/>
+                        <outlet property="goldLbl" destination="XaQ-5a-4ve" id="gm5-xq-oZU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
