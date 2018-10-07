@@ -1,12 +1,15 @@
 PODS:
   - GTProgressBar (0.3.2)
+  - SwiftySound (1.0.0)
 
 DEPENDENCIES:
   - GTProgressBar
+  - SwiftySound
 
 SPEC CHECKSUMS:
   GTProgressBar: 3aa9731127b3ef193935d450928c3bd0f46bb1c4
+  SwiftySound: b9c3370956fd4ed65ed79d45563070077a50a2cd
 
-PODFILE CHECKSUM: b86437f49d114c6bf6e0de2e98369bab20ac476d
+PODFILE CHECKSUM: 21b0e0aec89940d46ed31ba124c93eb4af2393c1
 
 COCOAPODS: 1.4.0
