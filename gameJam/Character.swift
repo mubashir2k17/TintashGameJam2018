@@ -35,8 +35,15 @@ class Character: CardView {
         self.healthLabel.text = String(currentHealth)
     }
     
-    func addArmor(armorValue : Int) {
-        currentArmor = max(min(currentArmor + armorValue, maxARmor),0)
+    @discardableResult func addArmor(armorValue : Int) -> Int { // returns the remaing value left if armor goes below 0
+        
+        var valueToReturn = 0
+        currentArmor = min(currentArmor + armorValue, maxARmor)
+        valueToReturn = currentArmor
+        if(currentArmor < 0) {
+            currentArmor = 0
+        }
         self.armorLabel.text = String(currentArmor)
+        return valueToReturn
     }
 }

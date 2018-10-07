@@ -13,6 +13,7 @@ class CombatViewController: UIViewController {
     var player: String?
     @IBOutlet weak var gridContainerView: ContainerView!
     @IBOutlet weak var mutationProgressBar: GTProgressBar!
+    @IBOutlet weak var goldLbl: UILabel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,6 +28,19 @@ class CombatViewController: UIViewController {
         gridContainerView.mutationDidChange = { [weak self] percentage in
             let perc = min(percentage, 1.0)
             self?.mutationProgressBar.animateTo(progress: perc)
+        }
+        gridContainerView.dismissVC = {[weak self] in
+            self?.dismiss(animated: true, completion: nil)
+        }
+        gridContainerView.showAlert = { [weak self] (alert) in
+            DispatchQueue.main.async {
+                self?.present(alert, animated: true, completion: nil)
+            }
+        }
+        gridContainerView.goldValueUpdated = {[weak self] in
+            DispatchQueue.main.async {
+                self?.goldLbl.text = "\(self?.gridContainerView.goldValue ?? 0)"
+            }
         }
     }
 

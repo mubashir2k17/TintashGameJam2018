@@ -47,8 +47,13 @@ class ContainerView: UIView {
     var maxBlindMutationCount = 1
     var movesRequiredToUndoBlind = 4 // essentially will be 3 since the first step is counted when we get the blindness
     var movesDoneForBlind = 0
-    
-    var goldValue = 0
+
+    var isBlindnessSpawned = false
+    var goldValue = 0 {
+        didSet {
+            goldValueUpdated?()
+        }
+    }
     var mutationValue = 5 {
         didSet {
             mutationDidChange?(CGFloat(mutationValue/maxMutationValue))
@@ -57,8 +62,11 @@ class ContainerView: UIView {
     var maxMutationValue = 100 // TODO: Fill a progress bar above basied on mutationValue and maxMutationValue
     
     var isHidingCards = false
-
     var mutationDidChange: ((CGFloat)->())? = nil
+    
+    var dismissVC: (()->())? = nil
+    var showAlert: ((UIAlertController)->())? = nil
+    var goldValueUpdated: (()->())? = nil
     
     var cardCreationCounter = 0
     
@@ -206,30 +214,30 @@ class ContainerView: UIView {
         card.position = cardPos
         
         var cardType : CardType!
-        if(cardCreationCounter == 0) {
-            cardType = .Enemy
-        }
-        else if(cardCreationCounter == 1) {
-            cardType = .BlindMutation
-        }
-        else if(cardCreationCounter == 2) {
-            cardType = .Potion
-        }
-        else if(cardCreationCounter == 3) {
-            cardType = .Armor
-        }
-        else if(cardCreationCounter == 4) {
-            cardType = .Gold
-        }
+//        if(cardCreationCounter == 0) {
+//            cardType = .Enemy
+//        }
+//        else if(cardCreationCounter == 1) {
+//            cardType = .BlindMutation
+//        }
+//        else if(cardCreationCounter == 2) {
+//            cardType = .Potion
+//        }
+//        else if(cardCreationCounter == 3) {
+//            cardType = .Armor
+//        }
+//        else if(cardCreationCounter == 4) {
+//            cardType = .Gold
+//        }
+//
+//        cardCreationCounter = (cardCreationCounter + 1) % 5
         
-        cardCreationCounter = (cardCreationCounter + 1) % 5
-        
-        /*
+        cardType = .Enemy
         if(currentEnemiesCount < minEnemyCount) {
             cardType = .Enemy
         }
         else {
-            let randomNumberType = min(Int(arc4random_uniform(UInt32(3))), 2)
+            let randomNumberType = min(Int(arc4random_uniform(UInt32(4))), 2)
             if(randomNumberType == 0) {
                 cardType = .Potion
             }
@@ -239,8 +247,14 @@ class ContainerView: UIView {
             else if(randomNumberType == 2) {
                 cardType = .Armor
             }
+            else if(randomNumberType == 3) {
+                if(!isHidingCards && !isBlindnessSpawned) {
+                    cardType = .BlindMutation
+                    isBlindnessSpawned = true
+                }
+            }
         }
- */
+ 
         setupCard(card: card, cardType: cardType)
         
         card.cardType = cardType
@@ -282,6 +296,8 @@ class ContainerView: UIView {
         
         let canPerform = canPerformAction(onCardPosition: card.position)
         if(canPerform) {
+            let notification = UINotificationFeedbackGenerator()
+            notification.notificationOccurred(.success)
             let cardFrame = card.frame.origin
             let tappedCardPosition = card.position
             let tappedCardIndex = getIndex(fromPosition: tappedCardPosition)
@@ -378,6 +394,10 @@ class ContainerView: UIView {
                 })
             })
         }
+        else {
+            let notification = UINotificationFeedbackGenerator()
+            notification.notificationOccurred(.warning)
+        }
     }
     
     func doStuff(toPos : (rowNum : Int, columnNum : Int), fromPos : (rowNum : Int, columnNum : Int)) { // Moves cards around the screen, in the grid array, updates the frames as well
@@ -432,51 +452,56 @@ class ContainerView: UIView {
     
     func updateCounts(expiredCard: CardView) {
         
-        if(expiredCard.cardType == .Enemy || expiredCard.cardType == .Gold) {
-            goldValue += expiredCard.health
-            if(expiredCard.cardType == .Enemy) {
-                currentEnemiesCount -= 1
-                if let character = characterCard as? Character {
-                    character.addHealth(healthValue: expiredCard.health)
+        if let character = characterCard as? Character {
+            
+            if(expiredCard.cardType == .Enemy || expiredCard.cardType == .Gold) {
+                
+                goldValue += abs(expiredCard.health)
+                
+                if(expiredCard.cardType == .Enemy) {
+                    currentEnemiesCount -= 1
+                    var enemyHp = expiredCard.health
+                    if(character.armor > 0) {
+                        enemyHp = character.addArmor(armorValue: enemyHp)
+                    }
+                    character.addHealth(healthValue: enemyHp)
                 }
+                mutationValue += 2 * abs(expiredCard.health)
             }
-            mutationValue += 2 * abs(expiredCard.health)
-        }
-        else if(expiredCard.cardType == .Potion) {
-            if let character = characterCard as? Character {
+            else if(expiredCard.cardType == .Potion) {
                 character.addHealth(healthValue: expiredCard.health)
+                mutationValue += -1 * expiredCard.health
             }
-            mutationValue += -1 * expiredCard.health
-        }
-        else if(expiredCard.cardType == .Armor) {
-            if let character = characterCard as? Character {
+            else if(expiredCard.cardType == .Armor) {
                 character.addArmor(armorValue: expiredCard.armor)
             }
-        }
-        else if(expiredCard.cardType == .BlindMutation) {
-            if(!isHidingCards) {
-                hideAllCards()
+            else if(expiredCard.cardType == .BlindMutation) {
+                if(!isHidingCards) {
+                    hideAllCards()
+                }
             }
-        }
-        
-        if(isHidingCards) {
-            movesDoneForBlind += 1
-            if(movesDoneForBlind == movesRequiredToUndoBlind) {
-                showAllCards()
+            
+            if(isHidingCards) {
+                movesDoneForBlind += 1
+                if(movesDoneForBlind == movesRequiredToUndoBlind) {
+                    showAllCards()
+                }
             }
-        }
-        
-        if(self.characterCard.health == 0) {
-            //TODO: Game over stuff
+            
+            if(character.currentHealth <= 0) {
 
-            // game over pupup
-            let alert = UIAlertController(title: "Game Over :(", message: "you are a looser. you suck at playing! 👎🏻. you managed to get \(goldValue) mutations that you can take home.", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "back to home", style: .cancel, handler: { (_) in
-                let defaults = UserDefaults.standard
-                let gold = defaults.integer(forKey: "gold")
-                defaults.set(gold + self.goldValue, forKey: "gold")
-            }))
-
+                let alert = UIAlertController(title: "Game Over :(", message: "👎🏻 you managed to get \(goldValue) mutations that you can take home.", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "back to home", style: .cancel, handler: { [weak self] (_) in
+                    let defaults = UserDefaults.standard
+                    let gold = defaults.integer(forKey: "gold")
+                    defaults.set(gold + (self?.goldValue ?? 0), forKey: "gold")
+                    alert.dismiss(animated: true, completion: nil)
+                    self?.dismissVC?()
+                }))
+                let notification = UINotificationFeedbackGenerator()
+                notification.notificationOccurred(.error)
+                showAlert?(alert)
+            }
         }
     }
     
@@ -540,6 +565,7 @@ class ContainerView: UIView {
     func hideAllCards() {
         isHidingCards = true
         movesDoneForBlind = 0
+        isBlindnessSpawned = false
         for i in 0..<9 {
             let card = cardsBtnArray[i]
             if(card != characterCard) {
