@@ -23,6 +23,7 @@ enum CardType {
     case Boss
     case Armor
     case Gold
+    case BlindMutation
 }
 
 class ContainerView: UIView {
@@ -42,9 +43,16 @@ class ContainerView: UIView {
     var currentEnemiesCount = 4
     var minEnemyCount = 3
     
+    var blindMutationCount = 0
+    var maxBlindMutationCount = 1
+    var movesRequiredToUndoBlind = 3
+    var movesDoneForBlind = 0
+    
     var goldValue = 0
     var mutationValue = 0
     var maxMutationValue = 100 // TODO: Fill a progress bar above basied on mutationValue and maxMutationValue
+    
+    var isHidingCards = false
     
     // asset names to Load
     let character = [(assetName: "knightIdle", startIndex: 0, endIndex: 6),
@@ -81,9 +89,7 @@ class ContainerView: UIView {
         for i in 0..<maxSize {
             
             if (i == 0) {
-                
-//                let randIndex = max(0,min(Int(arc4random_uniform(UInt32(maxSize - i))), maxSize - i))
-                let randIndex = 3
+                let randIndex = max(0,min(Int(arc4random_uniform(UInt32(maxSize - i))), maxSize - i))
                 let index = indexsArray[randIndex]
                 indexsArray.remove(at: randIndex)
                 
@@ -406,6 +412,10 @@ class ContainerView: UIView {
                 character.addArmor(armorValue: expiredCard.armor)
             }
         }
+        else if(expiredCard.cardType == .BlindMutation) {
+            
+        }
+        
         if(self.characterCard.health == 0) {
             //TODO: Game over stuff
         }
@@ -439,5 +449,25 @@ class ContainerView: UIView {
         let row : Int = index / 3
         let col : Int = index % 3
         return (row, col)
+    }
+    
+    func hideAllCards() {
+        isHidingCards = true
+        for i in 0..<9 {
+            let card = cardsBtnArray[i]
+            if(card != characterCard) {
+                card?.hideCard()
+            }
+        }
+    }
+    
+    func showAllCards() {
+        isHidingCards = false
+        for i in 0..<9 {
+            let card = cardsBtnArray[i]
+            if(card != characterCard) {
+                card?.showCard()
+            }
+        }
     }
 }

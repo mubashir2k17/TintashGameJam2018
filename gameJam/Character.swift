@@ -25,7 +25,7 @@ class Character: CardView {
 
     override func setupCard(params: (assetName: String, startIndex: Int, endIndex: Int)) {
         
-        cardBackgroundImageView.image = animatedImage(asset: params.assetName, startIndex: params.startIndex, endIndex: params.endIndex)
+        cardItemImageView.image = animatedImage(asset: params.assetName, startIndex: params.startIndex, endIndex: params.endIndex)
         healthLabel.text = String(currentHealth)
         armorLabel.text = String(currentArmor)
     }
