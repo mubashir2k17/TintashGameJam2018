@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftySound
 
 enum RelativePositionToCharacter { // Used to give position of a card relative to the position of our character e.g. if Right, then the position of the card in question is on the right column of the character
     case Right
@@ -87,7 +88,8 @@ class ContainerView: UIView {
     let mutations = [ (assetName: "dna", startIndex: 0, endIndex: 0),
                       (assetName: "virus", startIndex: 0, endIndex: 0),
                       (assetName: "nuclear", startIndex: 0, endIndex: 0),
-                      (assetName: "eyeball", startIndex: 0, endIndex: 0)
+                      (assetName: "eyeball", startIndex: 0, endIndex: 0),
+                      (assetName: "spike", startIndex: 0, endIndex: 0)
     ]
     
     func populateTimeFrames() {
@@ -526,6 +528,7 @@ class ContainerView: UIView {
                 }))
                 let notification = UINotificationFeedbackGenerator()
                 notification.notificationOccurred(.error)
+                Sound.play(file: "soundplaybutton.mp3")
                 showAlert?(alert)
             }
         }

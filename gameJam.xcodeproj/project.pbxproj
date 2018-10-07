@@ -15,6 +15,7 @@
 		3E677FF92168E3E3000C676E /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E677FF82168E3E3000C676E /* Character.swift */; };
 		3E677FFC21693F11000C676E /* HealthModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E677FFB21693F11000C676E /* HealthModifier.swift */; };
 		4A557C67216A0D190034F3FC /* soundplaybutton.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4A557C66216A0D190034F3FC /* soundplaybutton.mp3 */; };
+		4A557C69216A1D2F0034F3FC /* 006141718_prev.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 4A557C68216A1D2F0034F3FC /* 006141718_prev.m4a */; };
 		4A8335942167A2B10053BBE8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8335932167A2B10053BBE8 /* AppDelegate.swift */; };
 		4A8335962167A2B10053BBE8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8335952167A2B10053BBE8 /* ViewController.swift */; };
 		4A8335992167A2B10053BBE8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4A8335972167A2B10053BBE8 /* Main.storyboard */; };
@@ -46,6 +47,7 @@
 		3E677FF82168E3E3000C676E /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
 		3E677FFB21693F11000C676E /* HealthModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthModifier.swift; sourceTree = "<group>"; };
 		4A557C66216A0D190034F3FC /* soundplaybutton.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = soundplaybutton.mp3; sourceTree = "<group>"; };
+		4A557C68216A1D2F0034F3FC /* 006141718_prev.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = 006141718_prev.m4a; sourceTree = "<group>"; };
 		4A8335902167A2B10053BBE8 /* gameJam.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = gameJam.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4A8335932167A2B10053BBE8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4A8335952167A2B10053BBE8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -95,6 +97,7 @@
 		4A557C65216A0B790034F3FC /* sounds */ = {
 			isa = PBXGroup;
 			children = (
+				4A557C68216A1D2F0034F3FC /* 006141718_prev.m4a */,
 				4A557C66216A0D190034F3FC /* soundplaybutton.mp3 */,
 			);
 			path = sounds;
@@ -237,6 +240,7 @@
 				4A8335B621689FFA0053BBE8 /* Action_Man_Extended_Italic.ttf in Resources */,
 				4A83359E2167A2B30053BBE8 /* LaunchScreen.storyboard in Resources */,
 				4A83359B2167A2B30053BBE8 /* Assets.xcassets in Resources */,
+				4A557C69216A1D2F0034F3FC /* 006141718_prev.m4a in Resources */,
 				3E1043DA2168A6B30081B426 /* CombatViewController.xib in Resources */,
 				4A8335B921689FFA0053BBE8 /* Action_Man_Extended.ttf in Resources */,
 				4A8335B821689FFA0053BBE8 /* Action_Man_Extended_Bold.ttf in Resources */,
@@ -471,7 +475,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Q9L5852TE9;
 				INFOPLIST_FILE = gameJam/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = me.mubashirali.gameJam;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -487,7 +494,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Q9L5852TE9;
 				INFOPLIST_FILE = gameJam/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = me.mubashirali.gameJam;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
