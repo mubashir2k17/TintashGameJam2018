@@ -429,11 +429,16 @@ class ContainerView: UIView {
     func updateCounts(expiredCard: CardView) {
         
         if(expiredCard.cardType == .Enemy || expiredCard.cardType == .Gold) {
-            goldValue += expiredCard.health
+            
+            goldValue += abs(expiredCard.health)
             if(expiredCard.cardType == .Enemy) {
                 currentEnemiesCount -= 1
                 if let character = characterCard as? Character {
-                    character.addHealth(healthValue: expiredCard.health)
+                    var enemyHp = expiredCard.health
+                    if(character.armor > 0) {
+                        enemyHp = character.addArmor(armorValue: enemyHp)
+                    }
+                    character.addHealth(healthValue: enemyHp)
                 }
             }
             mutationValue += 2 * abs(expiredCard.health)
