@@ -48,7 +48,11 @@ class ContainerView: UIView {
     var movesRequiredToUndoBlind = 4 // essentially will be 3 since the first step is counted when we get the blindness
     var movesDoneForBlind = 0
     
-    var goldValue = 0
+    var goldValue = 0 {
+        didSet {
+            goldValueUpdated?()
+        }
+    }
     var mutationValue = 10 {
         didSet {
             mutationDidChange?(CGFloat(mutationValue/maxMutationValue))
@@ -61,6 +65,7 @@ class ContainerView: UIView {
     var mutationDidChange: ((CGFloat)->())? = nil
     var dismissVC: (()->())? = nil
     var showAlert: ((UIAlertController)->())? = nil
+    var goldValueUpdated: (()->())? = nil
     
     var cardCreationCounter = 0
     

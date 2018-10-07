@@ -14,7 +14,7 @@ class CombatViewController: UIViewController {
     @IBOutlet weak var gridContainerView: ContainerView!
     @IBOutlet weak var mutationProgressBar: GTProgressBar!
     @IBOutlet weak var goldLbl: UILabel!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         gridContainerView.initializeGrid()
@@ -34,6 +34,11 @@ class CombatViewController: UIViewController {
         gridContainerView.showAlert = { [weak self] (alert) in
             DispatchQueue.main.async {
                 self?.present(alert, animated: true, completion: nil)
+            }
+        }
+        gridContainerView.goldValueUpdated = {[weak self] in
+            DispatchQueue.main.async {
+                self?.goldLbl.text = "\(self?.gridContainerView.goldValue ?? 0)"
             }
         }
     }
