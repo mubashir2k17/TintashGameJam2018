@@ -500,6 +500,11 @@ class ContainerView: UIView {
                 if(!isHidingCards) {
                     hideAllCards()
                 }
+                mutationValue += 8
+            }
+            else if(expiredCard.cardType == .SpikeMutation) {
+                reduceEnemiesHealth(byValue: 1)
+                mutationValue += 5
             }
             
             if(isHidingCards) {
