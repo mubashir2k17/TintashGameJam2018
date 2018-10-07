@@ -84,9 +84,16 @@
                                     <action selector="rightButtonPress:" destination="BYZ-38-t0r" eventType="touchUpInside" id="g6e-T7-8bX"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XaQ-5a-4ve">
-                                <rect key="frame" x="16" y="36" width="45" height="27.5"/>
-                                <fontDescription key="fontDescription" name="ActionManExtended-Bold" family="Action Man Extended" pointSize="32"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Dna-cool" translatesAutoresizingMaskIntoConstraints="NO" id="X9A-JA-G4N">
+                                <rect key="frame" x="16" y="37" width="25" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="25" id="GFj-lp-eS7"/>
+                                    <constraint firstAttribute="height" constant="25" id="u5V-P7-B7h"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XaQ-5a-4ve">
+                                <rect key="frame" x="45" y="37" width="27" height="24"/>
+                                <fontDescription key="fontDescription" name="ActionManExtended-Bold" family="Action Man Extended" pointSize="28"/>
                                 <color key="textColor" red="1" green="0.83234566450000003" blue="0.47320586440000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -99,6 +106,7 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="7q7-7t-FdM" secondAttribute="trailing" id="CFT-X8-Uqa"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="qPI-RX-SxM" secondAttribute="trailing" constant="8" id="F0v-ja-xTH"/>
                             <constraint firstItem="PH5-jr-EJi" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="8" id="L8j-ql-Hz9"/>
+                            <constraint firstItem="XaQ-5a-4ve" firstAttribute="leading" secondItem="X9A-JA-G4N" secondAttribute="trailing" constant="4" id="QO6-es-qWU"/>
                             <constraint firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="SyV-vY-e8J"/>
                             <constraint firstItem="PH5-jr-EJi" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" multiplier="1.2" id="UXf-Nt-l0c"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="7q7-7t-FdM" secondAttribute="bottom" id="Umu-7q-aYE"/>
@@ -107,10 +115,11 @@
                             <constraint firstItem="S11-7n-3Cu" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="d3N-n1-b1Y"/>
                             <constraint firstItem="S11-7n-3Cu" firstAttribute="top" secondItem="ffS-7q-k4b" secondAttribute="bottom" constant="38" id="dSN-ty-QGu"/>
                             <constraint firstItem="7q7-7t-FdM" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="fbl-g6-sH9"/>
-                            <constraint firstItem="XaQ-5a-4ve" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="mHT-cR-iTF"/>
+                            <constraint firstItem="X9A-JA-G4N" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="nZh-Mu-yyC"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ffS-7q-k4b" secondAttribute="trailing" constant="45" id="ngp-8H-0om"/>
-                            <constraint firstItem="XaQ-5a-4ve" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="16" id="oHp-q7-pfG"/>
                             <constraint firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="ofW-Yt-A77"/>
+                            <constraint firstItem="X9A-JA-G4N" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="17" id="v9J-5W-YIb"/>
+                            <constraint firstItem="XaQ-5a-4ve" firstAttribute="centerY" secondItem="X9A-JA-G4N" secondAttribute="centerY" id="wq2-iR-euv"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -127,6 +136,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Dna-cool" width="256" height="256"/>
         <image name="button_left" width="151" height="152"/>
         <image name="button_play" width="151" height="152"/>
         <image name="button_right" width="151" height="152"/>

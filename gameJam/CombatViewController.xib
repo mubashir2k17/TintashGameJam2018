@@ -85,23 +85,33 @@
                                 <action selector="homeButtonPressed:" destination="-1" eventType="touchUpInside" id="3MB-1L-Kgx"/>
                             </connections>
                         </button>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Dna-cool" translatesAutoresizingMaskIntoConstraints="NO" id="V64-uw-1fg">
+                            <rect key="frame" x="16" y="17" width="25" height="25"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="25" id="jB2-ew-uU5"/>
+                                <constraint firstAttribute="height" constant="25" id="slR-ug-hFs"/>
+                            </constraints>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eKa-xV-irW">
+                            <rect key="frame" x="45" y="17.5" width="27" height="24"/>
+                            <fontDescription key="fontDescription" name="ActionManExtended-Bold" family="Action Man Extended" pointSize="28"/>
+                            <color key="textColor" red="1" green="0.83234566450000003" blue="0.47320586440000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
+                        <constraint firstItem="V64-uw-1fg" firstAttribute="leading" secondItem="ha7-WQ-mG1" secondAttribute="leading" constant="16" id="DPk-rb-GHk"/>
+                        <constraint firstItem="eKa-xV-irW" firstAttribute="leading" secondItem="V64-uw-1fg" secondAttribute="trailing" constant="4" id="Sdr-mK-CS3"/>
                         <constraint firstAttribute="height" constant="50" id="dnu-cf-WCS"/>
+                        <constraint firstItem="V64-uw-1fg" firstAttribute="top" secondItem="ha7-WQ-mG1" secondAttribute="top" constant="17" id="g5w-6k-WSA"/>
                         <constraint firstItem="CgT-JC-OCL" firstAttribute="centerX" secondItem="ha7-WQ-mG1" secondAttribute="centerX" constant="-18" id="iTg-c7-Yjr"/>
                         <constraint firstItem="ahE-sE-gUt" firstAttribute="top" secondItem="ha7-WQ-mG1" secondAttribute="top" constant="16" id="reV-2I-oLy"/>
                         <constraint firstItem="CgT-JC-OCL" firstAttribute="centerY" secondItem="ha7-WQ-mG1" secondAttribute="centerY" constant="8" id="xFS-K5-V6H"/>
                         <constraint firstAttribute="trailing" secondItem="ahE-sE-gUt" secondAttribute="trailing" constant="16" id="yJI-fk-Lhn"/>
+                        <constraint firstItem="eKa-xV-irW" firstAttribute="centerY" secondItem="V64-uw-1fg" secondAttribute="centerY" id="ykJ-ED-PP6"/>
                     </constraints>
                 </view>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eKa-xV-irW">
-                    <rect key="frame" x="10" y="10" width="62" height="28"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" name="ActionManExtended-Bold" family="Action Man Extended" pointSize="32"/>
-                    <color key="textColor" red="1" green="0.83234566450000003" blue="0.47320586440000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <nil key="highlightedColor"/>
-                </label>
                 <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p3f-sk-yFn" userLabel="Boss Counter View">
                     <rect key="frame" x="132" y="81" width="110" height="30"/>
                     <subviews>
@@ -152,6 +162,7 @@
     </objects>
     <resources>
         <image name="Button_home" width="151" height="152"/>
+        <image name="Dna-cool" width="256" height="256"/>
         <image name="gamePlayBackground" width="640" height="480"/>
     </resources>
 </document>
