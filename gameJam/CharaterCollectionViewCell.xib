@@ -103,9 +103,9 @@
                         </subviews>
                     </stackView>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="sjq-a4-wYB">
-                        <rect key="frame" x="31.5" y="226" width="222" height="193"/>
+                        <rect key="frame" x="31.5" y="259" width="222" height="200"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="193" id="ThZ-Al-2Cv"/>
+                            <constraint firstAttribute="height" constant="200" id="ThZ-Al-2Cv"/>
                             <constraint firstAttribute="width" constant="222" id="udo-32-P0k"/>
                         </constraints>
                     </imageView>
@@ -121,7 +121,7 @@
                 <constraint firstItem="8ym-7G-DgE" firstAttribute="top" secondItem="JFc-gX-T7m" secondAttribute="bottom" constant="8" id="RVB-KA-Wyk"/>
                 <constraint firstItem="8ym-7G-DgE" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="20" id="TmM-Ke-Mhh"/>
                 <constraint firstItem="sjq-a4-wYB" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="cve-5W-Hcd"/>
-                <constraint firstAttribute="bottom" secondItem="sjq-a4-wYB" secondAttribute="bottom" constant="40" id="dXX-AO-Nfa"/>
+                <constraint firstAttribute="bottom" secondItem="sjq-a4-wYB" secondAttribute="bottom" id="dXX-AO-Nfa"/>
                 <constraint firstAttribute="trailing" secondItem="8ym-7G-DgE" secondAttribute="trailing" constant="20" id="lRy-VO-USD"/>
                 <constraint firstItem="nck-gZ-60N" firstAttribute="top" secondItem="exX-Lr-QDn" secondAttribute="bottom" constant="16" id="qwF-5k-4Zv"/>
             </constraints>

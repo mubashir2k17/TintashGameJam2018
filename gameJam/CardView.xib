@@ -52,7 +52,7 @@
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V3w-kA-1IL">
                     <rect key="frame" x="5" y="5" width="20" height="20"/>
-                    <color key="backgroundColor" red="0.0" green="0.97680455450000003" blue="0.0" alpha="0.69852311643835618" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="backgroundColor" red="0.67843137249999996" green="0.70588235290000001" blue="0.70980392160000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="20" id="HmP-et-I1v"/>
                         <constraint firstAttribute="width" constant="20" id="Vi0-Zb-l1A"/>
