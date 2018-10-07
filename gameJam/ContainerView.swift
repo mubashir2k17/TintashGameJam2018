@@ -24,6 +24,7 @@ enum CardType {
     case Armor
     case Gold
     case BlindMutation
+    case SpikeMutation
 }
 
 class ContainerView: UIView {
@@ -243,8 +244,11 @@ class ContainerView: UIView {
         else if(cardCreationCounter == 4) {
             cardType = .Gold
         }
-
-        cardCreationCounter = (cardCreationCounter + 1) % 5
+        else if(cardCreationCounter == 5) {
+            cardType = .SpikeMutation
+        }
+        
+        cardCreationCounter = (cardCreationCounter + 1) % 6
         
         /*
         cardType = .Enemy
