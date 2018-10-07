@@ -142,6 +142,8 @@ class ContainerView: UIView {
             
             if(cardType == .Character) {
                 card = Character(frame: rect, cardDidPress: cardDidPress)
+                card.backgroundImageView.layer.cornerRadius = 4
+                card.backgroundImageView.layer.addGradienBorder(colors: characterCard_borderGradients, width: 6.0)
                 self.characterCard = card
                 card.setupCard(params: character[0])
             }
@@ -465,6 +467,20 @@ class ContainerView: UIView {
         }
     }
     
+    let otherCards_borderGradients = [
+        UIColor(red: 100.0/255.0, green: 45.0/255.0, blue: 31.0/255.0, alpha: 0.4),
+        UIColor(red: 198.0/255.0, green: 173.0/255.0, blue: 50.0/255.0, alpha: 0.4),
+        UIColor(red: 56.0/255.0, green: 132.0/255.0, blue: 205.0/255.0, alpha: 0.4),
+        UIColor(red: 217.0/255.0, green: 174.0/255.0, blue: 120.0/255.0, alpha: 0.4)
+    ]
+    
+    let characterCard_borderGradients = [
+        UIColor(red: 142.0/255.0, green: 145.0/255.0, blue: 31.0/255.0, alpha: 1),
+        UIColor(red: 255.0/255.0, green: 173.0/255.0, blue: 150.0/255.0, alpha: 1),
+        UIColor(red: 156.0/255.0, green: 132.0/255.0, blue: 25.0/255.0, alpha: 1),
+        UIColor(red: 27.0/255.0, green: 174.0/255.0, blue: 120.0/255.0, alpha: 1)
+    ]
+    
     func setupCard(card : CardView, cardType : CardType) {
         
         if(cardType == .Enemy) {
@@ -488,9 +504,11 @@ class ContainerView: UIView {
             mutationValue += 5
         }
         card.backgroundImageView.image = #imageLiteral(resourceName: "tile2")
-        card.backgroundImageView.layer.cornerRadius = 12
-        card.backgroundImageView.layer.addGradienBorder(colors: [UIColor.red, UIColor.yellow, UIColor.green], width: 8.0, radius: 12)
+        card.backgroundImageView.layer.cornerRadius = 4
+        card.backgroundImageView.layer.addGradienBorder(colors: otherCards_borderGradients, width: 3.0)
     }
+    
+
     
     func getIndex(fromPosition pos : (rowNum : Int, columnNum : Int)) -> Int {
         return pos.rowNum * 3 + pos.columnNum

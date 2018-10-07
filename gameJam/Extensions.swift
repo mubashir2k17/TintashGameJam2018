@@ -57,13 +57,12 @@ extension UIView {
 }
 
 extension CALayer {
-    func addGradienBorder(colors:[UIColor],width:CGFloat = 1, radius:CGFloat = 0) {
+    func addGradienBorder(colors:[UIColor],width:CGFloat = 1) {
         let gradientLayer = CAGradientLayer()
         gradientLayer.frame =  CGRect(origin: .zero, size: self.bounds.size)
         gradientLayer.startPoint = CGPoint(x: 0.0, y: 0.5)
         gradientLayer.endPoint = CGPoint(x: 1.0, y: 0.5)
         gradientLayer.colors = colors.map({$0.cgColor})
-        gradientLayer.cornerRadius = radius
 
         
         let shapeLayer = CAShapeLayer()
@@ -72,7 +71,6 @@ extension CALayer {
         shapeLayer.path = path
         shapeLayer.fillColor = nil
         shapeLayer.strokeColor = UIColor.black.cgColor
-        shapeLayer.cornerRadius = radius
 
         gradientLayer.mask = shapeLayer
 
