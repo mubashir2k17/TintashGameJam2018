@@ -464,6 +464,15 @@ class ContainerView: UIView {
         
         if(self.characterCard.health == 0) {
             //TODO: Game over stuff
+
+            // game over pupup
+            let alert = UIAlertController(title: "Game Over :(", message: "you are a looser. you suck at playing! 👎🏻. you managed to get \(goldValue) mutations that you can take home.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "back to home", style: .cancel, handler: { (_) in
+                let defaults = UserDefaults.standard
+                let gold = defaults.integer(forKey: "gold")
+                defaults.set(gold + self.goldValue, forKey: "gold")
+            }))
+
         }
     }
     
@@ -503,9 +512,13 @@ class ContainerView: UIView {
             card.setupCard(params: character[5]) // TODO: Change images for Blind Mutation
             mutationValue += 5
         }
+        
         card.backgroundImageView.image = #imageLiteral(resourceName: "tile2")
         card.backgroundImageView.layer.cornerRadius = 4
         card.backgroundImageView.layer.addGradienBorder(colors: otherCards_borderGradients, width: 3.0)
+        
+        let flip = arc4random_uniform(UInt32(50))%2 == 0 ? true : false
+        card.flipCardItemImageView(flip: flip)
     }
     
 
