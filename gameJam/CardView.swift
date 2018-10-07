@@ -45,6 +45,7 @@ class CardView: UIView {
             addSubview(viewToUse)
             viewToUse.frame = self.bounds
             viewToUse.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+            backgroundImageView.clipsToBounds = true
         }
     }
     
