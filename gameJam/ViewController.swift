@@ -10,9 +10,11 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    var mainIndex = 0
     @IBOutlet weak var characterCollectionView: UICollectionView!
-
     @IBOutlet weak var goldLbl: UILabel!
+    @IBOutlet weak var leftButton: UIButton!
+    @IBOutlet weak var rightButton: UIButton!
     var currentIndex: IndexPath = IndexPath(item: 0, section: 0)
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,6 +23,7 @@ class ViewController: UIViewController {
         characterCollectionView.dataSource = self
         characterCollectionView.delegate = self
         characterCollectionView.isScrollEnabled = false
+        leftButton.isEnabled = false
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -31,11 +34,29 @@ class ViewController: UIViewController {
     }
 
     @IBAction func rightButtonPress(_ sender: Any) {
-        characterCollectionView.scrollToItem(at: IndexPath(item: currentIndex.row + 1, section: 0), at: UICollectionViewScrollPosition.centeredHorizontally, animated: true)
+        if mainIndex < 1 {
+            leftButton.isEnabled = true
+            rightButton.isEnabled = true
+            mainIndex += 1
+            characterCollectionView.scrollToItem(at: IndexPath(item: currentIndex.row + 1, section: 0), at: UICollectionViewScrollPosition.centeredHorizontally, animated: true)
+        }
+        else {
+            rightButton.isEnabled = false
+        }
     }
 
     @IBAction func leftButtonPress(_ sender: Any) {
-        characterCollectionView.scrollToItem(at: IndexPath(item: currentIndex.row - 1, section: 0), at: UICollectionViewScrollPosition.centeredHorizontally, animated: true)
+        if mainIndex > 0
+        {
+            leftButton.isEnabled = true
+            rightButton.isEnabled = true
+            mainIndex -= 1
+            characterCollectionView.scrollToItem(at: IndexPath(item: currentIndex.row - 1, section: 0), at: UICollectionViewScrollPosition.centeredHorizontally, animated: true)
+        }
+        else {
+            leftButton.isEnabled = false
+        }
+        
     }
     @IBAction func playButton(_ sender: Any) {
         let combatViewController = CombatViewController(nibName: "CombatViewController", bundle: nil)
