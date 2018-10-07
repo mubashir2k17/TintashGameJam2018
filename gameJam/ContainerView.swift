@@ -59,6 +59,8 @@ class ContainerView: UIView {
     var isHidingCards = false
 
     var mutationDidChange: ((CGFloat)->())? = nil
+    var dismissVC: (()->())? = nil
+    var showAlert: ((UIAlertController)->())? = nil
     
     var cardCreationCounter = 0
     
@@ -462,17 +464,19 @@ class ContainerView: UIView {
             }
         }
         
-        if(self.characterCard.health == 0) {
+        if(self.characterCard.health <= 0) {
             //TODO: Game over stuff
 
             // game over pupup
-            let alert = UIAlertController(title: "Game Over :(", message: "you are a looser. you suck at playing! 👎🏻. you managed to get \(goldValue) mutations that you can take home.", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "back to home", style: .cancel, handler: { (_) in
+            let alert = UIAlertController(title: "Game Over :(", message: "👎🏻 you managed to get \(goldValue) mutations that you can take home.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "back to home", style: .cancel, handler: { [weak self] (_) in
                 let defaults = UserDefaults.standard
                 let gold = defaults.integer(forKey: "gold")
-                defaults.set(gold + self.goldValue, forKey: "gold")
+                defaults.set(gold + (self?.goldValue ?? 0), forKey: "gold")
+                alert.dismiss(animated: true, completion: nil)
+                self?.dismissVC?()
             }))
-
+            showAlert?(alert)
         }
     }
     
