@@ -10,7 +10,8 @@ import UIKit
 
 class CardView: UIView {
 
-    @IBOutlet weak var cardBackgroundImageView: UIImageView!
+    @IBOutlet weak var cardItemImageView: UIImageView!
+    @IBOutlet weak var backgroundImageView: UIImageView!
     @IBOutlet weak var healthLabel: UILabel!
     @IBOutlet weak var armorLabel: UILabel!
     
@@ -59,11 +60,11 @@ class CardView: UIView {
                                        delay: 0.0,
                                        options: [.curveEaseInOut],
                                        animations: {
-                                        let width = self.frame.size.width
-                                        let heigth = self.frame.size.height
-                                        let x = self.frame.origin.x
-                                        let y = self.frame.origin.y
-                                        self.frame = CGRect(x: x+10, y: y+10, width: width-20, height: heigth-20)
+//                                        let width = self.frame.size.width
+//                                        let heigth = self.frame.size.height
+//                                        let x = self.frame.origin.x
+//                                        let y = self.frame.origin.y
+//                                        self.frame = CGRect(x: x+10, y: y+10, width: width-20, height: heigth-20)
                                         self.alpha = 0.0
                         },
                                        completion: { (true) in
@@ -93,7 +94,7 @@ class CardView: UIView {
 
     func setupCard(params: (assetName: String, startIndex: Int, endIndex: Int)) {
         // change cardBackgroundImageView to image and set background image seperately
-        cardBackgroundImageView.image = animatedImage(asset: params.assetName, startIndex: params.startIndex, endIndex: params.endIndex)
+        cardItemImageView.image = animatedImage(asset: params.assetName, startIndex: params.startIndex, endIndex: params.endIndex)
         if(health == 0) {
             healthLabel.isHidden = true
         }
@@ -112,5 +113,13 @@ class CardView: UIView {
             self.healthLabel.backgroundColor = UIColor(red: 255/255.0, green: 215/255.0, blue: 0, alpha: 1)
         }
         
+    }
+    
+    func hideCard() {
+        self.bringSubview(toFront: backgroundImageView)
+    }
+    
+    func showCard() {
+        self.sendSubview(toBack: backgroundImageView)
     }
 }
