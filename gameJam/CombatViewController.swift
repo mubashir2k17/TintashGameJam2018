@@ -15,6 +15,10 @@ class CombatViewController: UIViewController {
     @IBOutlet weak var mutationProgressBar: GTProgressBar!
     @IBOutlet weak var goldLbl: UILabel!
 
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         gridContainerView.initializeGrid(player: player!)
