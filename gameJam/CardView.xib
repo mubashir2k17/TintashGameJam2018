@@ -28,7 +28,7 @@
             <rect key="frame" x="0.0" y="0.0" width="103" height="136"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="EHQ-hB-YnX">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tile1" translatesAutoresizingMaskIntoConstraints="NO" id="EHQ-hB-YnX">
                     <rect key="frame" x="5" y="5" width="93" height="126"/>
                 </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="01y-69-umT">
@@ -36,24 +36,24 @@
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oya-5W-4uD">
-                    <rect key="frame" x="80" y="5" width="18" height="18"/>
+                    <rect key="frame" x="78" y="5" width="20" height="20"/>
                     <color key="backgroundColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="18" id="JjW-g0-4bK"/>
-                        <constraint firstAttribute="width" constant="18" id="TVO-Vm-gpA"/>
+                        <constraint firstAttribute="height" constant="20" id="JjW-g0-4bK"/>
+                        <constraint firstAttribute="width" constant="20" id="TVO-Vm-gpA"/>
                     </constraints>
-                    <fontDescription key="fontDescription" name="ActionMan-Bold" family="Action Man" pointSize="14"/>
+                    <fontDescription key="fontDescription" name="ActionMan-Bold" family="Action Man" pointSize="20"/>
                     <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V3w-kA-1IL">
-                    <rect key="frame" x="5" y="5" width="18" height="18"/>
+                    <rect key="frame" x="5" y="5" width="20" height="20"/>
                     <color key="backgroundColor" red="0.0" green="0.97680455450000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="18" id="HmP-et-I1v"/>
-                        <constraint firstAttribute="width" constant="18" id="Vi0-Zb-l1A"/>
+                        <constraint firstAttribute="height" constant="20" id="HmP-et-I1v"/>
+                        <constraint firstAttribute="width" constant="20" id="Vi0-Zb-l1A"/>
                     </constraints>
-                    <fontDescription key="fontDescription" name="ActionMan-Bold" family="Action Man" pointSize="14"/>
+                    <fontDescription key="fontDescription" name="ActionMan-Bold" family="Action Man" pointSize="20"/>
                     <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
@@ -88,4 +88,7 @@
             <point key="canvasLocation" x="42.5" y="242"/>
         </view>
     </objects>
+    <resources>
+        <image name="tile1" width="104" height="136"/>
+    </resources>
 </document>
