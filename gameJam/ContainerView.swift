@@ -47,8 +47,8 @@ class ContainerView: UIView {
     var maxBlindMutationCount = 1
     var movesRequiredToUndoBlind = 4 // essentially will be 3 since the first step is counted when we get the blindness
     var movesDoneForBlind = 0
-
     var isBlindnessSpawned = false
+    
     var goldValue = 0 {
         didSet {
             goldValueUpdated?()
@@ -59,7 +59,7 @@ class ContainerView: UIView {
             mutationDidChange?(CGFloat(mutationValue/maxMutationValue))
         }
     }
-    var maxMutationValue = 100 // TODO: Fill a progress bar above basied on mutationValue and maxMutationValue
+    var maxMutationValue = 100
     
     var isHidingCards = false
     var mutationDidChange: ((CGFloat)->())? = nil
@@ -222,7 +222,13 @@ class ContainerView: UIView {
             cardType = .Enemy
         }
         else if(cardCreationCounter == 1) {
-            cardType = .BlindMutation
+            if(!isBlindnessSpawned) {
+                isBlindnessSpawned = true
+                cardType = .BlindMutation
+            }
+            else {
+                cardType == .Enemy
+            }
         }
         else if(cardCreationCounter == 2) {
             cardType = .Potion
@@ -467,9 +473,10 @@ class ContainerView: UIView {
                 if(expiredCard.cardType == .Enemy) {
                     currentEnemiesCount -= 1
                     var enemyHp = expiredCard.health
-                    if(character.armor > 0) {
+                    if(character.currentArmor > 0) {
                         enemyHp = character.addArmor(armorValue: enemyHp)
                     }
+                    print("enemyHp \(enemyHp)")
                     character.addHealth(healthValue: enemyHp)
                 }
                 mutationValue += 2 * abs(expiredCard.health)
