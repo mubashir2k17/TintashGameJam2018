@@ -58,7 +58,7 @@ class ContainerView: UIView {
     }
     var mutationValue = 5 {
         didSet {
-            mutationDidChange?(CGFloat(mutationValue/maxMutationValue))
+            mutationDidChange?(CGFloat(Float(mutationValue)/Float(maxMutationValue)))
         }
     }
     var maxMutationValue = 100
