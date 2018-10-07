@@ -13,6 +13,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CombatViewController" customModule="gameJam" customModuleProvider="target">
             <connections>
                 <outlet property="gridContainerView" destination="VVs-yb-z1m" id="WGt-W5-ID7"/>
+                <outlet property="mutationProgressBar" destination="CgT-JC-OCL" id="WDV-mR-ng3"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -50,19 +51,58 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VVs-yb-z1m" userLabel="Grid Container view" customClass="ContainerView" customModule="gameJam" customModuleProvider="target">
-                    <rect key="frame" x="33" y="129.5" width="309" height="408"/>
+                    <rect key="frame" x="33" y="130" width="309" height="408"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="408" id="EfQ-dy-jKQ"/>
                         <constraint firstAttribute="width" constant="309" id="en3-p0-5pw"/>
                     </constraints>
                 </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CgT-JC-OCL" customClass="GTProgressBar" customModule="GTProgressBar">
+                    <rect key="frame" x="106" y="58" width="127" height="15"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="127" id="tvI-75-dmO"/>
+                        <constraint firstAttribute="height" constant="15" id="xA0-U2-l9F"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="progressLabelInsetLeft">
+                            <real key="value" value="0.0"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="progressLabelInsetRight">
+                            <real key="value" value="0.0"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="progressLabelInsetTop">
+                            <real key="value" value="0.0"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="progressLabelInsetBottom">
+                            <real key="value" value="0.0"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="barMaxHeightInt">
+                            <integer key="value" value="0"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="barMaxWidthInt">
+                            <integer key="value" value="0"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="barBorderColor">
+                            <color key="value" red="0.58317500352859497" green="0.99725264310836792" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="barBackgroundColor">
+                            <color key="value" red="0.31372549020000001" green="0.89019607840000003" blue="0.76078431369999999" alpha="1" colorSpace="calibratedRGB"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="barFillColor">
+                            <color key="value" red="0.99818998575210571" green="0.40235260128974915" blue="0.0048257093876600266" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="CgT-JC-OCL" firstAttribute="top" secondItem="ha7-WQ-mG1" secondAttribute="bottom" constant="8" id="6KP-7T-jsX"/>
                 <constraint firstItem="ha7-WQ-mG1" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="6Zc-gp-dly"/>
                 <constraint firstItem="VVs-yb-z1m" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="6so-ve-3Br"/>
                 <constraint firstItem="ha7-WQ-mG1" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="F0c-SA-5ii"/>
+                <constraint firstItem="CgT-JC-OCL" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" constant="-18" id="Xtu-TT-b9c"/>
                 <constraint firstItem="VVs-yb-z1m" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Z5Y-pO-9Oa"/>
                 <constraint firstItem="VVs-yb-z1m" firstAttribute="top" secondItem="p3f-sk-yFn" secondAttribute="bottom" constant="18.5" id="bKG-pN-e20"/>
                 <constraint firstItem="p3f-sk-yFn" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="lwt-Yz-Ncn"/>

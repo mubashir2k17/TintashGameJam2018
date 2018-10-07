@@ -49,10 +49,16 @@ class ContainerView: UIView {
     var movesDoneForBlind = 0
     
     var goldValue = 0
-    var mutationValue = 0
+    var mutationValue = 0 {
+        didSet {
+            mutationDidChange?(CGFloat(mutationValue/maxMutationValue))
+        }
+    }
     var maxMutationValue = 100 // TODO: Fill a progress bar above basied on mutationValue and maxMutationValue
     
     var isHidingCards = false
+
+    var mutationDidChange: ((CGFloat)->())? = nil
     
     // asset names to Load
     let character = [(assetName: "knightIdle", startIndex: 0, endIndex: 6),
