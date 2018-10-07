@@ -36,16 +36,16 @@ class CharaterCollectionViewCell: UICollectionViewCell {
     func setPlayer1() {
         playerNameLbl.text = "WomanWarrior"
         playerDiscriptionLbl.text = "Was it your dream?. Yes, your last. This murderous cold blooded beauty leaves no witnesses.".uppercased()
-        powerDiscriptionLbl.text = "Hits 2 targets".uppercased()
-        powerDiscription2lbl.text = "Does not die if enemy has the same up".uppercased()
+        powerDiscriptionLbl.text = "🛢 Hits 2 targets".uppercased()
+        powerDiscription2lbl.text = "⏳ Does not die if enemy has the same up".uppercased()
         imgView.image = animatedImage(asset: "womanWarrior", startIndex: 0, endIndex: 4)
     }
     
     func setPlayer2() {
         playerNameLbl.text = "Knight"
         playerDiscriptionLbl.text = "He has got unbreakable faith, but not so breakable shield".uppercased()
-        powerDiscriptionLbl.text = "15% to block any damage".uppercased()
-        powerDiscription2lbl.text = "Armor gives you extra 1 +".uppercased()
+        powerDiscriptionLbl.text = "🛢 15% to block any damage".uppercased()
+        powerDiscription2lbl.text = "⏳ Armor gives you extra 1 +".uppercased()
         imgView.image = animatedImage(asset: "knightIdle", startIndex: 0, endIndex: 6)
     }
 }
