@@ -50,7 +50,6 @@ class CardView: UIView {
         }
     }
     
-   
     func die(withCompletion completion:@escaping() -> Void) {
         UIView.animate(withDuration: 0.1,
                        delay: 0.2,
@@ -98,9 +97,9 @@ class CardView: UIView {
         cardDidPress?(self)
     }
 
-    func setupCard(params: (assetName: String, startIndex: Int, endIndex: Int)) {
+    func setupCard(params: (assetName: String, startIndex: Int, endIndex: Int), hover: Bool = false, insets: UIEdgeInsets = .zero) {
         // change cardBackgroundImageView to image and set background image seperately
-        cardItemImageView.image = animatedImage(asset: params.assetName, startIndex: params.startIndex, endIndex: params.endIndex)
+        cardItemImageView.image = animatedImage(asset: params.assetName, startIndex: params.startIndex, endIndex: params.endIndex)?.withAlignmentRectInsets(insets)
         if(health == 0) {
             healthLabel.isHidden = true
         }
@@ -118,7 +117,11 @@ class CardView: UIView {
         if(cardType == .Gold) {
             self.healthLabel.backgroundColor = UIColor(red: 255/255.0, green: 215/255.0, blue: 0, alpha: 1)
         }
-        
+        hoverItemImageView(animate: hover)
+    }
+    
+    func setHealth() {
+        self.healthLabel.text = String(abs(health))
     }
     
     func hideCard() {
@@ -139,7 +142,31 @@ class CardView: UIView {
         healthLabel.isHidden = armorLblHiddenValue
     }
     
+    //Flip Card
     func flipCardItemImageView(flip: Bool) {
         cardItemImageView.transform = flip ? CGAffineTransform(scaleX: -1, y: 1) : .identity
+    }
+    
+    //Hover animation
+    func hoverItemImageView(animate: Bool) {
+        
+        let randomDelay = (arc4random_uniform(250)/100) + 1
+
+        if animate {
+            DispatchQueue.main.asyncAfter(deadline: .now() + Double(randomDelay)) {
+                let hover = CABasicAnimation(keyPath: "position")
+                hover.isAdditive = true
+                hover.fromValue = NSValue(cgPoint: CGPoint.zero)
+                hover.toValue = NSValue(cgPoint: CGPoint(x: 0.0, y: 15.0))
+                hover.autoreverses = true
+                hover.duration = 2
+                hover.repeatCount = Float.infinity
+                self.cardItemImageView.layer.add(hover, forKey: "myHoverAnimation")
+            }
+        }
+        else {
+            cardItemImageView.layer.removeAnimation(forKey: "myHoverAnimation")
+        }
+        
     }
 }

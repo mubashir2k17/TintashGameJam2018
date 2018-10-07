@@ -23,8 +23,7 @@ class Character: CardView {
         fatalError("init(coder:) has not been implemented")
     }
 
-    override func setupCard(params: (assetName: String, startIndex: Int, endIndex: Int)) {
-        
+    override func setupCard(params: (assetName: String, startIndex: Int, endIndex: Int), hover: Bool, insets: UIEdgeInsets) {
         cardItemImageView.image = animatedImage(asset: params.assetName, startIndex: params.startIndex, endIndex: params.endIndex)
         healthLabel.text = String(currentHealth)
         armorLabel.text = String(currentArmor)
