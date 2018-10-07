@@ -238,6 +238,9 @@ class ContainerView: UIView {
         setupCard(card: card, cardType: cardType)
         
         card.cardType = cardType
+        if(isHidingCards) {
+            card.hideCard()
+        }
         self.addSubview(card)
         
         UIView.animate(withDuration: 0.3,
@@ -276,7 +279,9 @@ class ContainerView: UIView {
             let cardFrame = card.frame.origin
             let tappedCardPosition = card.position
             let tappedCardIndex = getIndex(fromPosition: tappedCardPosition)
-            
+            if(isHidingCards) {
+                card.showCard()
+            }
             card.die(withCompletion: { () in
                 
                 self.updateCounts(expiredCard: card)
@@ -510,6 +515,7 @@ class ContainerView: UIView {
     
     func showAllCards() {
         isHidingCards = false
+        movesDoneForBlind = 0
         for i in 0..<9 {
             let card = cardsBtnArray[i]
             if(card != characterCard) {
