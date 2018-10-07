@@ -25,7 +25,8 @@ class CombatViewController: UIViewController {
         super.viewDidAppear(animated)
         gridContainerView.loadGridWithAnimation(index: 0)
         gridContainerView.mutationDidChange = { [weak self] percentage in
-            self?.mutationProgressBar.animateTo(progress: percentage)
+            let perc = min(percentage, 1.0)
+            self?.mutationProgressBar.animateTo(progress: perc)
         }
     }
 
